@@ -58,9 +58,8 @@ a:hover {
 }
 
 em {
-  font-style: italic;
+	font-style: italic;
 }
-
 
 /* Estilos específicos para o menu flutuante e sumário */
 .floating-menu .menu-button {
@@ -78,6 +77,11 @@ em {
 	font-size: 0.9em;
 }
 
+.sign-card-subtitle {
+	font-size: 0.875rem;
+	color: var(--section-name-color);
+	margin-top: 0.5rem;
+}
 @media screen and (min-width: 769px) {
 	h1 {
 		font-size: 3rem;

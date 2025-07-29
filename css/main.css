@@ -97,3 +97,19 @@ blockquote {
 	color: var(--link-color);
 	text-decoration: underline;
 }
+
+button.primary {
+	background-color: var(--button-bg-color);
+	color: var(--button-text-color);
+	border: none;
+	font-size: 1rem;
+	padding: 0.75rem 1.5rem;
+	border-radius: 2rem;
+	cursor: pointer;
+	font-weight: bold;
+	transition: background-color 0.3s ease;
+}
+
+button.primary:hover {
+	background-color: var(--button-hover-bg-color);
+}

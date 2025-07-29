@@ -21,20 +21,11 @@
 		<header>
 			<h3>MIS-Xplica</h3>
 		</header>
-
+		<span>Raio-X</span>
 		<div id="floating-menu" class="floating-menu">
 			<!-- <button id="summary-toggle" class="menu-button">
 				<span class="material-symbols-outlined">menu</span> Sumário
 			</button> -->
-			<button
-				id="ray-x-metalinguistic"
-				class="menu-button ray-x-toggle"
-				data-sign-type="metalinguistico"
-				title="Raio-X Metalinguístico"
-			>
-				<span class="material-symbols-outlined">info</span>
-				<!-- <span class="menu-button-text">Raio-X metalinguístico</span> -->
-			</button>
 			<button
 				id="ray-x-static"
 				class="menu-button ray-x-toggle"
@@ -52,6 +43,15 @@
 			>
 				<span class="material-symbols-outlined">magic_button</span>
 				<!-- <span class="menu-button-text">Raio-X dinâmico</span> -->
+			</button>
+			<button
+				id="ray-x-metalinguistic"
+				class="menu-button ray-x-toggle"
+				data-sign-type="metalinguistico"
+				title="Raio-X Metalinguístico"
+			>
+				<span class="material-symbols-outlined">info</span>
+				<!-- <span class="menu-button-text">Raio-X metalinguístico</span> -->
 			</button>
 		</div>
 
@@ -144,27 +144,69 @@
 						interfaces de sistemas interativos em três tipos
 						principais:
 					</p>
-					<ul>
-						<li>Metalinguísticos;</li>
-						<li>Estáticos; e</li>
-						<li>Dinâmicos.</li>
-					</ul>
-					<p>
-						Esses tipos são a base da nossa funcionalidade de
-						"Raio-X" interativo.
-					</p>
+					<div class="wrapper">
+						<article class="sign-card">
+							<span class="material-symbols-outlined sign-icon"
+								>widgets</span
+							>
+							<h4>Estáticos</h4>
+							<p class="sign-card-subtitle">
+								As Instruções Explícitas do Designer
+							</p>
+							<!-- <p>
+								Signos imóveis e persistentes no design da
+								interface. Seu significado pode ser interpretado
+								independentemente da interação do usuário,
+								expressando o estado do sistema em um dado
+								momento.
+							</p> -->
+							<button class="primary">Ver Exemplos</button>
+						</article>
+						<article class="sign-card">
+							<span class="material-symbols-outlined sign-icon"
+								>magic_button</span
+							>
+							<h4>Dinâmicos</h4>
+							<p class="sign-card-subtitle">
+								O Comportamento Responsivo do Sistema
+							</p>
+							<!-- <p>
+								Signos percebidos apenas por meio da interação,
+						expressando o comportamento do sistema e as mudanças
+						temporais em resposta às ações do usuário. Eles
+						demonstram como o sistema reage.
+							</p> -->
+							<button class="primary">Ver Exemplos</button>
+						</article>
+						<article class="sign-card">
+							<span class="material-symbols-outlined sign-icon"
+								>info</span
+							>
+							<h4>Metalinguísticos</h4>
+							<p class="sign-card-subtitle">
+								As Instruções Explícitas do Designer
+							</p>
+							<!-- <p>
+								Signos que se referem a outros signos e os
+								explicam, fornecendo informações explícitas
+								sobre como outros signos podem ser utilizados
+								durante a interação. Eles representam a "voz"
+								direta do designer, instruindo o usuário sobre
+								como usar o sistema.
+							</p> -->
+							<button class="primary">Ver Exemplos</button>
+						</article>
+					</div>
 
 					<h3 id="signos-metalinguisticos">
-						2.1 Signos Metalinguísticos: As Instruções Explícitas do
-						Designer
+						Signos Metalinguísticos
 					</h3>
-					<h4>Definição</h4>
 					<p>
-						São os signos que se referem a outros signos e os
-						explicam, fornecendo informações explícitas sobre como
-						outros signos podem ser utilizados durante a interação.
-						Eles representam a "voz" direta do designer, instruindo
-						o usuário sobre como usar o sistema.
+						Signos que se referem a outros signos e os explicam,
+						fornecendo informações explícitas sobre como outros
+						signos podem ser utilizados durante a interação. Eles
+						representam a "voz" direta do designer, instruindo o
+						usuário sobre como usar o sistema.
 					</p>
 					<h4>Onde identificar</h4>
 					<ul>
@@ -253,12 +295,11 @@
 					<h3 id="signos-estaticos">
 						2.2 Signos Estáticos: O Estado Persistente do Sistema
 					</h3>
-					<h4>Definição</h4>
 					<p>
-						São os signos imóveis e persistentes no design da
-						interface. Seu significado pode ser interpretado
-						independentemente da interação do usuário, expressando o
-						estado do sistema em um dado momento.
+						Signos imóveis e persistentes no design da interface.
+						Seu significado pode ser interpretado independentemente
+						da interação do usuário, expressando o estado do sistema
+						em um dado momento.
 					</p>
 					<h4>Onde identificar</h4>
 					<ul>

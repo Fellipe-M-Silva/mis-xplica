@@ -38,6 +38,28 @@ section:last-of-type {
 	padding-bottom: 5rem;
 }
 
+/* Wrappers */
+.wrapper {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+/* Cards */
+.sign-card {
+	flex: 1 0 100px;
+	background-color: var(--background-color-alt);
+	border: 1px solid var(--border-color);
+	border-radius: 0.5rem;
+	padding: 1rem;
+	margin-bottom: 1rem;
+}
+
+.sign-card h4 {
+	margin-bottom: 0.5rem;
+}
+
 /* Menu Flutuante */
 .floating-menu {
 	position: fixed;
