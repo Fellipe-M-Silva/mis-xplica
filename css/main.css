@@ -1,0 +1,99 @@
+@import url("typography.css");
+@import url("colors.css");
+@import url("layout.css");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: var(--font-primary);
+	line-height: 1.5;
+	color: var(--text-color);
+	background-color: var(--background-color);
+	min-height: 100vh;
+	overflow-y: auto;
+}
+
+header {
+	background-color: var(--header-bg-color);
+	color: var(--header-text-color);
+	border-bottom: 1px solid var(--header-border-color);
+	padding: 1rem;
+	z-index: 1000;
+	position: sticky;
+	top: 0;
+	height: 4rem;
+}
+
+header h3 {
+	margin: 0;
+}
+
+h2,
+h3,
+h4 {
+	margin-bottom: 1.5rem;
+}
+
+p {
+	margin-bottom: 1rem;
+}
+
+ul {
+	list-style-position: inside;
+	margin-bottom: 15px;
+	padding-left: 20px;
+}
+
+li {
+	margin-bottom: 8px;
+}
+
+blockquote {
+	border-left: 4px solid var(--blockquote-border-color);
+	font-size: 2rem;
+	line-height: 1.2;
+	padding-left: 2rem;
+	margin: 2rem 0;
+	color: var(--blockquote-text-color);
+	font-style: italic;
+}
+
+.highlight {
+	background-color: var(--highlight-bg-color);
+	padding: 2px 4px;
+	border-radius: 3px;
+}
+
+.section-name {
+	font-weight: 600;
+	font-size: 0.87rem;
+	color: var(--section-name-color);
+	text-transform: uppercase;
+	background-color: var(--background-color-alt);
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.25rem;
+}
+
+/* Estilos para o sumário lateral */
+.side-content ul {
+	padding: 0.5rem;
+}
+
+.side-content ul li {
+	margin-bottom: 0.5rem;
+	list-style-type: none;
+}
+
+.side-content ul li a {
+	color: var(--text-color);
+	text-decoration: none;
+}
+
+.side-content ul li a:hover {
+	color: var(--link-color);
+	text-decoration: underline;
+}

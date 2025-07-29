@@ -1,0 +1,306 @@
+/* Main */
+.container {
+	margin: 0 auto;
+	display: flex;
+	align-items: flex-start;
+	gap: 2rem;
+}
+
+.container .side-content {
+	min-width: 240px;
+	flex: 1 240px 0;
+	align-self: flex-start;
+	position: sticky;
+	top: 6rem;
+}
+
+.side-content h4 {
+	margin-top: 0;
+}
+
+.container .content {
+	flex: 2 0 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+}
+
+section {
+	flex: 1 0 0;
+	max-width: 1200px;
+	border-bottom: 1px solid var(--border-color);
+	margin-bottom: 4rem;
+}
+
+section:last-of-type {
+	border-bottom: none;
+	padding-bottom: 5rem;
+}
+
+/* Menu Flutuante */
+.floating-menu {
+	position: fixed;
+	bottom: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: var(--background-color);
+	border-radius: 0.75rem;
+	padding: 0.5rem;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+	border: 1px solid var(--border-color);
+	z-index: 1000;
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.floating-menu .menu-button {
+	background-color: var(--button-secondary-bg-color);
+	border: 1px solid var(--button-secondary-border-color);
+	color: var(--button-secondary-text-color);
+	border-radius: 0.5rem;
+	line-height: 1;
+
+	height: 48px;
+	min-width: 48px;
+	padding: 0.5rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	white-space: nowrap;
+	cursor: pointer;
+
+	transition: background-color 0.3s ease, transform 0.2s ease,
+		padding 0.3s ease;
+	width: 0.5s ease;
+}
+
+/* .floating-menu .menu-button:hover {
+	background-color: var(--button-hover-secondary-bg-color);
+	color: var(--button-hover-secondary-text-color);
+} */
+
+.floating-menu .menu-button .material-symbols-outlined {
+	flex-shrink: 0;
+}
+
+.floating-menu .menu-button .menu-button-text {
+	/* Estilo inicial do texto: invisível e deslocado para a esquerda */
+	opacity: 0;
+	transform: translateX(-1rem);
+	transition: opacity 0.3s ease, transform 0.3s ease;
+	width: 0;
+	overflow: hidden;
+}
+
+.floating-menu .menu-button:hover .menu-button-text {
+	opacity: 1;
+	transform: translateX(0);
+	margin-left: 0.5rem;
+	width: auto;
+}
+
+.floating-menu .menu-button.active {
+	background-color: var(--button-hover-bg-color);
+	border-color: var(--button-text-color);
+	color: var(--button-text-color);
+	padding: 8px 15px;
+}
+
+/* Estilo para o texto quando o botão está ATIVO */
+.floating-menu .menu-button.active .menu-button-text {
+	opacity: 1;
+	transform: translateX(0);
+	width: auto;
+	margin-left: 0.5rem;
+}
+
+.floating-menu .menu-button:not(.active):hover {
+	background-color: var(--button-hover-secondary-bg-color);
+	color: var(--button-hover-secondary-text-color);
+}
+
+/* Sumário Lateral (Desktop) */
+.summary-sidebar {
+	position: fixed;
+	top: 0;
+	left: -280px; /* Escondido por padrão */
+	width: 250px;
+	height: 100%;
+	background-color: #f4f4f4;
+	padding: 20px;
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+	transition: left 0.3s ease-in-out;
+	z-index: 999;
+	overflow-y: auto; /* Para rolagem se o conteúdo for muito longo */
+}
+
+.summary-sidebar.active {
+	left: 0; /* Visível quando ativo */
+}
+
+.summary-sidebar ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+.summary-sidebar ul ul {
+	/* Subníveis */
+	padding-left: 15px;
+	margin-top: 5px;
+}
+
+.summary-sidebar a {
+	display: block;
+	padding: 8px 0;
+	color: var(--text-color);
+	border-bottom: 1px dashed #ddd;
+}
+
+.summary-sidebar a:hover {
+	background-color: #e9e9e9;
+	text-decoration: none;
+}
+
+/* Raio-X Overlay */
+.ray-x-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--overlay-bg);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 2000;
+	visibility: hidden; /* Escondido por padrão */
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.ray-x-overlay.active {
+	visibility: visible;
+	opacity: 1;
+}
+
+.ray-x-dialog {
+	background-color: var(--dialog-bg);
+	padding: 30px;
+	border-radius: 8px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	max-width: 500px;
+	width: 90%;
+	position: relative;
+	border: 2px solid var(--dialog-border); /* Cor da borda do dialog */
+	color: var(--dialog-text);
+}
+
+.ray-x-dialog .close-dialog {
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	background: none;
+	border: none;
+	font-size: 2em;
+	cursor: pointer;
+	color: var(--close-button-color);
+}
+
+/* Estilos para os signos destacados no Raio-X */
+.signo {
+	position: relative;
+	cursor: pointer;
+	padding: 2px; /* Aumenta a área clicável sutilmente */
+	border-radius: 3px;
+	transition: background-color 0.2s ease;
+	display: inline-block; /* Para que o span se ajuste ao conteúdo */
+}
+
+/* Cores de destaque no Raio-X mode */
+.ray-x-mode .signo.metalinguistico {
+	outline: 2px solid var(--metalinguistico-color);
+	background-color: rgba(40, 167, 69, 0.2); /* Verde mais claro */
+}
+
+.ray-x-mode .signo.estatico {
+	outline: 2px solid var(--estatico-color);
+	background-color: rgba(255, 193, 7, 0.2); /* Amarelo mais claro */
+}
+
+.ray-x-mode .signo.dinamico {
+	outline: 2px solid var(--dinamico-color);
+	background-color: rgba(220, 53, 69, 0.2); /* Vermelho mais claro */
+}
+
+/* Estilo para ocultar outros elementos no modo Raio-X */
+.ray-x-mode
+	.container
+	> section
+	> *:not(.signo):not(h2):not(h3):not(h4):not(p):not(ul):not(blockquote) {
+	opacity: 0.3; /* Torna outros elementos mais transparentes */
+	pointer-events: none; /* Desativa interação com eles */
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+	.container {
+		padding: 1rem;
+	}
+
+	h1 {
+		font-size: 2em;
+	}
+
+	h2 {
+		font-size: 1.8em;
+	}
+
+	h3 {
+		font-size: 1.5em;
+	}
+
+	.floating-menu {
+		flex-direction: column; /* Botões empilhados em telas pequenas */
+		width: calc(100% - 40px);
+		bottom: 10px;
+		padding: 10px;
+		gap: 8px;
+	}
+
+	.floating-menu .menu-button {
+		width: 100%; /* Ocupa a largura total do menu */
+		justify-content: center; /* Centraliza o texto e ícone */
+	}
+
+	/* Sumário lateral para mobile */
+	.summary-sidebar {
+		width: 100%; /* Ocupa toda a largura em mobile */
+		left: -100%; /* Escondido completamente */
+	}
+
+	.summary-sidebar.active {
+		left: 0;
+	}
+
+	/* Ajusta o padding da main quando o sumário está ativo no mobile para não sobrepor */
+	body.summary-active main {
+		padding-left: 20px; /* Ou ajuste conforme necessário */
+	}
+}
+
+@media (min-width: 769px) {
+	/* Ajuste para desktop: conteúdo principal se move quando o sumário está ativo */
+	body.summary-active main {
+		margin-left: 250px; /* Largura do sidebar */
+		transition: margin-left 0.3s ease-in-out;
+	}
+
+	.container {
+		padding: 2rem;
+	}
+}
