@@ -1,0 +1,79 @@
+/* Raio-X Overlay */
+.ray-x-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--overlay-bg);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 2000;
+	visibility: hidden; /* Escondido por padrão */
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.ray-x-overlay.active {
+	visibility: visible;
+	opacity: 1;
+}
+
+.ray-x-dialog {
+	background-color: var(--dialog-bg);
+	padding: 30px;
+	border-radius: 8px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	max-width: 500px;
+	width: 90%;
+	position: relative;
+	border: 2px solid var(--dialog-border); /* Cor da borda do dialog */
+	color: var(--dialog-text);
+}
+
+.ray-x-dialog .close-dialog {
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	background: none;
+	border: none;
+	font-size: 2em;
+	cursor: pointer;
+	color: var(--close-button-color);
+}
+
+/* Estilos para os signos destacados no Raio-X */
+.signo {
+	position: relative;
+	cursor: pointer;
+	padding: 2px; /* Aumenta a área clicável sutilmente */
+	border-radius: 3px;
+	transition: background-color 0.2s ease;
+	display: inline-block; /* Para que o span se ajuste ao conteúdo */
+}
+
+/* Cores de destaque no Raio-X mode */
+.ray-x-mode .signo.metalinguistico {
+	outline: 2px solid var(--metalinguistico-color);
+	background-color: rgba(40, 167, 69, 0.2); /* Verde mais claro */
+}
+
+.ray-x-mode .signo.estatico {
+	outline: 2px solid var(--estatico-color);
+	background-color: rgba(255, 193, 7, 0.2); /* Amarelo mais claro */
+}
+
+.ray-x-mode .signo.dinamico {
+	outline: 2px solid var(--dinamico-color);
+	background-color: rgba(220, 53, 69, 0.2); /* Vermelho mais claro */
+}
+
+/* Estilo para ocultar outros elementos no modo Raio-X */
+.ray-x-mode
+	.container
+	> section
+	> *:not(.signo):not(h2):not(h3):not(h4):not(p):not(ul):not(blockquote) {
+	opacity: 0.3; /* Torna outros elementos mais transparentes */
+	pointer-events: none; /* Desativa interação com eles */
+}

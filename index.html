@@ -53,6 +53,10 @@
 				<span class="material-symbols-outlined">info</span>
 				<!-- <span class="menu-button-text">Raio-X metalinguístico</span> -->
 			</button>
+
+			<button id="x-ray-about" class="menu-button ghost" title="Sobre o Raio-X">
+				<span class="material-symbols-outlined">help</span>
+			</button>
 		</div>
 
 		<main class="container">
@@ -442,42 +446,71 @@
 						<article class="example">
 							<p>Um <em>tooltip</em>:</p>
 							<div class="example-card">
-								<button class="primary has-tooltip">
+								<button 
+								class="primary has-tooltip" 
+								id="tooltip-button">
 									Passe o mouse aqui
-									<span class="tooltip"
-										>Este é um exemplo de tooltip que
-										explica o propósito do botão.</span
-									>
 								</button>
+								<div class="tooltip" id="tooltip-content">
+									Este é um botão!
+								</div>
 							</div>
 						</article>
 
 						<article class="example">
-							<p>Um botão:</p>
+							<p>Um dialog explicativo:</p>
 							<div class="example-card">
-								<button class="primary">Botão</button>
+								<button class="primary" id="dialog-button">Clique para abrir</button>
+								<div class="dialog-overlay" id="dialog-button-dialog">
+									<div class="dialog-content">
+										<div class="dialog-header">
+											<h4 class="dialog-title">Exemplo de Diálogo</h4>
+											<button class="close-dialog" id="close-dialog-button">
+												<span
+													class="material-symbols-outlined"
+												>
+													close
+												</span>
+											</button>
+										</div>
+										<div class="dialog-body">
+											<p class="dialog-text">
+												Este é um exemplo de diálogo
+												que pode ser usado para
+												exibir informações adicionais
+												ou opções.
+											</p>
+										</div>
+									</div>
+								</div>
 							</div>
 						</article>
 
 						<article class="example">
-							<p>Um link:</p>
+							<p>Uma mensagem que explica o sistema:</p>
 							<div class="example-card">
-								<a href="#" style="text-decoration: underline"
-									>Exemplo de link</a
-								>
+								<h4>Usando o Raio-X</h4>
+								<p style="width: 100%">
+									Clique no ícone de interrogação para saber mais sobre como funciona o Raio-X.
+								</p>
 							</div>
 						</article>
 
 						<article class="example">
-							<p>Um campo de entrada:</p>
+							<p>Especificações ou instruções:</p>
 							<div class="example-card">
 								<div class="input">
-									<label for="input-field">Título</label>
+									<label for="input-field">Senha</label>
 									<input
-										type="text"
+										type="password"
 										placeholder="Placeholder"
 										class="input-field"
+										id="password-field"
 									/>
+									<p class="input-specification" id="password-field-helper">
+										Deve conter entre 3 e 20
+										caráteres.
+									</p>
 								</div>
 							</div>
 						</article>
@@ -552,8 +585,6 @@
 							sob o ponto de vista do emissor da metamensagem.
 						</li>
 					</ul>
-
-          <div id="isometric"> AAAA </div>
 				</section>
 
 				<section id="aprofundar">

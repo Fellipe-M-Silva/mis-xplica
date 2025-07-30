@@ -1,0 +1,77 @@
+.dialog-overlay {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0.3s ease, opacity 0.3s ease;
+	z-index: 1000;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1010;
+	padding: 1rem;
+}
+
+.dialog-overlay.active {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dialog-content {
+	background-color: var(--background-color);
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	max-width: 400px;
+	width: 100%;
+}
+
+.dialog-content.active {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dialog-header {
+	display: flex;
+	justify-content: space-between;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 2rem;
+}
+
+.dialog-header .dialog-title {
+	margin: 0;
+	margin-bottom: 0;
+	font-size: 1.25rem;
+	color: var(--text-color);
+}
+
+.dialog-header .close-dialog {
+	background-color: var(--background-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	border: none;
+	height: 30px;
+	width: 44px;
+}
+
+.dialog-body {
+	margin-bottom: 0;
+}
+
+.dialog-body .dialog-text {
+	font-size: 1rem;
+	line-height: 1.5;
+	margin-bottom: 0;
+}
