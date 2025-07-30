@@ -9,8 +9,112 @@ document.addEventListener("DOMContentLoaded", () => {
 	const dialogDescription = document.getElementById("dialog-description");
 	const closeDialogButton = rayXDialog.querySelector(".close-dialog");
 	const allSignos = document.querySelectorAll(".signo");
+	const hoverButton = document.getElementById("hover-button");
+	const toggleButton = document.getElementById("toggle-button");
+	const toggleStatus = document.getElementById("toggle-status");
+	const selectField = document.getElementById("select-field");
+	const selectedOption = document.getElementById("selected-option");
+	const toggleIndicator = document.getElementById("toggle-indicator");
+	const movableArea = document.getElementById("movable-area");
+	const movableObject = document.getElementById("movable-object");
+	const backToTopButton = document.getElementById("back-to-top");
+	const backToExampleButton = document.getElementById("back-to-example");
+	const exampleSection = document.getElementById("example-section");
+	
 
 	let currentRayXMode = null; // 'metalinguistico', 'estatico', 'dinamico'
+
+	// Função para mudar o texto do botão ao passar o mouse
+	hoverButton.addEventListener("mouseover", () => {
+		hoverButton.textContent = "Você passou o mouse!";
+	});
+
+	// Função para restaurar o texto do botão ao sair o mouse
+	hoverButton.addEventListener("mouseout", () => {
+		hoverButton.textContent = "Passe o mouse aqui";
+	});
+
+	// Função para alternar o estado do toggle
+	toggleButton.addEventListener("change", () => {
+		if (toggleButton.checked) {
+			toggleStatus.textContent = "Ativado";
+			body.classList.add("toggle-active");
+		} else {
+			toggleStatus.textContent = "Desativado";
+			body.classList.remove("toggle-active");
+		}
+	});
+
+	// Função para atualizar o texto do select ao selecionar uma opção
+	selectField.addEventListener("change", () => {
+		if (selectField.value) {
+			const selectedValue =
+				selectField.options[selectField.selectedIndex].text;
+			selectedOption.textContent = `Opção selecionada: ${selectedValue}`;
+		} else {
+			selectedOption.textContent = "Opção selecionada: nenhuma";
+		}
+	});
+
+	// Função para alternar o estado do toggle visualmente
+	toggleIndicator.addEventListener("click", () => {
+		if (toggleIndicator.classList.contains("active")) {
+			toggleIndicator.classList.remove("active");
+			toggleStatus.textContent = "Desativado";
+			body.classList.remove("toggle-active");
+		} else {
+			toggleIndicator.classList.add("active");
+			toggleStatus.textContent = "Ativado";
+			body.classList.add("toggle-active");
+		}
+	});
+
+	// Função para mover o objeto dentro da área
+	movableArea.addEventListener("mousedown", (event) => {
+		if (event.target === movableObject) {
+			const offsetX =
+				event.clientX - movableObject.getBoundingClientRect().left;
+			const offsetY =
+				event.clientY - movableObject.getBoundingClientRect().top;
+
+			const moveAt = (pageX, pageY) => {
+				movableObject.style.left = `${pageX - offsetX}px`;
+				movableObject.style.top = `${pageY - offsetY}px`;
+			};
+
+			const onMouseMove = (event) => {
+				moveAt(event.pageX, event.pageY);
+			};
+
+			document.addEventListener("mousemove", onMouseMove);
+
+			document.addEventListener(
+				"mouseup",
+				() => {
+					document.removeEventListener("mousemove", onMouseMove);
+				},
+				{ once: true }
+			);
+		}
+	});
+
+	// Função para voltar ao topo da página
+	backToTopButton.addEventListener("click", () => {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
+		backToExampleButton.classList.add("active"); // Mostra o botão para voltar ao exemplo
+	});
+
+	// Função para voltar ao exemplo. o botão só aparece quando o usuário clica no exemplo
+	backToExampleButton.addEventListener("click", () => {
+		window.scrollTo({
+			top: exampleSection.offsetTop,
+			behavior: "smooth",
+		});
+		backToExampleButton.classList.remove("active"); // Esconde o botão após voltar
+	});
 
 	// Função para alternar o sumário
 	summaryToggle.addEventListener("click", () => {

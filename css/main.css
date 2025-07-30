@@ -107,9 +107,209 @@ button.primary {
 	border-radius: 2rem;
 	cursor: pointer;
 	font-weight: bold;
-	transition: background-color 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.primary.has-icon {
+	padding-left: 1rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.primary.has-icon p {
+	margin: 0;
+	line-height: 1;
+}
+
+button.secondary {
+	background-color: var(--button-secondary-bg-color);
+	color: var(--button-secondary-text-color);
+	border: 1px solid var(--button-secondary-border-color);
+	font-size: 1rem;
+	padding: 0.75rem 1.5rem;
+	border-radius: 2rem;
+	cursor: pointer;
+	font-weight: bold;
+	transition: all 0.3s ease;
+}
+
+button.secondary:hover {
+	background-color: var(--button-hover-secondary-bg-color);
+	color: var(--button-hover-secondary-text-color);
+	border-color: var(--button-secondary-border-color);
 }
 
 button.primary:hover {
 	background-color: var(--button-hover-bg-color);
+}
+
+#hover-button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#back-to-example {
+	visibility: hidden;
+	transition: all 0.3s ease;
+	position: fixed;
+	bottom: 5rem;
+	opacity: 0;
+	left: 50%;
+	transform: translateX(-50%) translateY(0);
+	transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+	z-index: 1000;
+}
+
+#back-to-example.active {
+	visibility: visible;
+	opacity: 1;
+	transform: translateX(-50%) translateY(-1rem);
+}
+
+.input {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+.input-field {
+	background-color: var(--background-color);
+	border: 1px solid var(--input-border-color);
+	color: var(--text-color);
+	border-radius: 0.25rem;
+	padding: 0.5rem 0.75rem;
+	width: 100%;
+	font-size: 1rem;
+	margin-top: 0.5rem;
+}
+
+.input-field:focus {
+	outline: none;
+	border-color: var(--input-focus-border-color);
+	box-shadow: 0 0 0 0.2rem var(--input-focus-box-shadow-color);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	width: 1rem;
+	height: 1rem;
+	margin-right: 0.5rem;
+	vertical-align: middle;
+}
+
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+	outline: none;
+	accent-color: var(--primary-color);
+}
+
+.toggle-indicator {
+	display: flex;
+	align-items: center;
+	width: 3.5rem;
+	height: 2rem;
+	padding: 0.25rem;
+	background-color: var(--button-secondary-bg-color);
+	border-radius: 1rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.toggle-indicator.active {
+	background-color: var(--button-bg-color);
+}
+
+.toggle-indicator.active .toggle-indicator-inner {
+	background-color: var(--button-text-color);
+	transform: translateX(1.7rem);
+}
+
+.toggle-indicator-inner {
+	width: 1.25rem;
+	height: 1.25rem;
+	background-color: var(--button-secondary-text-color);
+	border-radius: 50%;
+	top: 0.15rem;
+	left: 0.15rem;
+	transition: transform 0.3s ease;
+}
+
+select {
+	background-color: var(--background-color);
+	border: 1px solid var(--input-border-color);
+	color: var(--text-color);
+	border-radius: 0.25rem;
+	padding: 0.5rem 0.75rem;
+	width: 100%;
+	font-size: 1rem;
+	margin-top: 0.5rem;
+}
+
+option {
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+label {
+	font-weight: 600;
+}
+
+radio-group {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-bottom: 0;
+}
+
+.loading-spinner {
+	border: 6px solid var(--button-text-color);
+	border-top: 6px solid var(--button-bg-color);
+	border-radius: 50%;
+	width: 2.5rem;
+	height: 2.5rem;
+	animation: spin 1s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+	cursor: wait;
+	margin-bottom: 0.5rem;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+#moveable-area {
+	overflow: hidden;
+}
+
+#movable-object {
+	position: absolute;
+	width: 224px;
+	background-color: var(--button-bg-color);
+	border: 2px dashed var(--secondary-color);
+	color: var(--button-text-color);
+	border-radius: 0.5rem;
+	display: flex;
+	padding: 0.5rem;
+	gap: 1rem;
+	align-items: center;
+	justify-content: center;
+	cursor: grab;
+	user-select: none;
+	transition: background-color 0.3s ease;
+}
+
+#movable-object:active {
+	cursor: grabbing;
+	background-color: var(--secondary-color);
 }

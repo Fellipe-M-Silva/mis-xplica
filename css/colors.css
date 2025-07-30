@@ -85,7 +85,7 @@
 		--background-color-alt: var(--wild-sand-900);
 
 		/* Cores de Destaque e Interação (MODO ESCURO) */
-		--primary-color: var(--blue-400);
+		--primary-color: var(--blue-300);
 		--secondary-color: var(--wild-sand-400);
 		--highlight-bg-color: var(--blue-900);
 		--highlight-text-color: var(--blue-100);
