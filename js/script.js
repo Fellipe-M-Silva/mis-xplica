@@ -62,54 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		});
 
-	// --- Mobile Overlay Navigation ---
-
-	// Open Summary Overlay
-	if (openSummaryButton && summaryOverlay) {
-		openSummaryButton.addEventListener("click", () => {
-			summaryOverlay.classList.add("active");
-		});
-	}
-
-	// Open Controls Overlay
-	if (openControlsButton && controlsOverlay) {
-		openControlsButton.addEventListener("click", () => {
-			controlsOverlay.classList.add("active");
-		});
-	}
-
-	// Close Overlays
-	closeOverlayButtons.forEach((button) => {
-		button.addEventListener("click", () => {
-			summaryOverlay.classList.remove("active");
-			controlsOverlay.classList.remove("active");
-		});
-	});
-
-	// Close overlay when clicking outside the content (on the overlay background)
-	if (summaryOverlay) {
-		summaryOverlay.addEventListener("click", (event) => {
-			if (event.target === summaryOverlay) {
-				summaryOverlay.classList.remove("active");
-			}
-		});
-	}
-	if (controlsOverlay) {
-		controlsOverlay.addEventListener("click", (event) => {
-			if (event.target === controlsOverlay) {
-				controlsOverlay.classList.remove("active");
-			}
-		});
-	}
-
-	// Close overlays on Escape key press
-	document.addEventListener("keydown", (event) => {
-		if (event.key === "Escape") {
-			summaryOverlay.classList.remove("active");
-			controlsOverlay.classList.remove("active");
-		}
-	});
-
 	// Função para mudar o texto do botão ao passar o mouse
 	hoverButton.addEventListener("mouseover", () => {
 		hoverButton.textContent = "Você passou o mouse!";
