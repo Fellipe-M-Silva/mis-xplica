@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-	const summaryToggle = document.getElementById("summary-toggle");
-	const summarySidebar = document.getElementById("summary-sidebar");
 	const body = document.body;
-	const rayXToggleButtons = document.querySelectorAll(".ray-x-toggle");
-	const allSignos = document.querySelectorAll(".signo");
 	const hoverButton = document.getElementById("hover-button");
 	const toggleButton = document.getElementById("toggle-button");
 	const toggleStatus = document.getElementById("toggle-status");
@@ -62,6 +58,78 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		});
 
+	// Get all navigation links in the summary sidebar
+	const navLinks = document.querySelectorAll("#summary-sidebar ul li a");
+	const headerHeight = document.querySelector("header").offsetHeight; // Get the height of your header
+
+	navLinks.forEach((link) => {
+		link.addEventListener("click", function (e) {
+			e.preventDefault(); // Prevent default jump behavior
+
+			const targetId = this.getAttribute("href"); // Get the href attribute (e.g., "#introducao")
+			const targetElement = document.querySelector(targetId); // Get the target section element
+
+			if (targetElement) {
+				const elementPosition =
+					targetElement.getBoundingClientRect().top;
+				const offsetPosition =
+					elementPosition + window.scrollY - headerHeight;
+
+				window.scrollTo({
+					top: offsetPosition,
+					behavior: "smooth", // Smooth scroll
+				});
+
+				// Close the summary sidebar on mobile after clicking a link
+				const summarySidebar =
+					document.getElementById("summary-sidebar");
+				if (summarySidebar.classList.contains("active")) {
+					summarySidebar.classList.remove("active");
+				}
+			}
+		});
+	});
+
+	const sections = document.querySelectorAll("main .content section"); // Get all your content sections
+
+	const options = {
+		root: null, // Use the viewport as the root
+		rootMargin: `-${headerHeight}px 0px 0px 0px`, // Offset the top by header height
+		threshold: 0.1, // Trigger when 10% of the section is visible
+	};
+
+	const observer = new IntersectionObserver((entries, observer) => {
+		entries.forEach((entry) => {
+			const id = entry.target.getAttribute("id");
+			const correspondingLink = document.querySelector(
+				`#summary-sidebar ul li a[href="#${id}"]`
+			);
+
+			if (correspondingLink) {
+				if (entry.isIntersecting) {
+					// Remove active class from all links first
+					navLinks.forEach((link) =>
+						link.classList.remove("active-section")
+					);
+					// Add active class to the current link
+					correspondingLink.classList.add("active-section");
+				} else {
+					// Optional: Remove class when not intersecting.
+					// You might prefer to keep the last active one if you only want one highlighted at a time.
+					// correspondingLink.classList.remove('active-section');
+				}
+			}
+		});
+	}, options);
+
+	sections.forEach((section) => {
+		observer.observe(section); // Observe each section
+	});
+
+  //
+	// Funções dos exemplos de signos
+	//
+	
 	// Função para mudar o texto do botão ao passar o mouse
 	hoverButton.addEventListener("mouseover", () => {
 		hoverButton.textContent = "Você passou o mouse!";
@@ -234,6 +302,58 @@ document.addEventListener("DOMContentLoaded", () => {
 	} else {
 		console.warn(
 			"Elemento password-field ou password-field-helper não encontrado. Verifique o ID no HTML."
+		);
+	}
+
+	// Função para alternar o menu lateral
+	const summaryButton = document.getElementById("open-summary-button");
+	const summarySidebar = document.getElementById("summary-sidebar");
+	if (summaryButton && summarySidebar) {
+		summaryButton.addEventListener("click", () => {
+			console.log("Abrindo menu lateral...");
+			summarySidebar.classList.add("active");
+		});
+
+		// Fecha o menu lateral ao clicar fora dele
+		document.addEventListener("click", (event) => {
+			if (
+				summarySidebar.classList.contains("active") &&
+				!summarySidebar.contains(event.target) &&
+				!summaryButton.contains(event.target)
+			) {
+				console.log("Fechando menu lateral...");
+				summarySidebar.classList.remove("active");
+			}
+		});
+	} else {
+		console.warn(
+			"Elemento open-summary-button ou summary-sidebar não encontrado. Verifique o ID no HTML."
+		);
+	}
+
+	// Função para alternar o menu de controles
+	const controlsButton = document.getElementById("open-controls-button");
+	const controlsSidebar = document.getElementById("controls-sidebar");
+	if (controlsButton && controlsSidebar) {
+		controlsButton.addEventListener("click", () => {
+			controlsSidebar.classList.toggle("active");
+			body.classList.toggle("controls-active");
+		});
+
+		// Fecha o menu de controles ao clicar fora dele
+		document.addEventListener("click", (event) => {
+			if (
+				controlsSidebar.classList.contains("active") &&
+				!controlsSidebar.contains(event.target) &&
+				!controlsButton.contains(event.target)
+			) {
+				controlsSidebar.classList.remove("active");
+				body.classList.remove("controls-active");
+			}
+		});
+	} else {
+		console.warn(
+			"Elemento open-controls-button ou controls-sidebar não encontrado. Verifique o ID no HTML."
 		);
 	}
 
