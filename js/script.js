@@ -58,29 +58,53 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		});
 
-	// Get all navigation links in the summary sidebar
+	// Função para obter a altura total dos cabeçalhos visíveis
+	function getHeaderOffsetHeight() {
+		const mainHeader = document.querySelector("header"); // Seu header principal
+		const mobileNavHeader = document.getElementById(
+			"mobile-navigation-header"
+		); // Seu segundo header para mobile
+
+		let totalHeaderHeight = 0;
+
+		// Verifica se o header principal está visível e adiciona sua altura
+		if (mainHeader && mainHeader.offsetHeight > 0) {
+			totalHeaderHeight += mainHeader.offsetHeight;
+		}
+
+		// Verifica se o header de navegação mobile está visível e adiciona sua altura
+		// Geralmente, em telas maiores, ele terá offsetHeight = 0 ou será display: none;
+		if (mobileNavHeader && mobileNavHeader.offsetHeight > 0) {
+			totalHeaderHeight += mobileNavHeader.offsetHeight;
+		}
+
+		// Adicione um pequeno padding extra se desejar mais espaço
+		const extraPadding = 10; // Exemplo: 10px a mais
+		return totalHeaderHeight + extraPadding;
+	}
+
+	// Smooth Scrolling com Offset do Cabeçalho
 	const navLinks = document.querySelectorAll("#summary-sidebar ul li a");
-	const headerHeight = document.querySelector("header").offsetHeight; // Get the height of your header
 
 	navLinks.forEach((link) => {
 		link.addEventListener("click", function (e) {
-			e.preventDefault(); // Prevent default jump behavior
+			e.preventDefault();
 
-			const targetId = this.getAttribute("href"); // Get the href attribute (e.g., "#introducao")
-			const targetElement = document.querySelector(targetId); // Get the target section element
+			const targetId = this.getAttribute("href");
+			const targetElement = document.querySelector(targetId);
 
 			if (targetElement) {
+				const headerOffset = getHeaderOffsetHeight(); // Obtém a altura dinâmica
 				const elementPosition =
 					targetElement.getBoundingClientRect().top;
 				const offsetPosition =
-					elementPosition + window.scrollY - headerHeight;
+					elementPosition + window.scrollY - headerOffset;
 
 				window.scrollTo({
 					top: offsetPosition,
-					behavior: "smooth", // Smooth scroll
+					behavior: "smooth",
 				});
 
-				// Close the summary sidebar on mobile after clicking a link
 				const summarySidebar =
 					document.getElementById("summary-sidebar");
 				if (summarySidebar.classList.contains("active")) {
@@ -90,12 +114,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
-	const sections = document.querySelectorAll("main .content section"); // Get all your content sections
+	// Dynamic link highlighting
+	const sections = document.querySelectorAll("main .content section");
 
-	const options = {
-		root: null, // Use the viewport as the root
-		rootMargin: `-${headerHeight}px 0px 0px 0px`, // Offset the top by header height
-		threshold: 0.1, // Trigger when 10% of the section is visible
+	// As opções do IntersectionObserver também precisam do offset dinâmico
+	const observerOptions = {
+		root: null, // Usa a viewport como raiz
+		rootMargin: `-${getHeaderOffsetHeight()}px 0px 0px 0px`, // Offset dinâmico
+		threshold: 0.1, // Gatilho quando 10% da seção está visível
 	};
 
 	const observer = new IntersectionObserver((entries, observer) => {
@@ -107,29 +133,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			if (correspondingLink) {
 				if (entry.isIntersecting) {
-					// Remove active class from all links first
 					navLinks.forEach((link) =>
 						link.classList.remove("active-section")
 					);
-					// Add active class to the current link
 					correspondingLink.classList.add("active-section");
-				} else {
-					// Optional: Remove class when not intersecting.
-					// You might prefer to keep the last active one if you only want one highlighted at a time.
-					// correspondingLink.classList.remove('active-section');
 				}
 			}
 		});
-	}, options);
+	}, observerOptions); // Use observerOptions aqui!
 
 	sections.forEach((section) => {
-		observer.observe(section); // Observe each section
+		observer.observe(section);
 	});
 
-  //
+	// ... (Seu código existente para botões "Ver Exemplos") ...
+
+	const verExemplosButtons = document.querySelectorAll(".sign-card .primary");
+
+	verExemplosButtons.forEach((button) => {
+		button.addEventListener("click", function () {
+			let targetId = "";
+
+			const parentCard = this.closest(".sign-card");
+			if (parentCard) {
+				if (parentCard.id === "static-sign") {
+					targetId = "#signos-estaticos";
+				} else if (parentCard.id === "dynamic-sign") {
+					targetId = "#signos-dinamicos";
+				} else if (parentCard.id === "metalinguistic-sign") {
+					targetId = "#signos-metalinguisticos";
+				}
+			}
+
+			if (targetId) {
+				const targetElement = document.querySelector(targetId);
+
+				if (targetElement) {
+					const headerOffset = getHeaderOffsetHeight(); // Obtém a altura dinâmica
+					const elementPosition =
+						targetElement.getBoundingClientRect().top;
+					const offsetPosition =
+						elementPosition + window.scrollY - headerOffset;
+
+					window.scrollTo({
+						top: offsetPosition,
+						behavior: "smooth",
+					});
+				}
+			}
+		});
+	});
+
+	//
 	// Funções dos exemplos de signos
 	//
-	
+
 	// Função para mudar o texto do botão ao passar o mouse
 	hoverButton.addEventListener("mouseover", () => {
 		hoverButton.textContent = "Você passou o mouse!";
