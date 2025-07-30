@@ -21,6 +21,14 @@
 		<header>
 			<h3>MIS-Xplica</h3>
 		</header>
+		<div id="mobile-navigation-header">
+			<button class="icon ghost" id="open-summary-button">
+				<span class="material-symbols-outlined">menu</span>
+			</button>
+			<button class="icon ghost" id="open-controls-button">
+				<span class="material-symbols-outlined">settings</span>
+			</button>
+		</div>
 		<div id="floating-menu" class="floating-menu">
 			<span>Raio-X </span>
 			<!-- <button id="summary-toggle" class="menu-button">
@@ -54,7 +62,11 @@
 				<!-- <span class="menu-button-text">Raio-X metalinguístico</span> -->
 			</button>
 
-			<button id="x-ray-about" class="menu-button ghost" title="Sobre o Raio-X">
+			<button
+				id="x-ray-about"
+				class="menu-button ghost"
+				title="Sobre o Raio-X"
+			>
 				<span class="material-symbols-outlined">help</span>
 			</button>
 		</div>
@@ -110,7 +122,10 @@
 						metacomunicação, que pode ser descrita de acordo com o
 						seguinte modelo:
 					</p>
-					<blockquote id="metacommunication-quote" cite="Souza, 2005, p. 84">
+					<blockquote
+						id="metacommunication-quote"
+						cite="Souza, 2005, p. 84"
+					>
 						"Esse é o meu entendimento de quem você é, o que eu
 						aprendi que você quer ou precisa fazer, de que formas
 						preferidas e por quê. Este é, portanto, o sistema que eu
@@ -446,9 +461,10 @@
 						<article class="example">
 							<p>Um <em>tooltip</em>:</p>
 							<div class="example-card">
-								<button 
-								class="primary has-tooltip" 
-								id="tooltip-button">
+								<button
+									class="primary has-tooltip"
+									id="tooltip-button"
+								>
 									Passe o mouse aqui
 								</button>
 								<div class="tooltip" id="tooltip-content">
@@ -460,12 +476,22 @@
 						<article class="example">
 							<p>Um dialog explicativo:</p>
 							<div class="example-card">
-								<button class="primary" id="dialog-button">Clique para abrir</button>
-								<div class="dialog-overlay" id="dialog-button-dialog">
+								<button class="primary" id="dialog-button">
+									Clique para abrir
+								</button>
+								<div
+									class="dialog-overlay"
+									id="dialog-button-dialog"
+								>
 									<div class="dialog-content">
 										<div class="dialog-header">
-											<h4 class="dialog-title">Exemplo de Diálogo</h4>
-											<button class="close-dialog" id="close-dialog-button">
+											<h4 class="dialog-title">
+												Exemplo de Diálogo
+											</h4>
+											<button
+												class="close-dialog"
+												id="close-dialog-button"
+											>
 												<span
 													class="material-symbols-outlined"
 												>
@@ -475,10 +501,10 @@
 										</div>
 										<div class="dialog-body">
 											<p class="dialog-text">
-												Este é um exemplo de diálogo
-												que pode ser usado para
-												exibir informações adicionais
-												ou opções.
+												Este é um exemplo de diálogo que
+												pode ser usado para exibir
+												informações adicionais ou
+												opções.
 											</p>
 										</div>
 									</div>
@@ -489,9 +515,10 @@
 						<article class="example">
 							<p>Uma mensagem que explica o sistema:</p>
 							<div class="example-card">
-								<h4>Usando o Raio-X</h4>
+								<h4 style="margin-top: 0">Usando o Raio-X</h4>
 								<p style="width: 100%">
-									Clique no ícone de interrogação para saber mais sobre como funciona o Raio-X.
+									Clique no ícone de interrogação para saber
+									mais sobre como funciona o Raio-X.
 								</p>
 							</div>
 						</article>
@@ -507,9 +534,11 @@
 										class="input-field"
 										id="password-field"
 									/>
-									<p class="input-specification" id="password-field-helper">
-										Deve conter entre 3 e 20
-										caráteres.
+									<p
+										class="input-specification"
+										id="password-field-helper"
+									>
+										Deve conter entre 3 e 20 caráteres.
 									</p>
 								</div>
 							</div>
@@ -657,40 +686,41 @@
 			<div class="controls side-content">
 				<h4>Controles</h4>
 
-        <div class="theme-toggle">
-          <label for="theme-switch">Tema</label>
-          <fieldset id ="theme-switch">
-            <radio-group>
-              <div class="theme-option">
-                <input
-                type="radio"
-                name="theme"
-                value="default"
-                id="default-theme"
-                checked
-              />
-              <label for="default-theme">Padrão</label>
-              </div>
-              <div class="theme-option">
-                <input
-                  type="radio"
-                  name="theme"
-                  value="light"
-                  id="light-theme"
-                />
-                <label for="light-theme">Claro</label>
-              </div>
-              <div class="theme-option">
-                <input
-                  type="radio"
-                  name="theme"
-                  value="dark"
-                  id="dark-theme"
-                />
-                <label for="dark-theme">Escuro</label>
-              </div>
-            </radio-group>
-          </fieldset>
+				<div class="theme-toggle">
+					<label for="theme-switch">Tema</label>
+					<fieldset id="theme-switch">
+						<radio-group>
+							<div class="theme-option">
+								<input
+									type="radio"
+									name="theme"
+									value="default"
+									id="default-theme"
+									checked
+								/>
+								<label for="default-theme">Padrão</label>
+							</div>
+							<div class="theme-option">
+								<input
+									type="radio"
+									name="theme"
+									value="light"
+									id="light-theme"
+								/>
+								<label for="light-theme">Claro</label>
+							</div>
+							<div class="theme-option">
+								<input
+									type="radio"
+									name="theme"
+									value="dark"
+									id="dark-theme"
+								/>
+								<label for="dark-theme">Escuro</label>
+							</div>
+						</radio-group>
+					</fieldset>
+				</div>
 			</div>
 		</main>
 
