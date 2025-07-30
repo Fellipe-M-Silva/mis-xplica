@@ -106,7 +106,7 @@
 						metacomunicação, que pode ser descrita de acordo com o
 						seguinte modelo:
 					</p>
-					<blockquote cite="Souza, 2005, p. 84">
+					<blockquote id="metacommunication-quote" cite="Souza, 2005, p. 84">
 						"Esse é o meu entendimento de quem você é, o que eu
 						aprendi que você quer ou precisa fazer, de que formas
 						preferidas e por quê. Este é, portanto, o sistema que eu
@@ -552,6 +552,8 @@
 							sob o ponto de vista do emissor da metamensagem.
 						</li>
 					</ul>
+
+          <div id="isometric"> AAAA </div>
 				</section>
 
 				<section id="aprofundar">
@@ -623,6 +625,41 @@
 
 			<div class="controls side-content">
 				<h4>Controles</h4>
+
+        <div class="theme-toggle">
+          <label for="theme-switch">Tema</label>
+          <fieldset id ="theme-switch">
+            <radio-group>
+              <div class="theme-option">
+                <input
+                type="radio"
+                name="theme"
+                value="default"
+                id="default-theme"
+                checked
+              />
+              <label for="default-theme">Padrão</label>
+              </div>
+              <div class="theme-option">
+                <input
+                  type="radio"
+                  name="theme"
+                  value="light"
+                  id="light-theme"
+                />
+                <label for="light-theme">Claro</label>
+              </div>
+              <div class="theme-option">
+                <input
+                  type="radio"
+                  name="theme"
+                  value="dark"
+                  id="dark-theme"
+                />
+                <label for="dark-theme">Escuro</label>
+              </div>
+            </radio-group>
+          </fieldset>
 			</div>
 		</main>
 

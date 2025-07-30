@@ -62,7 +62,10 @@
 	--bright-turquoise-800: #046b65;
 	--bright-turquoise-900: #095853;
 	--bright-turquoise-950: #003636;
+}
 
+:root:not([data-theme="dark"]):not([data-theme="default"]),
+body[data-theme="light"] {
 	/* Cores de Texto e Fundo (Usando a paleta neutra) */
 	--header-bg-color: var(--white);
 	--header-text-color: var(--wild-sand-950);
@@ -70,14 +73,16 @@
 	--text-color: var(--wild-sand-950);
 	--section-name-color: var(--wild-sand-800);
 	--background-color: var(--white);
-	--background-color-alt: var(--wild-sand-100);
+	--background-color-alt: var(--wild-sand-50);
 
 	/* Cores de Destaque e Interação (Usando a paleta primária) */
 	--primary-color: var(--blue-600);
+	--primary-color-inactive: var(--blue-200);
 	--secondary-color: var(--wild-sand-600);
 	--highlight-bg-color: var(--blue-100);
 	--highlight-text-color: var(--blue-700);
 	--link-color: var(--blue-800);
+	--input-border-color: var(--wild-sand-500);
 
 	--button-bg-color: var(--blue-600);
 	--button-text-color: var(--wild-sand-50);
@@ -151,7 +156,7 @@
 /* MODO ESCURO */
 /* ----------- */
 @media (prefers-color-scheme: dark) {
-	:root {
+	:root:not([data-theme="light"]) {
 		/* Cores de Texto e Fundo (MODO ESCURO) */
 		--header-bg-color: var(--wild-sand-950);
 		--header-text-color: var(--wild-sand-50);
@@ -163,10 +168,12 @@
 
 		/* Cores de Destaque e Interação (MODO ESCURO) */
 		--primary-color: var(--blue-300);
+		--primary-color-inactive: var(--blue-950);
 		--secondary-color: var(--wild-sand-400);
 		--highlight-bg-color: var(--blue-900);
 		--highlight-text-color: var(--blue-100);
 		--link-color: var(--blue-300);
+		--input-border-color: var(--wild-sand-400);
 
 		--button-bg-color: var(--blue-300);
 		--button-text-color: var(--wild-sand-950);
@@ -229,10 +236,87 @@
 		--metalinguistic-card-button-bg-color: var(--electric-violet-300);
 		--metalinguistic-card-button-hover-bg-color: var(--electric-violet-200);
 		--metalinguistic-card-button-text-color: var(--wild-sand-950);
-
-		/* Cores para os tipos de signo (Raio-X) - Manter ou ajustar para melhor contraste em fundo escuro */
-		--metalinguistico-color: #4caf50; /* Um verde um pouco mais vibrante para contraste */
-		--estatico-color: #ffeb3b; /* Um amarelo mais brilhante */
-		--dinamico-color: #ef5350; /* Um vermelho mais saturado */
 	}
+}
+
+body[data-theme="dark"] {
+	/* Cores de Texto e Fundo (MODO ESCURO) */
+	--header-bg-color: var(--wild-sand-950);
+	--header-text-color: var(--wild-sand-50);
+	--header-border-color: var(--wild-sand-700);
+	--text-color: var(--wild-sand-50);
+	--section-name-color: var(--wild-sand-300);
+	--background-color: var(--wild-sand-950);
+	--background-color-alt: var(--wild-sand-900);
+
+	/* Cores de Destaque e Interação (MODO ESCURO) */
+	--primary-color: var(--blue-300);
+	--primary-color-inactive: var(--blue-950);
+	--secondary-color: var(--wild-sand-400);
+	--highlight-bg-color: var(--blue-900);
+	--highlight-text-color: var(--blue-100);
+	--link-color: var(--blue-300);
+	--input-border-color: var(--wild-sand-400);
+
+	--button-bg-color: var(--blue-300);
+	--button-text-color: var(--wild-sand-950);
+	--button-hover-bg-color: var(--blue-200);
+
+	--button-secondary-bg-color: var(--wild-sand-950);
+	--button-hover-secondary-bg-color: var(--wild-sand-900);
+	--button-secondary-text-color: var(--wild-sand-100);
+	--button-hover-secondary-text-color: var(--wild-sand-50);
+	--button-secondary-border-color: var(--wild-sand-700);
+
+	/* Cores de Bordas e Separadores (MODO ESCURO) */
+	--border-color: var(--wild-sand-800);
+	--blockquote-border-color: var(--blue-500);
+	--blockquote-text-color: var(--wild-sand-200);
+
+	/* Cores para o overlay do Raio-X (MODO ESCURO) */
+	--overlay-bg: rgba(var(--wild-sand-950-rgb), 0.9);
+	--dialog-bg: var(--wild-sand-900);
+	--dialog-border: var(--blue-600);
+	--dialog-text: var(--wild-sand-50);
+	--close-button-color: var(--wild-sand-300);
+
+	/* botão raio x estático */
+	--static-button-bg-color: var(--background-color);
+	--static-hover-button-bg-color: var(--bright-turquoise-200);
+	--static-button-text-color: var(--bright-turquoise-950);
+
+	/* botão raio x dinâmico */
+	--dynamic-button-bg-color: var(--background-color);
+	--dynamic-hover-button-bg-color: var(--buttercup-300);
+	--dynamic-button-text-color: var(--buttercup-950);
+
+	/* botão raio x metalinguístico */
+	--metalinguistic-button-bg-color: var(--background-color);
+	--metalinguistic-hover-button-bg-color: var(--electric-violet-300);
+	--metalinguistic-button-text-color: var(--electric-violet-950);
+
+	/* cards de signo */
+	--static-card-bg-color: var(--bright-turquoise-950);
+	--static-card-border-color: var(--bright-turquoise-300);
+	--static-card-text-color: var(--bright-turquoise-900);
+	--static-card-text-color-alt: var(--bright-turquoise-800);
+	--static-card-button-bg-color: var(--bright-turquoise-200);
+	--static-card-button-hover-bg-color: var(--bright-turquoise-100);
+	--static-card-button-text-color: var(--wild-sand-950);
+
+	--dynamic-card-bg-color: var(--buttercup-950);
+	--dynamic-card-border-color: var(--buttercup-300);
+	--dynamic-card-text-color: var(--buttercup-950);
+	--dynamic-card-text-color-alt: var(--buttercup-900);
+	--dynamic-card-button-bg-color: var(--buttercup-300);
+	--dynamic-card-button-hover-bg-color: var(--buttercup-200);
+	--dynamic-card-button-text-color: var(--wild-sand-950);
+
+	--metalinguistic-card-bg-color: var(--electric-violet-950);
+	--metalinguistic-card-border-color: var(--electric-violet-300);
+	--metalinguistic-card-text-color: var(--electric-violet-950);
+	--metalinguistic-card-text-color-alt: var(--electric-violet-900);
+	--metalinguistic-card-button-bg-color: var(--electric-violet-300);
+	--metalinguistic-card-button-hover-bg-color: var(--electric-violet-200);
+	--metalinguistic-card-button-text-color: var(--wild-sand-950);
 }

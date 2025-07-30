@@ -62,6 +62,14 @@ blockquote {
 	font-style: italic;
 }
 
+blockquote p,
+blockquote span {
+	font-weight: 300;
+	transition: font-weight 0.2s ease;
+	display: inline-block;
+	padding: 0 1px;
+}
+
 .highlight {
 	background-color: var(--highlight-bg-color);
 	padding: 2px 4px;
@@ -214,8 +222,8 @@ input[type="radio"]:focus {
 	align-items: center;
 	width: 3.5rem;
 	height: 2rem;
-	padding: 0.25rem;
-	background-color: var(--button-secondary-bg-color);
+	padding: 0.4rem;
+	background-color: var(--primary-color-inactive);
 	border-radius: 1rem;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
@@ -227,7 +235,7 @@ input[type="radio"]:focus {
 
 .toggle-indicator.active .toggle-indicator-inner {
 	background-color: var(--button-text-color);
-	transform: translateX(1.7rem);
+	transform: translateX(1.6rem);
 }
 
 .toggle-indicator-inner {
@@ -269,7 +277,7 @@ radio-group {
 }
 
 .loading-spinner {
-	border: 6px solid var(--button-text-color);
+	border: 6px solid var(--background-color);
 	border-top: 6px solid var(--button-bg-color);
 	border-radius: 50%;
 	width: 2.5rem;
@@ -326,4 +334,32 @@ radio-group {
 	transition: opacity 0.3s ease;
 	opacity: 0;
 	pointer-events: none;
+}
+
+fieldset {
+	border: none;
+	margin-top: 1rem;
+}
+
+.theme-option {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+#isometric {
+	perspective: 1000px;
+	width: 400px;
+	height: 300px;
+	margin: 0 auto;
+	background-color: var(--background-color);
+	border: 1px solid var(--border-color);
+	position: relative;
+	transform-style: preserve-3d; /* Essencial para que os filhos (faces) também sejam 3D */
+	transition: transform 1s ease-in-out; /* Transição para animação de hover */
+
+	/* COMBINAÇÃO ISOMÉTRICA CLÁSSICA */
+	/* RotateX para ver de cima, RotateY para ver um lado */
+	/* -30deg no X e 45deg no Y é uma combinação comum para efeito "isométrico" */
+	transform: rotateX(-30deg) rotateY(45deg);
 }

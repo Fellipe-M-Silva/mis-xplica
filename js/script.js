@@ -20,9 +20,55 @@ document.addEventListener("DOMContentLoaded", () => {
 	const backToTopButton = document.getElementById("back-to-top");
 	const backToExampleButton = document.getElementById("back-to-example");
 	const exampleSection = document.getElementById("example-section");
-	
+	const themeSwitch = document.getElementById("theme-switch");
+	const themeRadioButtons = document.querySelectorAll('input[name="theme"]');
 
 	let currentRayXMode = null; // 'metalinguistico', 'estatico', 'dinamico'
+
+	// Função para aplicar o tema
+	const applyTheme = (theme) => {
+		if (theme === "default") {
+			// Agora a opção "Padrão" é o "system"
+			body.removeAttribute("data-theme"); // Remove o atributo para voltar à preferência do sistema
+		} else {
+			body.setAttribute("data-theme", theme); // Define o tema manual (light ou dark)
+		}
+		// Armazenar a preferência do usuário
+		localStorage.setItem("user-theme", theme);
+	};
+
+	// Função para carregar o tema do localStorage ou da preferência do sistema
+	const loadThemePreference = () => {
+		const savedTheme = localStorage.getItem("user-theme");
+		let themeToApply = savedTheme || "default"; // Se não houver tema salvo, 'default' (sistema)
+
+		// Marcar o input de rádio correto
+		const radioToSelect = document.getElementById(`${themeToApply}-theme`);
+		if (radioToSelect) {
+			radioToSelect.checked = true;
+		}
+
+		applyTheme(themeToApply);
+	};
+
+	// Event listener para alternar o tema quando QUALQUER rádio button de tema muda
+	themeRadioButtons.forEach((radio) => {
+		radio.addEventListener("change", (event) => {
+			applyTheme(event.target.value);
+		});
+	});
+
+	// Carregar o tema quando a página é carregada
+	loadThemePreference();
+
+	// Opcional: Escutar mudanças na preferência do sistema (se o tema for 'default')
+	window
+		.matchMedia("(prefers-color-scheme: dark)")
+		.addEventListener("change", (event) => {
+			if (localStorage.getItem("user-theme") === "default") {
+				applyTheme("default"); // Re-aplica o tema do sistema
+			}
+		});
 
 	// Função para mudar o texto do botão ao passar o mouse
 	hoverButton.addEventListener("mouseover", () => {
@@ -225,4 +271,87 @@ document.addEventListener("DOMContentLoaded", () => {
 			rayXOverlay.classList.remove("active");
 		}
 	});
+
+	const metacommunicationQuote = document.getElementById(
+		"metacommunication-quote"
+	);
+
+	// Somente se o blockquote existir, processar suas palavras
+	if (metacommunicationQuote) {
+		const processQuote = () => {
+			const text = metacommunicationQuote.innerText; // Pega o texto bruto
+			// Divide o texto em palavras, mas mantém espaços e pontuações para não perder o layout
+			const words = text.split(/(\s+)/); // Divide por espaços, mas mantém os espaços no array
+
+			// Limpa o conteúdo atual do blockquote
+			metacommunicationQuote.innerHTML = "";
+
+			words.forEach((word, index) => {
+				// Cria um span para cada palavra (e para os espaços)
+				const span = document.createElement("span");
+				span.textContent = word;
+				span.dataset.index = index; // Para referência, se precisar
+				metacommunicationQuote.appendChild(span);
+			});
+		};
+
+		// Processa o blockquote assim que o DOM estiver carregado
+		processQuote();
+
+		// Agora, os listeners para o efeito de peso da fonte
+		metacommunicationQuote.addEventListener("mousemove", (event) => {
+			const mouseX = event.clientX;
+			const mouseY = event.clientY;
+
+			// Obtém todos os spans de palavras dentro do blockquote
+			const wordSpans = metacommunicationQuote.querySelectorAll("span");
+
+			wordSpans.forEach((span) => {
+				const rect = span.getBoundingClientRect();
+
+				// Calcula a distância do mouse para o centro da palavra
+				const wordCenterX = rect.left + rect.width / 2;
+				const wordCenterY = rect.top + rect.height / 2;
+
+				// Distância euclidiana (aproximada, ou pode usar apenas em X para efeito linear)
+				const distanceX = Math.abs(mouseX - wordCenterX);
+				const distanceY = Math.abs(mouseY - wordCenterY);
+				const distance = Math.sqrt(
+					distanceX * distanceX + distanceY * distanceY
+				);
+
+				// Define a área de influência (em pixels)
+				const maxDistance = 100; // Palavras até 100px de distância serão afetadas
+
+				// Calcula o peso da fonte baseado na distância
+				let fontWeight;
+				if (distance < maxDistance) {
+					// Mapeia a distância (0 a maxDistance) para o peso da fonte (900 a 300)
+					// Quanto menor a distância, maior o peso
+					const normalizedDistance = distance / maxDistance; // 0 a 1
+					fontWeight = 900 - normalizedDistance * (900 - 300); // 900 - (0 a 600)
+					fontWeight = Math.max(
+						300,
+						Math.min(900, Math.round(fontWeight / 100) * 100)
+					); // Arredonda para múltiplos de 100
+				} else {
+					fontWeight = 300; // Peso padrão se estiver fora da área
+				}
+
+				span.style.fontWeight = fontWeight;
+			});
+		});
+
+		metacommunicationQuote.addEventListener("mouseleave", () => {
+			// Ao sair do blockquote, resetar todas as palavras para o peso base
+			const wordSpans = metacommunicationQuote.querySelectorAll("span");
+			wordSpans.forEach((span) => {
+				span.style.fontWeight = 300;
+			});
+		});
+	} else {
+		console.warn(
+			"Elemento #metacommunication-quote não encontrado. O efeito de peso da fonte não será aplicado."
+		);
+	}
 });
