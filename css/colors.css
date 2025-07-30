@@ -26,6 +26,43 @@
 	--blue-900: #282a87;
 	--blue-950: #18174f;
 
+	/* Novas Paletas de Cores */
+	--buttercup-50: #fefce8;
+	--buttercup-100: #fef8c3;
+	--buttercup-200: #ffed89;
+	--buttercup-300: #fedd46;
+	--buttercup-400: #fbc814;
+	--buttercup-500: #edb007;
+	--buttercup-600: #cb8603;
+	--buttercup-700: #a25f06;
+	--buttercup-800: #864a0d;
+	--buttercup-900: #713d12;
+	--buttercup-950: #421f06;
+
+	--electric-violet-50: #fdf2ff;
+	--electric-violet-100: #f9e4ff;
+	--electric-violet-200: #f4c8ff;
+	--electric-violet-300: #f09dff;
+	--electric-violet-400: #e962ff;
+	--electric-violet-500: #d928ff;
+	--electric-violet-600: #bc07ed;
+	--electric-violet-700: #a302c9;
+	--electric-violet-800: #8704a4;
+	--electric-violet-900: #710a85;
+	--electric-violet-950: #4d005b;
+
+	--bright-turquoise-50: #eefffb;
+	--bright-turquoise-100: #c4fff6;
+	--bright-turquoise-200: #8affee;
+	--bright-turquoise-300: #47ffe6;
+	--bright-turquoise-400: #19f0d7;
+	--bright-turquoise-500: #00d3bd;
+	--bright-turquoise-600: #00aa9c;
+	--bright-turquoise-700: #00877d;
+	--bright-turquoise-800: #046b65;
+	--bright-turquoise-900: #095853;
+	--bright-turquoise-950: #003636;
+
 	/* Cores de Texto e Fundo (Usando a paleta neutra) */
 	--header-bg-color: var(--white);
 	--header-text-color: var(--wild-sand-950);
@@ -63,6 +100,46 @@
 	--dialog-border: var(--blue-500);
 	--dialog-text: var(--text-color);
 	--close-button-color: var(--wild-sand-600);
+
+	/* botão raio x estático */
+	--static-button-bg-color: var(--background-color);
+	--static-hover-button-bg-color: var(--bright-turquoise-600);
+	--static-button-text-color: var(--wild-sand-50);
+
+	/* botão raio x dinâmico */
+	--dynamic-button-bg-color: var(--background-color);
+	--dynamic-hover-button-bg-color: var(--buttercup-600);
+	--dynamic-button-text-color: var(--wild-sand-50);
+
+	/* botão raio x metalinguístico */
+	--metalinguistic-button-bg-color: var(--background-color);
+	--metalinguistic-hover-button-bg-color: var(--electric-violet-600);
+	--metalinguistic-button-text-color: var(--wild-sand-50);
+
+	/* cards de signo */
+	--static-card-bg-color: var(--bright-turquoise-50);
+	--static-card-border-color: var(--bright-turquoise-300);
+	--static-card-text-color: var(--bright-turquoise-900);
+	--static-card-text-color-alt: var(--bright-turquoise-800);
+	--static-card-button-bg-color: var(--bright-turquoise-600);
+	--static-card-button-hover-bg-color: var(--bright-turquoise-700);
+	--static-card-button-text-color: var(--wild-sand-50);
+
+	--dynamic-card-bg-color: var(--buttercup-50);
+	--dynamic-card-border-color: var(--buttercup-300);
+	--dynamic-card-text-color: var(--buttercup-950);
+	--dynamic-card-text-color-alt: var(--buttercup-900);
+	--dynamic-card-button-bg-color: var(--buttercup-600);
+	--dynamic-card-button-hover-bg-color: var(--buttercup-700);
+	--dynamic-card-button-text-color: var(--wild-sand-50);
+
+	--metalinguistic-card-bg-color: var(--electric-violet-50);
+	--metalinguistic-card-border-color: var(--electric-violet-300);
+	--metalinguistic-card-text-color: var(--electric-violet-950);
+	--metalinguistic-card-text-color-alt: var(--electric-violet-900);
+	--metalinguistic-card-button-bg-color: var(--electric-violet-600);
+	--metalinguistic-card-button-hover-bg-color: var(--electric-violet-700);
+	--metalinguistic-card-button-text-color: var(--wild-sand-50);
 
 	/* Cores para os tipos de signo (Raio-X) - Ajeitar depois */
 	--metalinguistico-color: #28a745; /* Verde */
@@ -112,6 +189,46 @@
 		--dialog-border: var(--blue-600);
 		--dialog-text: var(--wild-sand-50);
 		--close-button-color: var(--wild-sand-300);
+
+		/* botão raio x estático */
+		--static-button-bg-color: var(--background-color);
+		--static-hover-button-bg-color: var(--bright-turquoise-200);
+		--static-button-text-color: var(--bright-turquoise-950);
+
+		/* botão raio x dinâmico */
+		--dynamic-button-bg-color: var(--background-color);
+		--dynamic-hover-button-bg-color: var(--buttercup-300);
+		--dynamic-button-text-color: var(--buttercup-950);
+
+		/* botão raio x metalinguístico */
+		--metalinguistic-button-bg-color: var(--background-color);
+		--metalinguistic-hover-button-bg-color: var(--electric-violet-300);
+		--metalinguistic-button-text-color: var(--electric-violet-950);
+
+		/* cards de signo */
+		--static-card-bg-color: var(--bright-turquoise-950);
+		--static-card-border-color: var(--bright-turquoise-300);
+		--static-card-text-color: var(--bright-turquoise-900);
+		--static-card-text-color-alt: var(--bright-turquoise-800);
+		--static-card-button-bg-color: var(--bright-turquoise-200);
+		--static-card-button-hover-bg-color: var(--bright-turquoise-100);
+		--static-card-button-text-color: var(--wild-sand-950);
+
+		--dynamic-card-bg-color: var(--buttercup-950);
+		--dynamic-card-border-color: var(--buttercup-300);
+		--dynamic-card-text-color: var(--buttercup-950);
+		--dynamic-card-text-color-alt: var(--buttercup-900);
+		--dynamic-card-button-bg-color: var(--buttercup-300);
+		--dynamic-card-button-hover-bg-color: var(--buttercup-200);
+		--dynamic-card-button-text-color: var(--wild-sand-950);
+
+		--metalinguistic-card-bg-color: var(--electric-violet-950);
+		--metalinguistic-card-border-color: var(--electric-violet-300);
+		--metalinguistic-card-text-color: var(--electric-violet-950);
+		--metalinguistic-card-text-color-alt: var(--electric-violet-900);
+		--metalinguistic-card-button-bg-color: var(--electric-violet-300);
+		--metalinguistic-card-button-hover-bg-color: var(--electric-violet-200);
+		--metalinguistic-card-button-text-color: var(--wild-sand-950);
 
 		/* Cores para os tipos de signo (Raio-X) - Manter ou ajustar para melhor contraste em fundo escuro */
 		--metalinguistico-color: #4caf50; /* Um verde um pouco mais vibrante para contraste */

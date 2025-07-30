@@ -313,3 +313,17 @@ radio-group {
 	cursor: grabbing;
 	background-color: var(--secondary-color);
 }
+
+.tooltip {
+	position: absolute;
+	background-color: var(--highlight-bg-color);
+	color: var(--highlight-text-color);
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.25rem;
+	font-size: 0.875rem;
+	white-space: nowrap;
+	z-index: 1000;
+	transition: opacity 0.3s ease;
+	opacity: 0;
+	pointer-events: none;
+}

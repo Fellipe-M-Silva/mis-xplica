@@ -79,7 +79,6 @@ em {
 
 .sign-card-subtitle {
 	font-size: 0.875rem;
-	color: var(--section-name-color);
 	margin-top: 0.5rem;
 }
 @media screen and (min-width: 769px) {

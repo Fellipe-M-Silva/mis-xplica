@@ -145,7 +145,7 @@
 						principais:
 					</p>
 					<div class="wrapper">
-						<article class="sign-card">
+						<article class="sign-card" id="static-sign">
 							<span class="material-symbols-outlined sign-icon"
 								>widgets</span
 							>
@@ -162,7 +162,7 @@
 							</p> -->
 							<button class="primary">Ver Exemplos</button>
 						</article>
-						<article class="sign-card">
+						<article class="sign-card" id="dynamic-sign">
 							<span class="material-symbols-outlined sign-icon"
 								>magic_button</span
 							>
@@ -178,7 +178,7 @@
 							</p> -->
 							<button class="primary">Ver Exemplos</button>
 						</article>
-						<article class="sign-card">
+						<article class="sign-card" id="metalinguistic-sign">
 							<span class="material-symbols-outlined sign-icon"
 								>info</span
 							>
@@ -237,7 +237,7 @@
 							<p>Um texto:</p>
 							<div class="example-card">
 								<h4>Exemplo de Título</h4>
-								<p>
+								<p style="width: 100%">
 									Este é um exemplo de parágrafo que
 									representa um signo estático.
 								</p>
@@ -440,13 +440,15 @@
 					<h4>Exemplos</h4>
 					<div class="wrapper">
 						<article class="example">
-							<p>Um texto:</p>
+							<p>Um <em>tooltip</em>:</p>
 							<div class="example-card">
-								<h4>Exemplo de Título</h4>
-								<p>
-									Este é um exemplo de parágrafo que
-									representa um signo estático.
-								</p>
+								<button class="primary has-tooltip">
+									Passe o mouse aqui
+									<span class="tooltip"
+										>Este é um exemplo de tooltip que
+										explica o propósito do botão.</span
+									>
+								</button>
 							</div>
 						</article>
 

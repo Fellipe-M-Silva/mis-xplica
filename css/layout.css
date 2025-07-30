@@ -60,7 +60,7 @@ section:last-of-type {
 	margin-bottom: 0.5rem;
 }
 .example {
-	flex: 1 0 240px;
+	flex: 1 0 calc(50% - 0.5rem);
 }
 
 .example p {
@@ -146,13 +146,6 @@ section:last-of-type {
 	overflow: hidden;
 }
 
-.floating-menu .menu-button:hover .menu-button-text {
-	opacity: 1;
-	transform: translateX(0);
-	margin-left: 0.5rem;
-	width: auto;
-}
-
 .floating-menu .menu-button.active {
 	background-color: var(--button-hover-bg-color);
 	border-color: var(--button-text-color);
@@ -160,17 +153,53 @@ section:last-of-type {
 	padding: 8px 15px;
 }
 
-/* Estilo para o texto quando o botão está ATIVO */
-.floating-menu .menu-button.active .menu-button-text {
-	opacity: 1;
-	transform: translateX(0);
-	width: auto;
-	margin-left: 0.5rem;
-}
-
 .floating-menu .menu-button:not(.active):hover {
 	background-color: var(--button-hover-secondary-bg-color);
 	color: var(--button-hover-secondary-text-color);
+}
+
+#ray-x-static:hover {
+	background-color: var(--static-hover-button-bg-color);
+	color: var(--static-button-text-color);
+}
+
+#ray-x-dynamic:hover {
+	background-color: var(--dynamic-hover-button-bg-color);
+	color: var(--dynamic-button-text-color);
+}
+
+#ray-x-metalinguistic:hover {
+	background-color: var(--metalinguistic-hover-button-bg-color);
+	color: var(--metalinguistic-button-text-color);
+}
+
+/* Cards de signos */
+
+#static-sign {
+	background-color: var(--static-card-bg-color);
+}
+
+#static-sign button {
+	background-color: var(--static-card-button-bg-color);
+	color: var(--static-card-button-text-color);
+}
+
+#dynamic-sign {
+	background-color: var(--dynamic-card-bg-color);
+}
+
+#dynamic-sign button {
+	background-color: var(--dynamic-card-button-bg-color);
+	color: var(--dynamic-card-button-text-color);
+}
+
+#metalinguistic-sign {
+	background-color: var(--metalinguistic-card-bg-color);
+}
+
+#metalinguistic-sign button {
+	background-color: var(--metalinguistic-card-button-bg-color);
+	color: var(--metalinguistic-card-button-text-color);
 }
 
 /* Sumário Lateral (Desktop) */
