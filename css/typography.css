@@ -89,6 +89,14 @@ em {
 	color: var(--text-color);
 }
 
+.footnote {
+	font-size: 0.83em;
+	line-height: 0.5em;
+	vertical-align: baseline;
+	position: relative;
+	top: -0.4em;
+}
+
 @media screen and (min-width: 769px) {
 	h1 {
 		font-size: 3rem;

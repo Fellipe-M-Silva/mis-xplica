@@ -57,6 +57,7 @@
 
 .dialog-header .close-dialog {
 	background-color: var(--background-color);
+	color: var(--text-color);
 	display: flex;
 	align-items: center;
 	justify-content: center;

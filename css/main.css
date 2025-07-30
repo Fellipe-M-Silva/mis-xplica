@@ -90,7 +90,8 @@ blockquote span {
 
 /* Estilos para o sumário lateral */
 .side-content ul {
-	padding: 0.5rem;
+	margin: 0;
+	padding: 0;
 }
 
 .side-content ul li {
@@ -370,4 +371,24 @@ fieldset {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
+}
+
+.summary-info {
+	padding: 1rem;
+	background-color: var(--background-color-alt);
+	border-radius: 0.5rem;
+}
+
+.summary-info h5 {
+	font-size: 1.25rem;
+	margin-bottom: 1rem;
+}
+.summary-info p {
+	font-size: 0.875rem;
+}
+.summary-info p:first-of-type {
+	margin-bottom: 1rem;
+}
+.summary-info p:last-child {
+	margin-bottom: 0;
 }

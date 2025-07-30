@@ -1,5 +1,6 @@
 :root {
 	--white: #ffffff;
+	--off-white: #fafafa;
 	/* Paleta Neutra: 'wild-sand' */
 	--wild-sand-50: #f5f5f6;
 	--wild-sand-100: #e5e5e8;
@@ -67,13 +68,13 @@
 :root:not([data-theme="dark"]):not([data-theme="default"]),
 body[data-theme="light"] {
 	/* Cores de Texto e Fundo (Usando a paleta neutra) */
-	--header-bg-color: var(--white);
+	--header-bg-color: var(--off-white);
+	--background-color: var(--off-white);
+	--background-color-alt: var(--wild-sand-50);
 	--header-text-color: var(--wild-sand-950);
 	--header-border-color: var(--wild-sand-300);
 	--text-color: var(--wild-sand-950);
 	--section-name-color: var(--wild-sand-800);
-	--background-color: var(--white);
-	--background-color-alt: var(--wild-sand-50);
 
 	/* Cores de Destaque e Interação (Usando a paleta primária) */
 	--primary-color: var(--blue-600);
