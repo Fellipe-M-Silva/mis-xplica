@@ -153,5 +153,54 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
+	// Função para abrir o modal de Sobre
+	const aboutButton = document.getElementById("open-about-button");
+	const aboutButtonDialog = document.getElementById("about-dialog-content");
+	const aboutButtonOverlay = document.getElementById("about-dialog-overlay");
+
+	aboutButton.addEventListener("click", () => {
+		if (aboutButtonDialog) {
+			aboutButtonDialog.classList.add("active");
+			aboutButtonOverlay.classList.add("active");
+			body.classList.add("no-scroll"); // Prevent scrolling when modal is open
+		}
+	});
+	// Função para fechar o modal de Sobre
+	const closeAboutButton = document.getElementById("close-about-button");
+
+	closeAboutButton.addEventListener("click", () => {
+		if (aboutButtonDialog) {
+			aboutButtonDialog.classList.remove("active");
+			aboutButtonOverlay.classList.remove("active");
+			body.classList.remove("no-scroll"); // Allow scrolling when modal is closed
+		}
+	});
+
+	// Função para fechar o modal de Sobre ao clicar fora do conteúdo
+	aboutButtonOverlay.addEventListener("click", (event) => {
+		if (
+			aboutButtonDialog &&
+			aboutButtonDialog.classList.contains("active")
+		) {
+			aboutButtonDialog.classList.remove("active");
+			aboutButtonOverlay.classList.remove("active");
+			body.classList.remove("no-scroll"); // Allow scrolling when modal is closed
+		}
+	});
+
+	// Função para fechar o modal de Sobre ao pressionar a tecla Escape
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape") {
+			if (
+				aboutButtonDialog &&
+				aboutButtonDialog.classList.contains("active")
+			) {
+				aboutButtonDialog.classList.remove("active");
+				aboutButtonOverlay.classList.remove("active");
+				body.classList.remove("no-scroll"); // Allow scrolling when modal is closed
+			}
+		}
+	});
+
 	// fechamento do DOMContentLoaded. Não apagar
 });

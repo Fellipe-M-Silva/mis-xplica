@@ -45,6 +45,7 @@
 	justify-content: center;
 	align-items: center;
 	padding: 1rem;
+	padding-right: 0.25rem;
 }
 
 .dialog-header .dialog-title {
@@ -126,4 +127,35 @@
 .feedback-form button.primary {
 	align-self: flex-end; /* Alinha o botão à direita */
 	margin-top: 1rem;
+}
+
+.dialog-content.large {
+	max-width: 800px;
+	max-height: 80%;
+}
+
+.dialog-content.large .dialog-header {
+	padding: 1.5rem;
+}
+
+.dialog-content.large .dialog-body {
+	max-height: 80%;
+	overflow-y: auto;
+	padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.dialog-content.large h5 {
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+}
+
+.dialog-content.large p {
+	margin-bottom: 1rem;
+}
+
+.dialog-content.large .signature {
+	margin-top: 2rem;
+	font-style: italic;
+	color: var(--secondary-text-color);
+	text-align: center;
 }
