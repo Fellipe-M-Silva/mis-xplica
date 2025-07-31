@@ -189,6 +189,10 @@ label {
 	font-weight: 600;
 }
 
+.theme-toggle label:not(:first-child) {
+	font-weight: 400;
+}
+
 radio-group {
 	width: 100%;
 	display: flex;
@@ -306,3 +310,4 @@ fieldset {
 .summary-info p:last-child {
 	margin-bottom: 0;
 }
+

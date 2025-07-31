@@ -21,7 +21,7 @@
 		<header>
 			<div>
 				<h3>MIS-Xplica</h3>
-				<button class="icon secondary" id="open-controls-button">
+				<button class="icon secondary" id="open-help-button">
 					<span class="material-symbols-outlined">help</span>
 				</button>
 			</div>
@@ -187,13 +187,6 @@
 							<p class="sign-card-subtitle">
 								As Instruções Explícitas do Designer
 							</p>
-							<!-- <p>
-								Signos imóveis e persistentes no design da
-								interface. Seu significado pode ser interpretado
-								independentemente da interação do usuário,
-								expressando o estado do sistema em um dado
-								momento.
-							</p> -->
 							<button class="primary">Ver Exemplos</button>
 						</article>
 						<article class="sign-card" id="dynamic-sign">
@@ -204,12 +197,6 @@
 							<p class="sign-card-subtitle">
 								O Comportamento Responsivo do Sistema
 							</p>
-							<!-- <p>
-								Signos percebidos apenas por meio da interação,
-						expressando o comportamento do sistema e as mudanças
-						temporais em resposta às ações do usuário. Eles
-						demonstram como o sistema reage.
-							</p> -->
 							<button class="primary">Ver Exemplos</button>
 						</article>
 						<article class="sign-card" id="metalinguistic-sign">
@@ -220,14 +207,6 @@
 							<p class="sign-card-subtitle">
 								As Instruções Explícitas do Designer
 							</p>
-							<!-- <p>
-								Signos que se referem a outros signos e os
-								explicam, fornecendo informações explícitas
-								sobre como outros signos podem ser utilizados
-								durante a interação. Eles representam a "voz"
-								direta do designer, instruindo o usuário sobre
-								como usar o sistema.
-							</p> -->
 							<button class="primary">Ver Exemplos</button>
 						</article>
 					</div>
@@ -479,7 +458,7 @@
 					<h4>Exemplos</h4>
 					<div class="wrapper">
 						<article class="example">
-							<p>Um <em>tooltip</em>:</p>
+							<p>Um tooltip:</p>
 							<div class="example-card">
 								<button
 									class="primary has-tooltip"
@@ -494,7 +473,7 @@
 						</article>
 
 						<article class="example">
-							<p>Um dialog explicativo:</p>
+							<p>Um diálogo explicativo:</p>
 							<div class="example-card">
 								<button class="primary" id="dialog-button">
 									Clique para abrir
@@ -533,7 +512,7 @@
 						</article>
 
 						<article class="example">
-							<p>Uma mensagem que explica o sistema:</p>
+							<p>Explicações sobre o sistema:</p>
 							<div class="example-card">
 								<h4 style="margin-top: 0">Usando o Raio-X</h4>
 								<p style="width: 100%">
@@ -550,7 +529,7 @@
 									<label for="input-field">Senha</label>
 									<input
 										type="password"
-										placeholder="Placeholder"
+										placeholder="Digite a sua senha aqui"
 										class="input-field"
 										id="password-field"
 									/>
@@ -565,20 +544,45 @@
 						</article>
 
 						<article class="example">
-							<p>Um ícone:</p>
+							<p>Um alerta de feedback:</p>
 							<div class="example-card">
-								<span class="material-symbols-outlined icon"
-									>search</span
-								>
+								<button class="primary" id="copy-button">
+									<span class="material-symbols-outlined icon"
+										>content_copy</span
+									>
+									Copiar link do site
+								</button>
 							</div>
 						</article>
 
 						<article class="example">
-							<p>Uma imagem:</p>
+							<p>Uma solicitação direta ao usuário:</p>
 							<div class="example-card">
-								<span class="material-symbols-outlined icon"
-									>search</span
-								>
+								<h5 style="text-align: center">
+									O que está achando<br / > do MIS-Xplica?
+								</h5>
+								<div style="display: flex; gap: 0.5rem">
+									<button
+										class="secondary icon like-button"
+										id="like-button"
+										title="Gostei!"
+									>
+										<span
+											class="material-symbols-outlined icon"
+											>thumb_up</span
+										>
+									</button>
+									<button
+										class="secondary icon dislike-button"
+										id="dislike-button"
+										title="Pode melhorar!"
+									>
+										<span
+											class="material-symbols-outlined icon"
+											>thumb_down</span
+										>
+									</button>
+								</div>
 							</div>
 						</article>
 					</div>
@@ -596,6 +600,10 @@
 						como um "advogado do usuário" para identificar problemas
 						de comunicação e oportunidades de melhoria na
 						comunicabilidade do sistema.
+					</p>
+					<p>
+						Você pode ver abaixo um exemplo de diagrama do processo
+						do Método de Inspeção Semiótica:
 					</p>
 					<img
 						src="media/images/placeholder.jpg"
@@ -696,7 +704,7 @@
 						<li>
 							Grupo de Pesquisa em Engenharia Semiótica (SERG) na
 							PUC-Rio: O principal centro acadêmico para a
-							pesquisa em Engenharia Semiótica. <br />Link
+							pesquisa em Engenharia Semiótica. <br/>Link
 							Sugerido:
 							<a
 								href="http://www.serg.inf.puc-rio.br"
@@ -765,6 +773,86 @@
 				</div>
 			</div>
 		</main>
+
+		<div class="dialog-overlay" id="feedback-dialog-overlay">
+			<div class="dialog-content">
+				<div class="dialog-header">
+					<h4 class="dialog-title" id="feedback-dialog-title">
+						Título
+					</h4>
+					<button
+						class="close-dialog"
+						id="close-feedback-dialog-button"
+					>
+						<span class="material-symbols-outlined"> close </span>
+					</button>
+				</div>
+				<div class="dialog-body">
+					<p class="dialog-text" id="feedback-dialog-message">
+						Mensagem
+					</p>
+					<p class="dialog-text">
+						Gostaria de deixar uma opinião? Ela é extremamente
+						valiosa para a melhoria do MIS-Xplica!
+					</p>
+					<form
+						id="feedback-form"
+						class="feedback-form"
+						action="https://formspree.io/f/xanbbaql"
+						method="POST"
+					>
+						<label for="feedback-rating">Sua avaliação:</label>
+						<div class="rating-stars" id="feedback-rating-stars">
+							<span
+								class="material-symbols-outlined star"
+								data-rating="1"
+								>star</span
+							>
+							<span
+								class="material-symbols-outlined star"
+								data-rating="2"
+								>star</span
+							>
+							<span
+								class="material-symbols-outlined star"
+								data-rating="3"
+								>star</span
+							>
+							<span
+								class="material-symbols-outlined star"
+								data-rating="4"
+								>star</span
+							>
+							<span
+								class="material-symbols-outlined star"
+								data-rating="5"
+								>star</span
+							>
+							<input
+								type="hidden"
+								name="rating"
+								id="feedback-rating"
+								value="0"
+							/>
+						</div>
+
+						<label for="feedback-text"
+							>Comentário (opcional):</label
+						>
+						<textarea
+							id="feedback-text"
+							name="comment"
+							rows="4"
+							placeholder="Seu comentário..."
+						></textarea>
+
+						<button type="submit" class="primary">
+							Enviar Feedback
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
 
 		<script src="js/controls.js"></script>
 		<script src="js/examples.js"></script>

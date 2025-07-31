@@ -3,8 +3,8 @@
 	margin: 0 auto;
 	display: flex;
 	align-items: flex-start;
+	justify-content: space-between;
 	max-width: 1920px;
-	gap: 0;
 }
 
 /* Itens do sumário */
@@ -33,11 +33,11 @@
 	flex-direction: column;
 	align-items: center;
 	height: 100%;
+	max-width: 800px;
 }
 
 section {
 	flex: 1 0 0;
-	max-width: 1200px;
 	border-bottom: 1px solid var(--border-color);
 	margin-bottom: 4rem;
 }
@@ -168,7 +168,7 @@ img {
 		display: flex;
 		flex-direction: column;
 		min-width: 320px;
-		flex: 1 240px 0;
+		flex: 1;
 		align-self: flex-start;
 		position: sticky;
 		top: 6rem;
@@ -190,7 +190,7 @@ img {
 	}
 
 	.content {
-		padding: 2rem;
+		padding: 1.5rem 0;
 	}
 
 	.wrapper {

@@ -44,11 +44,12 @@
 	justify-content: space-between;
 	justify-content: center;
 	align-items: center;
-	padding: 2rem;
+	padding: 1rem;
 }
 
 .dialog-header .dialog-title {
 	margin: 0;
+	margin-right: auto;
 	margin-bottom: 0;
 	font-size: 1.25rem;
 	color: var(--text-color);
@@ -67,7 +68,7 @@
 }
 
 .dialog-body {
-	padding: 0 2rem 2rem 2rem;
+	padding: 0 1rem 1rem 1rem;
 	margin-bottom: 0;
 }
 
@@ -75,4 +76,54 @@
 	font-size: 1rem;
 	line-height: 1.5;
 	margin-bottom: 0;
+}
+
+.feedback-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-top: 1.5rem;
+}
+
+.feedback-form label {
+	font-weight: bold;
+	margin-bottom: 0.25rem;
+	display: block; /* Garante que o label ocupe sua própria linha */
+}
+
+.rating-stars {
+	display: flex;
+	gap: 0.2rem;
+	cursor: pointer;
+	margin-bottom: 1rem;
+}
+
+.rating-stars .star {
+	font-size: 2rem; /* Tamanho das estrelas */
+	color: var(--border-color); /* Cor padrão da estrela (não preenchida) */
+	/* Ajuste as configurações da fonte para ícones preenchidos e não preenchidos */
+	font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+	transition: color 0.2s ease-in-out, font-variation-settings 0.2s ease-in-out;
+}
+
+.rating-stars .star.filled {
+	color: var(--primary-color); /* Cor da estrela preenchida */
+	font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
+}
+
+.feedback-form textarea {
+	width: 100%;
+	padding: 0.75rem;
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	background-color: var(--background-color);
+	color: var(--on-background-color);
+	font-family: inherit; /* Garante que a fonte seja consistente */
+	resize: vertical; /* Permite redimensionar apenas verticalmente */
+	min-height: 80px;
+}
+
+.feedback-form button.primary {
+	align-self: flex-end; /* Alinha o botão à direita */
+	margin-top: 1rem;
 }

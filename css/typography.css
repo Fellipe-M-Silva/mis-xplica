@@ -41,10 +41,20 @@ h4 {
 	font-weight: bold;
 }
 
+h5 {
+	font-family: var(--font-heading);
+	font-size: 1.2em;
+	font-weight: 600;
+}
+
 .content h2,
 .content h3,
 .content h4 {
 	margin-bottom: 1.5rem;
+}
+
+.content h5 {
+	margin-bottom: 1rem;
 }
 
 p {
