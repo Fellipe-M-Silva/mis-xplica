@@ -11,82 +11,140 @@ document.addEventListener("DOMContentLoaded", () => {
 	const backToTopButton = document.getElementById("back-to-top");
 	const backToExampleButton = document.getElementById("back-to-example");
 	const exampleSection = document.getElementById("example-section");
-	const themeRadioButtons = document.querySelectorAll('input[name="theme"]');
+	// Select ALL theme radio buttons, both desktop and mobile
+	const themeRadioButtonsDesktop = document.querySelectorAll(
+		'input[name="theme"]'
+	);
+	const themeRadioButtonsMobile = document.querySelectorAll(
+		'input[name="theme-mobile"]'
+	);
 
-	// Função para aplicar o tema
+	// Mobile menu elements
+	const openSummaryButton = document.getElementById("open-summary-button");
+	const openControlsButton = document.getElementById("open-controls-button");
+	const mobileSummaryOverlay = document.getElementById(
+		"mobile-summary-overlay"
+	);
+	const mobileControlsOverlay = document.getElementById(
+		"mobile-controls-overlay"
+	);
+	const mobileSummaryContent = document.querySelector(
+		"#mobile-summary-overlay .mobile-summary"
+	);
+	const mobileControlsContent = document.querySelector(
+		"#mobile-controls-overlay .mobile-controls"
+	);
+	const closeMobileMenuButtons =
+		document.querySelectorAll(".close-mobile-menu"); // For both mobile menus
+
+	// Existing desktop menu toggles (ensure they are only active on desktop via CSS media queries)
+	const summarySidebar = document.getElementById("summary-sidebar");
+	const controlsSidebar = document.getElementById("controls-sidebar");
+
+	// Function to apply the theme
 	const applyTheme = (theme) => {
 		if (theme === "default") {
-			// Agora a opção "Padrão" é o "system"
-			body.removeAttribute("data-theme"); // Remove o atributo para voltar à preferência do sistema
+			// Now "Padrão" option is "system"
+			body.removeAttribute("data-theme"); // Remove attribute to revert to system preference
 		} else {
-			body.setAttribute("data-theme", theme); // Define o tema manual (light ou dark)
+			body.setAttribute("data-theme", theme); // Set manual theme (light or dark)
 		}
-		// Armazenar a preferência do usuário
+		// Store user preference
 		localStorage.setItem("user-theme", theme);
+
+		// Update the checked state for ALL theme radio buttons (desktop and mobile)
+		document
+			.querySelectorAll('input[name="theme"], input[name="theme-mobile"]')
+			.forEach((radio) => {
+				if (radio.value === theme) {
+					radio.checked = true;
+				}
+			});
 	};
 
-	// Função para carregar o tema do localStorage ou da preferência do sistema
+	// Function to load theme from localStorage or system preference
 	const loadThemePreference = () => {
 		const savedTheme = localStorage.getItem("user-theme");
-		let themeToApply = savedTheme || "default"; // Se não houver tema salvo, 'default' (sistema)
+		let themeToApply = savedTheme || "default"; // If no theme saved, 'default' (system)
 
-		// Marcar o input de rádio correto
-		const radioToSelect = document.getElementById(`${themeToApply}-theme`);
-		if (radioToSelect) {
-			radioToSelect.checked = true;
-		}
-
+		// Apply theme and update radio buttons
 		applyTheme(themeToApply);
 	};
 
-	// Event listener para alternar o tema quando QUALQUER rádio button de tema muda
-	themeRadioButtons.forEach((radio) => {
+	// Event listener to toggle theme when ANY desktop radio button changes
+	themeRadioButtonsDesktop.forEach((radio) => {
 		radio.addEventListener("change", (event) => {
 			applyTheme(event.target.value);
 		});
 	});
 
-	// Carregar o tema quando a página é carregada
+	// Event listener to toggle theme when ANY mobile radio button changes
+	themeRadioButtonsMobile.forEach((radio) => {
+		radio.addEventListener("change", (event) => {
+			applyTheme(event.target.value);
+		});
+	});
+
+	// Load theme when the page loads
 	loadThemePreference();
 
-	// Opcional: Escutar mudanças na preferência do sistema (se o tema for 'default')
+	// Optional: Listen for system preference changes (if theme is 'default')
 	window
 		.matchMedia("(prefers-color-scheme: dark)")
 		.addEventListener("change", (event) => {
 			if (localStorage.getItem("user-theme") === "default") {
-				applyTheme("default"); // Re-aplica o tema do sistema
+				applyTheme("default"); // Re-apply system theme
 			}
 		});
 
-	// Função para obter a altura total dos cabeçalhos visíveis
+	// Function to get total height of visible headers
 	function getHeaderOffsetHeight() {
-		const mainHeader = document.querySelector("header"); // Seu header principal
+		const mainHeader = document.querySelector("header"); // Your main header
 		const mobileNavHeader = document.getElementById(
 			"mobile-navigation-header"
-		); // Seu segundo header para mobile
+		); // Your second header for mobile
 
 		let totalHeaderHeight = 0;
 
-		// Verifica se o header principal está visível e adiciona sua altura
-		if (mainHeader && mainHeader.offsetHeight > 0) {
+		// Check if main header is visible and add its height
+		if (
+			mainHeader &&
+			mainHeader.offsetHeight > 0 &&
+			getComputedStyle(mainHeader).display !== "none"
+		) {
 			totalHeaderHeight += mainHeader.offsetHeight;
 		}
 
-		// Verifica se o header de navegação mobile está visível e adiciona sua altura
-		// Geralmente, em telas maiores, ele terá offsetHeight = 0 ou será display: none;
-		if (mobileNavHeader && mobileNavHeader.offsetHeight > 0) {
+		// Check if mobile navigation header is visible and add its height
+		if (
+			mobileNavHeader &&
+			mobileNavHeader.offsetHeight > 0 &&
+			getComputedStyle(mobileNavHeader).display !== "none"
+		) {
 			totalHeaderHeight += mobileNavHeader.offsetHeight;
 		}
 
-		// Adicione um pequeno padding extra se desejar mais espaço
-		const extraPadding = 10; // Exemplo: 10px a mais
+		// Add a small extra padding if desired
+		const extraPadding = 10; // Example: 10px extra
 		return totalHeaderHeight + extraPadding;
 	}
 
-	// Smooth Scrolling com Offset do Cabeçalho
-	const navLinks = document.querySelectorAll("#summary-sidebar ul li a");
+	// Function to close all mobile menus and overlays
+	function closeAllMobileMenus() {
+		mobileSummaryOverlay.classList.remove("active");
+		mobileSummaryContent.classList.remove("active"); // Ensure content slides out
+		mobileControlsOverlay.classList.remove("active");
+		mobileControlsContent.classList.remove("active"); // Ensure content slides out
+		body.classList.remove("no-scroll"); // Remove no-scroll
+	}
 
-	navLinks.forEach((link) => {
+	// Smooth Scrolling with Header Offset
+	// Select ALL navigation links, both desktop and mobile
+	const allNavLinks = document.querySelectorAll(
+		"#summary-sidebar ul li a, .mobile-summary ul li a"
+	);
+
+	allNavLinks.forEach((link) => {
 		link.addEventListener("click", function (e) {
 			e.preventDefault();
 
@@ -94,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			const targetElement = document.querySelector(targetId);
 
 			if (targetElement) {
-				const headerOffset = getHeaderOffsetHeight(); // Obtém a altura dinâmica
+				const headerOffset = getHeaderOffsetHeight(); // Get dynamic height
 				const elementPosition =
 					targetElement.getBoundingClientRect().top;
 				const offsetPosition =
@@ -105,11 +163,8 @@ document.addEventListener("DOMContentLoaded", () => {
 					behavior: "smooth",
 				});
 
-				const summarySidebar =
-					document.getElementById("summary-sidebar");
-				if (summarySidebar.classList.contains("active")) {
-					summarySidebar.classList.remove("active");
-				}
+				// Close mobile summary sidebar if open after clicking a link
+				closeAllMobileMenus();
 			}
 		});
 	});
@@ -117,36 +172,39 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Dynamic link highlighting
 	const sections = document.querySelectorAll("main .content section");
 
-	// As opções do IntersectionObserver também precisam do offset dinâmico
+	// IntersectionObserver options also need dynamic offset
 	const observerOptions = {
-		root: null, // Usa a viewport como raiz
-		rootMargin: `-${getHeaderOffsetHeight()}px 0px 0px 0px`, // Offset dinâmico
-		threshold: 0.1, // Gatilho quando 10% da seção está visível
+		root: null, // Use viewport as root
+		rootMargin: `-${getHeaderOffsetHeight()}px 0px 0px 0px`, // Dynamic offset
+		threshold: 0.1, // Trigger when 10% of section is visible
 	};
 
 	const observer = new IntersectionObserver((entries, observer) => {
 		entries.forEach((entry) => {
 			const id = entry.target.getAttribute("id");
-			const correspondingLink = document.querySelector(
-				`#summary-sidebar ul li a[href="#${id}"]`
+			// Select both desktop and mobile corresponding links
+			const correspondingLinks = document.querySelectorAll(
+				`#summary-sidebar ul li a[href="#${id}"], .mobile-summary ul li a[href="#${id}"]`
 			);
 
-			if (correspondingLink) {
-				if (entry.isIntersecting) {
-					navLinks.forEach((link) =>
-						link.classList.remove("active-section")
-					);
-					correspondingLink.classList.add("active-section");
+			correspondingLinks.forEach((link) => {
+				if (link) {
+					if (entry.isIntersecting) {
+						// Remove active class from all links first (both desktop and mobile)
+						allNavLinks.forEach((l) =>
+							l.classList.remove("active-section")
+						);
+						// Add active class to the current link
+						link.classList.add("active-section");
+					}
 				}
-			}
+			});
 		});
-	}, observerOptions); // Use observerOptions aqui!
+	}, observerOptions); // Use observerOptions here!
 
 	sections.forEach((section) => {
 		observer.observe(section);
 	});
-
-	// ... (Seu código existente para botões "Ver Exemplos") ...
 
 	const verExemplosButtons = document.querySelectorAll(".sign-card .primary");
 
@@ -169,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				const targetElement = document.querySelector(targetId);
 
 				if (targetElement) {
-					const headerOffset = getHeaderOffsetHeight(); // Obtém a altura dinâmica
+					const headerOffset = getHeaderOffsetHeight(); // Get dynamic height
 					const elementPosition =
 						targetElement.getBoundingClientRect().top;
 					const offsetPosition =
@@ -360,58 +418,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	} else {
 		console.warn(
 			"Elemento password-field ou password-field-helper não encontrado. Verifique o ID no HTML."
-		);
-	}
-
-	// Função para alternar o menu lateral
-	const summaryButton = document.getElementById("open-summary-button");
-	const summarySidebar = document.getElementById("summary-sidebar");
-	if (summaryButton && summarySidebar) {
-		summaryButton.addEventListener("click", () => {
-			console.log("Abrindo menu lateral...");
-			summarySidebar.classList.add("active");
-		});
-
-		// Fecha o menu lateral ao clicar fora dele
-		document.addEventListener("click", (event) => {
-			if (
-				summarySidebar.classList.contains("active") &&
-				!summarySidebar.contains(event.target) &&
-				!summaryButton.contains(event.target)
-			) {
-				console.log("Fechando menu lateral...");
-				summarySidebar.classList.remove("active");
-			}
-		});
-	} else {
-		console.warn(
-			"Elemento open-summary-button ou summary-sidebar não encontrado. Verifique o ID no HTML."
-		);
-	}
-
-	// Função para alternar o menu de controles
-	const controlsButton = document.getElementById("open-controls-button");
-	const controlsSidebar = document.getElementById("controls-sidebar");
-	if (controlsButton && controlsSidebar) {
-		controlsButton.addEventListener("click", () => {
-			controlsSidebar.classList.toggle("active");
-			body.classList.toggle("controls-active");
-		});
-
-		// Fecha o menu de controles ao clicar fora dele
-		document.addEventListener("click", (event) => {
-			if (
-				controlsSidebar.classList.contains("active") &&
-				!controlsSidebar.contains(event.target) &&
-				!controlsButton.contains(event.target)
-			) {
-				controlsSidebar.classList.remove("active");
-				body.classList.remove("controls-active");
-			}
-		});
-	} else {
-		console.warn(
-			"Elemento open-controls-button ou controls-sidebar não encontrado. Verifique o ID no HTML."
 		);
 	}
 

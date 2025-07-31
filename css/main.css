@@ -3,6 +3,7 @@
 @import url("layout.css");
 @import url("x-ray.css");
 @import url("dialog.css");
+@import url("mobile-menus.css");
 
 * {
 	margin: 0;
@@ -89,17 +90,20 @@ blockquote span {
 }
 
 /* Estilos para o sumário lateral */
-.side-content ul {
+.side-content ul,
+.mobile-summary ul {
 	margin: 0;
 	padding: 0;
 }
 
-.side-content ul li {
+.side-content ul li,
+.mobile-summary ul li {
 	margin-bottom: 0.5rem;
 	list-style-type: none;
 }
 
-.side-content ul li a {
+.side-content ul li a,
+.mobile-summary ul li a {
 	color: var(--text-color);
 	text-decoration: none;
 }

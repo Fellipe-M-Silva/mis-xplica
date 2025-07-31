@@ -21,6 +21,14 @@
 		<header>
 			<h3>MIS-Xplica</h3>
 		</header>
+		<!-- <div id="mobile-navigation-header">
+			<button class="icon ghost" id="open-summary-button">
+				<span class="material-symbols-outlined">menu</span>
+			</button>
+			<button class="icon ghost" id="open-controls-button">
+				<span class="material-symbols-outlined">settings</span>
+			</button>
+		</div> -->
 		<div id="mobile-navigation-header">
 			<button class="icon ghost" id="open-summary-button">
 				<span class="material-symbols-outlined">menu</span>
@@ -28,6 +36,88 @@
 			<button class="icon ghost" id="open-controls-button">
 				<span class="material-symbols-outlined">settings</span>
 			</button>
+		</div>
+
+		<div id="mobile-summary-overlay" class="mobile-overlay">
+			<nav class="mobile-summary" aria-label="Sumário Mobile">
+				<div class="mobile-menu-header">
+					<h4>Sumário</h4>
+					<button class="icon ghost close-mobile-menu">
+						<span class="material-symbols-outlined">close</span>
+					</button>
+				</div>
+				<ul>
+					<li><a href="#introducao">Introdução</a></li>
+					<li>
+						<a href="#linguagem-interfaces"
+							>Linguagem das Interfaces</a
+						>
+					</li>
+					<li>
+						<a href="#executando-mis">Executando o MIS</a>
+					</li>
+					<li><a href="#aprofundar">Aprofunde-se</a></li>
+					<li><a href="#bibliografia">Bibliografia</a></li>
+				</ul>
+
+				<div class="summary-info">
+					<h5>Sobre o Raio-X</h5>
+					<p>
+						Clique em um dos botões da barra de Raio-X para explorar
+						os signos na interface dessa página.
+					</p>
+					<p>
+						Para mais informações, clique no botão de interrogação.
+					</p>
+				</div>
+			</nav>
+		</div>
+
+		<div id="mobile-controls-overlay" class="mobile-overlay">
+			<div class="mobile-controls">
+				<div class="mobile-menu-header">
+					<h4>Controles</h4>
+					<button class="icon ghost close-mobile-menu">
+						<span class="material-symbols-outlined">close</span>
+					</button>
+				</div>
+
+				<div class="theme-toggle">
+					<label for="theme-switch-mobile">Tema</label>
+					<fieldset id="theme-switch-mobile">
+						<radio-group>
+							<div class="theme-option">
+								<input
+									type="radio"
+									name="theme-mobile"
+									value="default"
+									id="default-theme-mobile"
+									checked
+								/>
+								<label for="default-theme-mobile">Padrão</label>
+							</div>
+							<div class="theme-option">
+								<input
+									type="radio"
+									name="theme-mobile"
+									value="light"
+									id="light-theme-mobile"
+								/>
+								<label for="light-theme-mobile">Claro</label>
+							</div>
+							<div class="theme-option">
+								<input
+									type="radio"
+									name="theme-mobile"
+									value="dark"
+									id="dark-theme-mobile"
+								/>
+								<label for="dark-theme-mobile">Escuro</label>
+							</div>
+						</radio-group>
+					</fieldset>
+				</div>
+			</div>
 		</div>
 		<div id="floating-menu" class="floating-menu">
 			<span>Raio-X </span>
@@ -756,8 +846,8 @@
 		</aside>
 
 		<script src="js/script.js"></script>
-		<!-- <script src="js/ray-x.js"></script> -->
 		<script src="js/bibliography.js"></script>
-		<script src="js/menus.js"></script>
+		<script src="js/mobile-menus.js"></script>
+		<!-- <script src="js/ray-x.js"></script> -->
 	</body>
 </html>

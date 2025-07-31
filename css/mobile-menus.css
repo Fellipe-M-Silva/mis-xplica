@@ -1,0 +1,104 @@
+/* Mobile Overlay Styles */
+.mobile-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5); /* Transparent shadow overlay */
+	z-index: 10000; /* Ensure it's above everything */
+	display: flex;
+	visibility: hidden; /* Hidden by default */
+	opacity: 0; /* Hidden by default */
+	transition: visibility 0.3s, opacity 0.3s ease;
+}
+
+.mobile-overlay.active {
+	visibility: visible;
+	opacity: 1;
+}
+
+/* Base Mobile Menu Styles (for both summary and controls) */
+.mobile-summary,
+.mobile-controls {
+	position: absolute; /* Position within the overlay */
+	background-color: var(--background-color);
+	height: 100%;
+	padding: 2rem;
+	box-shadow: var(--shadow-2); /* Add a subtle shadow */
+	overflow-y: auto; /* Allow scrolling if content overflows */
+	transition: transform 0.3s ease;
+}
+
+/* Mobile Summary Panel (slides from left) */
+.mobile-summary {
+	width: 80%; /* Adjust as needed */
+	left: 0;
+	transform: translateX(-100%); /* Start off-screen to the left */
+}
+
+.mobile-summary.active {
+	transform: translateX(0); /* Slide in */
+}
+
+/* Mobile Controls Panel (slides from right) */
+.mobile-controls {
+	width: 80%; /* Adjust as needed */
+	right: 0;
+	transform: translateX(100%); /* Start off-screen to the right */
+}
+
+.mobile-controls.active {
+	transform: translateX(0); /* Slide in */
+}
+
+/* Header within mobile menus */
+.mobile-menu-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 1rem;
+	margin-bottom: 1rem;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.mobile-menu-header h4 {
+	margin: 0;
+}
+
+.close-mobile-menu {
+	background-color: transparent;
+	color: var(--text-color);
+	border: none;
+	font-size: 1.5rem;
+	cursor: pointer;
+}
+
+/* Responsive visibility for desktop vs mobile menus */
+@media (min-width: 768px) {
+	/* Adjust breakpoint as needed */
+	#mobile-navigation-header {
+		display: none; /* Hide mobile header buttons on desktop */
+	}
+
+	.mobile-overlay {
+		display: none; /* Hide mobile overlays on desktop */
+	}
+
+	/* Show desktop summary and controls */
+	.summary,
+	.controls {
+		display: flex;
+	}
+}
+
+@media (max-width: 769px) {
+	.summary,
+	.controls {
+		display: none;
+	}
+
+	#mobile-navigation-header {
+		display: flex;
+	}
+}
