@@ -47,13 +47,14 @@ h5 {
 	font-weight: 600;
 }
 
-.content h2,
-.content h3,
-.content h4 {
-	margin-bottom: 1.5rem;
+section h2,
+section h3,
+section h4 {
+	margin-top: 2.5rem;
+	margin-bottom: 1rem;
 }
 
-.content h5 {
+section h5 {
 	margin-bottom: 1rem;
 }
 

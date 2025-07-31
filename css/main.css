@@ -51,7 +51,8 @@ header h3 {
 	margin: 0;
 }
 
-ul {
+ul,
+ol {
 	list-style-position: inside;
 	margin-bottom: 1rem;
 	padding-left: 1.5rem;
@@ -310,4 +311,3 @@ fieldset {
 .summary-info p:last-child {
 	margin-bottom: 0;
 }
-
