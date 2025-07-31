@@ -19,145 +19,47 @@
 	</head>
 	<body>
 		<header>
-			<h3>MIS-Xplica</h3>
-		</header>
-		<!-- <div id="mobile-navigation-header">
-			<button class="icon ghost" id="open-summary-button">
-				<span class="material-symbols-outlined">menu</span>
-			</button>
-			<button class="icon ghost" id="open-controls-button">
-				<span class="material-symbols-outlined">settings</span>
-			</button>
-		</div> -->
-		<div id="mobile-navigation-header">
-			<button class="icon ghost" id="open-summary-button">
-				<span class="material-symbols-outlined">menu</span>
-			</button>
-			<button class="icon ghost" id="open-controls-button">
-				<span class="material-symbols-outlined">settings</span>
-			</button>
-		</div>
-
-		<div id="mobile-summary-overlay" class="mobile-overlay">
-			<nav class="mobile-summary" aria-label="Sumário Mobile">
-				<div class="mobile-menu-header">
-					<h4>Sumário</h4>
-					<button class="icon ghost close-mobile-menu">
-						<span class="material-symbols-outlined">close</span>
-					</button>
-				</div>
-				<ul>
-					<li><a href="#introducao">Introdução</a></li>
-					<li>
-						<a href="#linguagem-interfaces"
-							>Linguagem das Interfaces</a
-						>
-					</li>
-					<li>
-						<a href="#executando-mis">Executando o MIS</a>
-					</li>
-					<li><a href="#aprofundar">Aprofunde-se</a></li>
-					<li><a href="#bibliografia">Bibliografia</a></li>
-				</ul>
-
-				<div class="summary-info">
-					<h5>Sobre o Raio-X</h5>
-					<p>
-						Clique em um dos botões da barra de Raio-X para explorar
-						os signos na interface dessa página.
-					</p>
-					<p>
-						Para mais informações, clique no botão de interrogação.
-					</p>
-				</div>
-			</nav>
-		</div>
-
-		<div id="mobile-controls-overlay" class="mobile-overlay">
-			<div class="mobile-controls">
-				<div class="mobile-menu-header">
-					<h4>Controles</h4>
-					<button class="icon ghost close-mobile-menu">
-						<span class="material-symbols-outlined">close</span>
-					</button>
-				</div>
-
-				<div class="theme-toggle">
-					<label for="theme-switch-mobile">Tema</label>
-					<fieldset id="theme-switch-mobile">
-						<radio-group>
-							<div class="theme-option">
-								<input
-									type="radio"
-									name="theme-mobile"
-									value="default"
-									id="default-theme-mobile"
-									checked
-								/>
-								<label for="default-theme-mobile">Padrão</label>
-							</div>
-							<div class="theme-option">
-								<input
-									type="radio"
-									name="theme-mobile"
-									value="light"
-									id="light-theme-mobile"
-								/>
-								<label for="light-theme-mobile">Claro</label>
-							</div>
-							<div class="theme-option">
-								<input
-									type="radio"
-									name="theme-mobile"
-									value="dark"
-									id="dark-theme-mobile"
-								/>
-								<label for="dark-theme-mobile">Escuro</label>
-							</div>
-						</radio-group>
-					</fieldset>
-				</div>
+			<div>
+				<h3>MIS-Xplica</h3>
+				<button class="icon secondary" id="open-controls-button">
+					<span class="material-symbols-outlined">help</span>
+				</button>
 			</div>
-		</div>
+			<div id="mobile-navigation-header">
+				<button class="icon ghost" id="open-summary-button">
+					<span class="material-symbols-outlined">menu</span>
+				</button>
+				<button class="icon ghost" id="open-controls-button">
+					<span class="material-symbols-outlined">settings</span>
+				</button>
+			</div>
+		</header>
+
 		<div id="floating-menu" class="floating-menu">
 			<span>Raio-X </span>
-			<!-- <button id="summary-toggle" class="menu-button">
-				<span class="material-symbols-outlined">menu</span> Sumário
-			</button> -->
 			<button
-				id="ray-x-static"
-				class="menu-button ray-x-toggle"
+				id="x-ray-static"
+				class="menu-button x-ray-toggle"
 				data-sign-type="estatico"
 				title="Raio-X Estático"
 			>
 				<span class="material-symbols-outlined">widgets</span>
-				<!-- <span class="menu-button-text">Raio-X estático</span> -->
 			</button>
 			<button
-				id="ray-x-dynamic"
-				class="menu-button ray-x-toggle"
+				id="x-ray-dynamic"
+				class="menu-button x-ray-toggle"
 				data-sign-type="dinamico"
 				title="Raio-X Dinâmico"
 			>
 				<span class="material-symbols-outlined">magic_button</span>
-				<!-- <span class="menu-button-text">Raio-X dinâmico</span> -->
 			</button>
 			<button
-				id="ray-x-metalinguistic"
-				class="menu-button ray-x-toggle"
+				id="x-ray-metalinguistic"
+				class="menu-button x-ray-toggle"
 				data-sign-type="metalinguistico"
 				title="Raio-X Metalinguístico"
 			>
 				<span class="material-symbols-outlined">info</span>
-				<!-- <span class="menu-button-text">Raio-X metalinguístico</span> -->
-			</button>
-
-			<button
-				id="x-ray-about"
-				class="menu-button ghost"
-				title="Sobre o Raio-X"
-			>
-				<span class="material-symbols-outlined">help</span>
 			</button>
 		</div>
 
@@ -182,7 +84,20 @@
 					<li><a href="#bibliografia">Bibliografia</a></li>
 				</ul>
 
-				<div class="summary-info">
+				<!-- <div class="summary-info">
+					<h5>Sobre o MIS-Xplica</h5>
+					<p>
+						O MIS-Xplica (lê-se que nem <em>"me explica"</em>) é uma
+						ferramenta interativa para explorar o Método de Inspeção
+						Semiótica (MIS) e seus signos.
+					</p>
+					<p>
+						Use o Raio-X para escanear os signos na interface. Para
+						mais informações, clique no botão de interrogação.
+					</p>
+				</div> -->
+
+				<!-- <div class="summary-info">
 					<h5>Sobre o Raio-X</h5>
 					<p>
 						Clique em um dos botões da barra de Raio-X para explorar
@@ -191,7 +106,7 @@
 					<p>
 						Para mais informações, clique no botão de interrogação.
 					</p>
-				</div>
+				</div> -->
 			</nav>
 
 			<div class="content">
@@ -221,11 +136,7 @@
 					<p>
 						Essa comunicação sobre a comunicação é o que chamamos de
 						metacomunicação, que pode ser descrita de acordo com o
-						seguinte modelo<a
-							class="footnote"
-							href="#bibliografia-1"
-							>1</a
-						>:
+						seguinte modelo:
 					</p>
 					<blockquote
 						id="metacommunication-quote"
@@ -246,11 +157,7 @@
 						capacidade da interface de comunicar ao usuário a lógica
 						do design: as intenções do designer e os princípios de
 						interação resultantes das decisões tomadas durante todo
-						o processo de design<a
-							class="footnote"
-							href="#bibliografia-2"
-							>2</a
-						>.
+						o processo de design.
 					</p>
 				</section>
 
@@ -535,7 +442,7 @@
 									<span class="material-symbols-outlined icon"
 										>arrow_upward</span
 									>
-									<p>Voltar ao topo</p>
+									Voltar ao topo
 								</button>
 							</div>
 						</article>
@@ -667,7 +574,7 @@
 						</article>
 
 						<article class="example">
-							<p>Ums imagem:</p>
+							<p>Uma imagem:</p>
 							<div class="example-card">
 								<span class="material-symbols-outlined icon"
 									>search</span
@@ -690,43 +597,65 @@
 						de comunicação e oportunidades de melhoria na
 						comunicabilidade do sistema.
 					</p>
+					<img
+						src="media/images/placeholder.jpg"
+						alt="Diagrama do processo do Método de Inspeção Semiótica"
+						class="mis-diagram"
+					/>
 					<p>
 						O
 						<span title="Método de Inspeção Semiótica">MIS</span> é
 						também um valioso instrumento didático para o ensino de
 						<span title="Interação Humano-Computador">IHC</span>. O
 						<span title="Método de Inspeção Semiótica">MIS</span> é
-						conduzido em quatro etapas distintas (Barbosa et al.,
-						2021, p. 294):
+						conduzido em quatro etapas distintas:
 					</p>
-					<ul>
-						<li>
-							<strong>Preparação:</strong> o avaliador delimita o
-							escopo da pesquisa, identificando os perfis de
-							usuários, objetivos do sistema e as partes do
-							sistema a serem avaliado e a preparação dos cenários
-							de interação.
-						</li>
-						<li>
-							<strong>Coleta de dados:</strong> o avaliador
-							inspeciona a interface, preenchendo o modelo de
-							metacomunicação para cada tipo de signo.
-						</li>
-						<li>
-							<strong
-								>Consolidação e interpretação dos
-								resultados:</strong
-							>
-							o avaliador contrasta e compara as metamensagens
-							reconstruídas, julgando os problemas de
-							metacomunicação encontrados.
-						</li>
-						<li>
-							<strong>Relato dos resultados:</strong> o avaliador
-							relata a avaliação de comunicabilidade do sistema
-							sob o ponto de vista do emissor da metamensagem.
-						</li>
-					</ul>
+					<h3>Preparação</h3>
+					<p>
+						O avaliador delimita o escopo da pesquisa, identificando
+						os perfis de usuários, objetivos do sistema e as partes
+						do sistema a serem avaliado e a preparação dos cenários
+						de interação.
+					</p>
+					<img
+						src="media/images/placeholder.jpg"
+						alt="Diagrama do processo do Método de Inspeção Semiótica"
+						class="mis-diagram"
+					/>
+
+					<h3>Coleta de dados</h3>
+					<p>
+						O avaliador inspeciona a interface, preenchendo o modelo
+						de metacomunicação para cada tipo de signo.
+					</p>
+					<img
+						src="media/images/placeholder.jpg"
+						alt="Diagrama do processo do Método de Inspeção Semiótica"
+						class="mis-diagram"
+					/>
+
+					<h3>Consolidação e interpretação dos resultados</h3>
+					<p>
+						O avaliador contrasta e compara as metamensagens
+						reconstruídas, julgando os problemas de metacomunicação
+						encontrados.
+					</p>
+					<img
+						src="media/images/placeholder.jpg"
+						alt="Diagrama do processo do Método de Inspeção Semiótica"
+						class="mis-diagram"
+					/>
+
+					<h3>Relato dos resultados</h3>
+					<p>
+						O avaliador relata a avaliação de comunicabilidade do
+						sistema sob o ponto de vista do emissor da metamensagem.
+					</p>
+					<img
+						src="media/images/placeholder.jpg"
+						alt="Diagrama do processo do Método de Inspeção Semiótica"
+						class="mis-diagram"
+					/>
 				</section>
 
 				<section id="aprofundar">
@@ -837,17 +766,8 @@
 			</div>
 		</main>
 
-		<aside id="ray-x-overlay" class="ray-x-overlay">
-			<div id="ray-x-dialog" class="ray-x-dialog">
-				<button class="close-dialog">&times;</button>
-				<h3 id="dialog-title"></h3>
-				<p id="dialog-description"></p>
-			</div>
-		</aside>
-
+		<script src="js/controls.js"></script>
+		<script src="js/examples.js"></script>
 		<script src="js/script.js"></script>
-		<script src="js/bibliography.js"></script>
-		<script src="js/mobile-menus.js"></script>
-		<!-- <script src="js/ray-x.js"></script> -->
 	</body>
 </html>

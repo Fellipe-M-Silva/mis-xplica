@@ -39,7 +39,12 @@ h4 {
 	font-family: var(--font-heading);
 	font-size: 1.4em;
 	font-weight: bold;
-	margin-top: 20px;
+}
+
+.content h2,
+.content h3,
+.content h4 {
+	margin-bottom: 1.5rem;
 }
 
 p {

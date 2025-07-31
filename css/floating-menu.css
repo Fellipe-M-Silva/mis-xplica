@@ -1,0 +1,53 @@
+/* Menu Flutuante */
+.floating-menu {
+	position: fixed;
+	bottom: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: var(--background-color);
+	border-radius: 0.75rem;
+	padding: 0.5rem;
+	padding-left: 1rem;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+	border: 1px solid var(--border-color);
+	z-index: 1000;
+	display: flex;
+	white-space: nowrap;
+	gap: 0.5rem;
+	justify-content: center;
+	align-items: center;
+}
+
+.floating-menu .menu-button {
+	background-color: var(--button-secondary-bg-color);
+	border: 1px solid var(--button-secondary-border-color);
+	color: var(--button-secondary-text-color);
+	border-radius: 0.5rem;
+	line-height: 1;
+
+	height: 48px;
+	min-width: 48px;
+	padding: 0.5rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	white-space: nowrap;
+	cursor: pointer;
+
+	transition: background-color 0.3s ease, transform 0.2s ease,
+		padding 0.3s ease;
+	width: 0.5s ease;
+}
+
+.floating-menu .menu-button.active {
+	background-color: var(--button-hover-bg-color);
+	border-color: var(--button-text-color);
+	color: var(--button-text-color);
+}
+
+.floating-menu .menu-button:not(.active):hover {
+	background-color: var(--button-hover-secondary-bg-color);
+	color: var(--button-hover-secondary-text-color);
+}
