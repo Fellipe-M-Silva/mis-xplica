@@ -1,25 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-	console.log("DOM totalmente carregado. Iniciando script.js");
+	console.log("DOM totalmente carregado. Iniciando x-ray.js");
 
 	// --- X-Ray Toggle Logic ---
 	document.querySelectorAll(".x-ray-toggle").forEach((button) => {
 		console.log("Botão de Raio-X encontrado:", button.id);
 		button.addEventListener("click", () => {
-			const selectedSignType = button.dataset.signType;
+			const selectedSignType = button.dataset.signTypeButton;
 			console.log(
 				`Botão '${button.id}' clicado. Tipo de signo selecionado: ${selectedSignType}`
 			);
 
-			// NOVO: Referência ao botão que foi clicado
-			const clickedButton = button;
-
-			// Verifica o estado ATUAL da lente correspondente ao botão clicado
 			const isCurrentlyActive = document.body.classList.contains(
 				`x-ray-active-${selectedSignType}`
 			);
 
 			// PASSO 1: Sempre LIMPE o estado anterior COMPLETO.
-			// Remove QUALQUER classe de Raio-X do body.
 			document.body.classList.remove(
 				"x-ray-active-estatico",
 				"x-ray-active-dinamico",
@@ -27,8 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			);
 			console.log("Classes 'x-ray-active' removidas do body.");
 
-			// NOVO: Remove a classe 'active' de *TODOS* os botões do Raio-X.
-			// Isso garante que apenas o botão correto estará ativo no final.
 			document.querySelectorAll(".x-ray-toggle").forEach((btn) => {
 				btn.classList.remove("active");
 			});
@@ -36,187 +29,205 @@ document.addEventListener("DOMContentLoaded", () => {
 				"Classe 'active' removida de todos os botões de Raio-X."
 			);
 
-			// Remove TODOS os indicadores e data-xray-active dos elementos
+			// Importante: Limpar indicadores *antes* de decidir ativar um novo
 			hideAllXrayIndicators();
 			console.log(
 				"Indicadores e data-xray-active removidos de todos os elementos."
 			);
 
-			// Fecha o modal de explicação, se estiver aberto
 			closeSignExplanationModal();
 			console.log("Modal de explicação fechado.");
 
 			// PASSO 2: DECIDE o que fazer AGORA com base no clique
-			// Se a lente clicada ESTAVA ativa (isCurrentlyActive é true), significa que o clique era para DESATIVÁ-LA.
-			// Como já limpamos tudo, não precisamos fazer mais nada.
-			if (isCurrentlyActive) {
-				console.log(
-					`Lente '${selectedSignType}' estava ativa e foi desativada.`
-				);
-			} else {
-				// Se a lente clicada NÃO ESTAVA ativa (isCurrentlyActive é false), significa que o clique era para ATIVÁ-LA.
+			if (!isCurrentlyActive) {
 				document.body.classList.add(`x-ray-active-${selectedSignType}`);
 				console.log(
 					`Lente de Raio-X ativada: Adicionado 'x-ray-active-${selectedSignType}' ao body.`
 				);
-				showXrayIndicators(selectedSignType);
-
-				// NOVO: Adiciona a classe 'active' APENAS ao botão que foi clicado,
-				// pois sua lente correspondente foi ativada.
-				clickedButton.classList.add("active");
+				button.classList.add("active");
 				console.log(
-					`Classe 'active' adicionada ao botão '${clickedButton.id}'.`
+					`Classe 'active' adicionada ao botão '${button.id}'.`
+				);
+				showXrayIndicators(selectedSignType);
+			} else {
+				console.log(
+					`Lente '${selectedSignType}' estava ativa e foi desativada.`
 				);
 			}
 		});
 	});
 
 	// --- Functions for X-Ray Indicators ---
-	function showXrayIndicators(signType) {
-		console.log(`showXrayIndicators chamado para o tipo: ${signType}`);
-		const elementsToHighlight = document.querySelectorAll(
-			`[data-sign-type="${signType}"]`
+	function showXrayIndicators(activeSignType) {
+		console.log(
+			`showXrayIndicators chamado para o tipo: ${activeSignType}`
 		);
 
-		if (elementsToHighlight.length === 0) {
+		const elementsToConsider = document.querySelectorAll(
+			"[data-static-explanation], [data-dynamic-explanation], [data-metalinguistic-explanation]"
+		);
+
+		console.log(
+			`Total de elementos com explicações encontradas: ${elementsToConsider.length}`
+		);
+		if (elementsToConsider.length === 0) {
 			console.log(
-				`Nenhum elemento encontrado com data-sign-type="${signType}"`
+				"Nenhum elemento com atributos de explicação encontrado. Verifique seu HTML."
 			);
 		}
 
-		elementsToHighlight.forEach((element, index) => {
-			console.log(`Processando elemento ${index + 1}:`, element);
+		elementsToConsider.forEach((element, index) => {
+			const explanationKeyKebabCase = `data-${activeSignType}-explanation`; // Nome completo do atributo
 
-			// Mark element as currently highlighted for CSS
-			element.dataset.xrayActive = "true";
-			console.log(`data-xray-active='true' adicionado ao elemento.`);
-
-			// Ensure parent has relative positioning if static, so absolute children are positioned correctly
-			const computedPosition = getComputedStyle(element).position;
-			if (computedPosition === "static") {
-				element.style.position = "relative";
-				console.log(
-					`Posição do elemento alterada de '${computedPosition}' para 'relative'.`
-				);
-			} else {
-				console.log(
-					`Posição do elemento já é '${computedPosition}', não alterada.`
-				);
-			}
-
-			const indicator = document.createElement("button");
-			indicator.classList.add("x-ray-indicator");
-			indicator.innerHTML = `<span class="material-symbols-outlined">${getIconForSignType(
-				signType
-			)}</span>`;
-			console.log("Indicador criado:", indicator);
-
-			// Store data attributes on the indicator itself for easy access
-			indicator.dataset.signName = element.dataset.signName;
-			indicator.dataset.signCategory = signType;
-			indicator.dataset.signExplanation = element.dataset.signExplanation;
-			console.log(
-				"Dados do signo adicionados ao indicador:",
-				indicator.dataset.signName,
-				indicator.dataset.signCategory,
-				indicator.dataset.signExplanation
+			// *** NOVO CÓDIGO DE DEPURAÇÃO CRÍTICO AQUI ***
+			const rawAttributeValue = element.getAttribute(
+				explanationKeyKebabCase
 			);
+			const explanationText =
+				rawAttributeValue === null ? null : rawAttributeValue.trim(); // Garante que é null se não existir, e remove espaços se existir
 
-			// Append indicator to the element
-			element.appendChild(indicator);
-			console.log("Indicador anexado ao elemento.");
+			console.log(
+				`--- Elemento ${index + 1} (${element.tagName}, ID: ${
+					element.id || "N/A"
+				}):`
+			);
+			console.log(
+				`  Procurando por atributo HTML: ${explanationKeyKebabCase}`
+			);
+			console.log(
+				`  Valor LIDO por getAttribute ANTES do trim:`,
+				rawAttributeValue
+			);
+			console.log(
+				`  Valor FINAL de explanationText APÓS trim:`,
+				explanationText
+			);
+			console.log(`  Tipo de 'explanationText':`, typeof explanationText);
+			console.log(
+				`  É Falsy (null, undefined, '', 0, false)?`,
+				!explanationText
+			);
+			// *** FIM DO NOVO CÓDIGO DE DEPURAÇÃO ***
 
-			// Determine preferred side based on element's horizontal position
-			const rect = element.getBoundingClientRect();
-			console.log("getBoundingClientRect do elemento:", rect);
-			console.log("Largura da janela:", window.innerWidth);
-
-			// If element is in the right half of the screen (or close to the right edge)
+			// CRIE E ANEXE O INDICADOR APENAS SE A EXPLICAÇÃO EXISTIR E NÃO FOR UMA STRING VAZIA APÓS TRIM
 			if (
-				rect.left > window.innerWidth / 2 ||
-				rect.right > window.innerWidth - 100
+				explanationText &&
+				typeof explanationText === "string" &&
+				explanationText.trim() !== ""
 			) {
-				indicator.classList.add("position-left");
-				console.log("Adicionado classe 'position-left' ao indicador.");
-			} else {
-				indicator.classList.add("position-right");
-				console.log("Adicionado classe 'position-right' ao indicador.");
-			}
-
-			// Add click listener to the indicator
-			indicator.addEventListener("click", (event) => {
-				event.stopPropagation(); // Prevent parent clicks from interfering
-				console.log("Indicador clicado. Abrindo modal de explicação.");
-				openSignExplanationModal(
-					indicator.dataset.signName,
-					indicator.dataset.signCategory,
-					indicator.dataset.signExplanation,
-					indicator
+				console.log(
+					`  Processando e destacando elemento ${
+						index + 1
+					} para '${activeSignType}':`,
+					element
 				);
-			});
+
+				element.dataset.xrayActive = "true";
+				element.dataset.xrayCategory = activeSignType;
+				console.log(
+					`  Atributos adicionados: data-xray-active='true', data-xray-category='${activeSignType}'`
+				);
+
+				const computedPosition = getComputedStyle(element).position;
+				if (computedPosition === "static") {
+					element.style.position = "relative";
+					console.log(
+						`  Posição do elemento alterada para 'relative'.`
+					);
+				}
+
+				const indicator = document.createElement("button");
+				indicator.classList.add("x-ray-indicator");
+				indicator.innerHTML = `<span class="material-symbols-outlined">${getIconForSignType(
+					activeSignType
+				)}</span>`;
+				console.log("  Indicador criado e configurado.");
+
+				indicator.dataset.signName =
+					element.dataset.signName || "Elemento sem nome";
+				indicator.dataset.signCategory = activeSignType;
+				indicator.dataset.signExplanation = explanationText;
+				console.log(
+					`  Dados do signo para o modal: Nome='${indicator.dataset.signName}', Categoria='${indicator.dataset.signCategory}'`
+				);
+
+				element.appendChild(indicator);
+				console.log("  Indicador anexado ao elemento.");
+
+				const rect = element.getBoundingClientRect();
+				if (
+					rect.left > window.innerWidth / 2 ||
+					rect.right > window.innerWidth - 100
+				) {
+					indicator.classList.add("position-left");
+					console.log(
+						"  Adicionado classe 'position-left' ao indicador."
+					);
+				} else {
+					indicator.classList.add("position-right");
+					console.log(
+						"  Adicionado classe 'position-right' ao indicador."
+					);
+				}
+
+				indicator.addEventListener("click", (event) => {
+					event.stopPropagation();
+					console.log(
+						"  Indicador clicado. Abrindo modal de explicação."
+					);
+					openSignExplanationModal(
+						indicator.dataset.signName,
+						indicator.dataset.signCategory,
+						indicator.dataset.signExplanation,
+						indicator
+					);
+				});
+			} else {
+				console.log(
+					`  Elemento não tem explicação para '${activeSignType}' ou explicação vazia para este tipo:`,
+					element
+				);
+			}
 		});
 	}
 
 	function hideAllXrayIndicators() {
 		console.log(
-			"hideAllXrayIndicators: Chamado para limpar todos os destaques."
+			"hideAllXrayIndicators: Iniciando limpeza de todos os destaques."
 		);
 
-		// Etapa 1: Remover todos os botões indicadores visíveis
 		document
 			.querySelectorAll(".x-ray-indicator")
 			.forEach((indicator, idx) => {
-				console.log(
-					`hideAllXrayIndicators: Removendo indicador #${
-						idx + 1
-					} do elemento:`,
-					indicator.parentElement
-				);
-				indicator.remove(); // Remove o botão do DOM
+				indicator.remove();
+				console.log(`Indicador #${idx + 1} removido.`);
 			});
-		console.log(
-			"hideAllXrayIndicators: Todos os indicadores foram removidos."
-		);
+		console.log("Todos os indicadores foram removidos.");
 
-		// Etapa 2: Remover o atributo data-xray-active e resetar estilos de posição dos elementos
-		// Seleciona QUALQUER elemento que tenha o atributo data-xray-active="true"
 		const activeElements = document.querySelectorAll(
 			'[data-xray-active="true"]'
 		);
-		if (activeElements.length === 0) {
-			console.log(
-				"hideAllXrayIndicators: Nenhum elemento com data-xray-active='true' encontrado para limpar."
-			);
-		}
+		console.log(
+			`Total de elementos ativos para limpar: ${activeElements.length}`
+		);
 
 		activeElements.forEach((element, idx) => {
-			console.log(
-				`hideAllXrayIndicators: Limpando elemento #${idx + 1}:`,
-				element
-			);
-
-			// Remove o atributo data-xray-active do elemento.
-			// Isso deve desativar o estilo de destaque do CSS.
 			delete element.dataset.xrayActive;
+			delete element.dataset.xrayCategory;
 			console.log(
-				`hideAllXrayIndicators: data-xray-active removido de:`,
-				element
+				`Atributos data-xray-active e data-xray-category removidos de elemento #${
+					idx + 1
+				}.`
 			);
 
-			// Se a posição foi definida como 'relative' pelo script, resete-a.
-			// Verificar se element.style.position existe e foi definido por nós.
-			// É mais seguro usar uma flag ou uma classe para saber se fomos nós que mudamos a posição.
-			// Por enquanto, vamos manter a lógica atual, mas é um ponto a se observar.
 			if (element.style.position === "relative") {
-				element.style.position = ""; // Limpa o estilo inline
+				element.style.position = "";
 				console.log(
-					`hideAllXrayIndicators: Posição de '${element.tagName}' resetada para padrão.`
+					`Posição de '${element.tagName}' resetada para padrão.`
 				);
 			}
 		});
-		console.log(
-			"hideAllXrayIndicators: Atributos data-xray-active e posições resetadas."
-		);
+		console.log("Limpeza de destaques concluída.");
 	}
 
 	function getIconForSignType(type) {
@@ -232,13 +243,15 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 
-	// --- Dedicated Modal for Sign Explanations ---
-	// Create the modal HTML structure dynamically (or you can add it directly to your HTML)
+	function camelCase(kebabCase) {
+		return kebabCase.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+	}
+
 	const signExplanationModalOverlay = document.createElement("div");
 	signExplanationModalOverlay.id = "sign-explanation-modal-overlay";
-	signExplanationModalOverlay.classList.add("sign-explanation-modal-overlay"); // New class for this specific overlay
-	signExplanationModalOverlay.style.display = "none"; // Hidden by default
-	document.body.appendChild(signExplanationModalOverlay); // Append early for reference
+	signExplanationModalOverlay.classList.add("sign-explanation-modal-overlay");
+	signExplanationModalOverlay.style.display = "none";
+	document.body.appendChild(signExplanationModalOverlay);
 
 	signExplanationModalOverlay.innerHTML = `
     <div class="dialog-content" id="sign-explanation-modal-content">
@@ -255,7 +268,6 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
 
-	// Get references to modal elements *after* they are added to the DOM
 	const signExplanationModalContent = document.getElementById(
 		"sign-explanation-modal-content"
 	);
@@ -269,25 +281,26 @@ document.addEventListener("DOMContentLoaded", () => {
 		"sign-explanation-modal-text"
 	);
 
-	// --- NOVO: Fechar modal ao rolar a página ---
-	// Adiciona um listener de rolagem à janela (window)
+	let lastScrollY = window.scrollY;
+
 	window.addEventListener("scroll", () => {
-		// Verifica se o modal está visível antes de tentar fechá-lo
-		if (signExplanationModalOverlay.style.display === "flex") {
+		if (
+			signExplanationModalOverlay.classList.contains("is-visible") &&
+			Math.abs(lastScrollY - window.scrollY) > 5
+		) {
 			console.log("Página rolou. Fechando modal de explicação.");
 			closeSignExplanationModal();
 		}
+		lastScrollY = window.scrollY;
 	});
 
-	// Add event listener to close button inside the new modal (must be attached AFTER elements are in DOM)
 	document
 		.getElementById("close-sign-explanation-modal-button")
 		.addEventListener("click", closeSignExplanationModal);
 
-	// Close modal when clicking outside of the dialog content
 	signExplanationModalOverlay.addEventListener("click", (event) => {
 		if (event.target === signExplanationModalOverlay) {
-			console.log("Cliquem no overlay do modal de explicação. Fechando.");
+			console.log("Clique no overlay do modal de explicação. Fechando.");
 			closeSignExplanationModal();
 		}
 	});
@@ -308,7 +321,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 
-	// openSignExplanationModal - AGORA COM ORDEM CORRETA PARA VISIBILIDADE
 	function openSignExplanationModal(
 		title,
 		category,
@@ -316,23 +328,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		indicatorElement
 	) {
 		console.log("openSignExplanationModal chamado.");
-
-		// Obtenção de referências (já deve estar ok, apenas para contexto)
-		const signExplanationModalOverlay = document.getElementById(
-			"sign-explanation-modal-overlay"
-		);
-		const signExplanationModalContent = document.getElementById(
-			"sign-explanation-modal-content"
-		);
-		const signExplanationModalTitle = document.getElementById(
-			"sign-explanation-modal-title"
-		);
-		const signExplanationModalCategory = document.getElementById(
-			"sign-explanation-modal-category"
-		);
-		const signExplanationModalText = document.getElementById(
-			"sign-explanation-modal-text"
-		);
 
 		signExplanationModalTitle.textContent = title;
 		const categoryDetails = getSignTypeDetails(category);
@@ -378,7 +373,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		}
 
-		// Aplica os estilos de posicionamento
 		signExplanationModalOverlay.style.position = "absolute";
 		signExplanationModalOverlay.style.top = `${modalTop}px`;
 		signExplanationModalOverlay.style.left = `${modalLeft}px`;
@@ -389,14 +383,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		signExplanationModalContent.style.position = "static";
 
-		// --- MUDANÇA CRÍTICA AQUI ---
-		// 1. Define 'display: flex' primeiro para o navegador ver o elemento.
 		signExplanationModalOverlay.style.display = "flex";
 		console.log("Modal display: flex definido.");
 
-		// 2. Aguarda um "tick" do navegador (muito breve, essencial para transições)
-		//    antes de adicionar a classe 'is-visible' que inicia a transição de opacidade/visibilidade.
-		//    Isso garante que o navegador registre a mudança de display antes de iniciar a transição.
 		requestAnimationFrame(() => {
 			signExplanationModalOverlay.classList.add("is-visible");
 			console.log(
@@ -405,32 +394,13 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 
-	// closeSignExplanationModal - Também ajustada para remover a classe 'is-visible'
 	function closeSignExplanationModal() {
 		console.log("Fechando modal de explicação.");
-		// NOVO: Remove a classe 'is-visible' para iniciar a transição de saída
 		signExplanationModalOverlay.classList.remove("is-visible");
 
-		// Oculta o display APÓS a transição para garantir que ela ocorra.
-		// Usamos um setTimeout para esperar a transição de opacidade/visibilidade.
-		// A duração deve ser igual ou maior que a duração da transição no CSS.
 		setTimeout(() => {
 			signExplanationModalOverlay.style.display = "none";
-			// Mantenha o console.log aqui para indicar que o display foi alterado
 			console.log("Modal display:none definido após transição.");
-		}, 300); // 300ms, igual à sua transição no CSS
-
-		// Remove a classe 'active' de TODOS os botões do Raio-X
-		document.querySelectorAll(".x-ray-toggle").forEach((btn) => {
-			btn.classList.remove("active");
-		});
-		console.log(
-			"Classe 'active' removida de todos os botões de Raio-X via closeSignExplanationModal."
-		);
-	}
-
-	function closeSignExplanationModal() {
-		console.log("Fechando modal de explicação.");
-		signExplanationModalOverlay.style.display = "none";
+		}, 300);
 	}
 });

@@ -1,4 +1,5 @@
-[data-sign-type][data-xray-active="true"]:not(.x-ray-toggle) {
+/* [data-sign-type] */
+[data-xray-active="true"] {
 	/* border: 2px; dashed; */
 	transition: all 0.2s ease-in-out;
 	padding-left: 4px;
@@ -10,25 +11,24 @@
 
 /* Cores específicas para cada tipo de signo (foco na borda e sombra) */
 .x-ray-active-estatico
-	[data-sign-type="estatico"][data-xray-active="true"]:not(.x-ray-toggle) {
+	[data-xray-category="estatico"][data-xray-active="true"] {
 	border-color: var(--color-static-border);
 	background-color: var(--color-static-shadow);
 }
 
 .x-ray-active-dinamico
-	[data-sign-type="dinamico"][data-xray-active="true"]:not(.x-ray-toggle) {
+	[data-xray-category="dinamico"][data-xray-active="true"] {
 	border-color: var(--color-dynamic-border);
 	background-color: var(--color-dynamic-shadow);
 }
 
 .x-ray-active-metalinguistico
-	[data-sign-type="metalinguistico"]:not(.x-ray-toggle) {
+	[data-xray-category="metalinguistico"]:not(.x-ray-toggle) {
 	border-color: var(--color-metalinguistic-border);
 	background-color: var(--color-metalinguistic-shadow);
 }
 
 .x-ray-indicator {
-	/* display: none; */
 	opacity: 0;
 	position: absolute;
 	top: 50%;

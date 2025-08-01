@@ -36,11 +36,11 @@
 		</header>
 
 		<div id="floating-menu" class="floating-menu">
-			<span>Raio-X </span>
+			<span>Raio-X </span>
 			<button
 				id="x-ray-static"
 				class="menu-button x-ray-toggle"
-				data-sign-type="estatico"
+				data-sign-type-button="estatico"
 				title="Raio-X Estático"
 			>
 				<span class="material-symbols-outlined">widgets</span>
@@ -48,7 +48,7 @@
 			<button
 				id="x-ray-dynamic"
 				class="menu-button x-ray-toggle"
-				data-sign-type="dinamico"
+				data-sign-type-button="dinamico"
 				title="Raio-X Dinâmico"
 			>
 				<span class="material-symbols-outlined">magic_button</span>
@@ -56,7 +56,7 @@
 			<button
 				id="x-ray-metalinguistic"
 				class="menu-button x-ray-toggle"
-				data-sign-type="metalinguistico"
+				data-sign-type-button="metalinguistico"
 				title="Raio-X Metalinguístico"
 			>
 				<span class="material-symbols-outlined">info</span>
@@ -71,9 +71,8 @@
 			>
 				<h4>Sumário</h4>
 				<ul
-					data-sign-type="dinamico"
 					data-sign-name="Lista de Sumário"
-					data-sign-explanation="Clicar nos índices leva a seções específicas do documento."
+					data-dynamic-explanation="Clicar nos índices leva a seções específicas do documento."
 				>
 					<li><a href="#introducao">Introdução</a></li>
 					<li>
@@ -92,9 +91,8 @@
 			<div class="content">
 				<section id="hero">
 					<h1
-						data-sign-type="estatico"
 						data-sign-name="Título"
-						data-sign-explanation="Este parágrafo fornece informações fixas e pode ser interpretado sem interação."
+						data-static-explanation="Este parágrafo fornece informações fixas e pode ser interpretado sem interação."
 					>
 						MIS: o Método de Inspeção Semiótica
 					</h1>
@@ -127,6 +125,9 @@
 					<blockquote
 						id="metacommunication-quote"
 						cite="Souza, 2005, p. 84"
+						data-sign-name="Citação de Metacomunicação"
+						data-static-explanation="Esta citação apresenta um conceito fixo sobre metacomunicação, sendo interpretada sem interação."
+						data-metalinguistic-explanation="A citação é um signo metalinguístico porque descreve e explica a natureza da comunicação do sistema com o usuário."
 					>
 						"Esse é o meu entendimento de quem você é, o que eu
 						aprendi que você quer ou precisa fazer, de que formas
@@ -139,7 +140,7 @@
 						O Método de Inspeção Semiótica (MIS) é uma técnica
 						qualitativa poderosa, derivada da Engenharia Semiótica,
 						que nos permite avaliar a qualidade da emissão dessa
-						metacomunicação. Ele foca na comunicabilidade, a
+						metacomunicação. Ele foca na communicabilidade, a
 						capacidade da interface de comunicar ao usuário a lógica
 						do design: as intenções do designer e os princípios de
 						interação resultantes das decisões tomadas durante todo
@@ -234,7 +235,11 @@
 					<div class="wrapper">
 						<article class="example">
 							<p>Um texto:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Exemplo de Título e Parágrafo"
+								data-static-explanation="Este texto é um signo estático porque fornece informação fixa e pode ser lido sem interação."
+							>
 								<h4>Exemplo de Título</h4>
 								<p style="width: 100%">
 									Este é um exemplo de parágrafo que
@@ -245,14 +250,23 @@
 
 						<article class="example">
 							<p>Um botão:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Botão"
+								data-static-explanation="O texto e a aparência inicial do botão são signos estáticos que indicam sua função antes da interação."
+								data-dynamic-explanation="O comportamento do botão ao ser clicado ou ao ter o mouse sobre ele é um signo dinâmico."
+							>
 								<button class="primary">Botão</button>
 							</div>
 						</article>
 
 						<article class="example">
 							<p>Um link:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Link"
+								data-static-explanation="O texto 'Isto não é um link' e seu sublinhado são signos estáticos."
+							>
 								<a
 									href=""
 									style="
@@ -266,7 +280,11 @@
 
 						<article class="example">
 							<p>Um rótulo de campo de entrada:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Rótulo de Campo"
+								data-static-explanation="O rótulo 'Título' é um signo estático que informa o propósito do campo de entrada."
+							>
 								<div class="input">
 									<label for="input-field">Título</label>
 									<input
@@ -280,7 +298,11 @@
 
 						<article class="example">
 							<p>Um ícone:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Ícone de Pesquisa"
+								data-static-explanation="O ícone de lupa é um signo estático universalmente reconhecido para 'pesquisa'."
+							>
 								<span class="material-symbols-outlined icon"
 									>search</span
 								>
@@ -289,7 +311,11 @@
 
 						<article class="example">
 							<p>Uma imagem:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Imagem"
+								data-static-explanation="A imagem é um signo estático que transmite informação visual sem exigir interação."
+							>
 								<span class="material-symbols-outlined icon"
 									>search</span
 								>
@@ -318,7 +344,11 @@
 					<div class="wrapper">
 						<article class="example">
 							<p>O carregamento de uma informação:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Indicador de Carregamento"
+								data-dynamic-explanation="O spinner e o texto 'Carregando...' são signos dinâmicos que informam sobre um processo em andamento."
+							>
 								<div class="loading-spinner"></div>
 								<p>Carregando...</p>
 							</div>
@@ -326,7 +356,11 @@
 
 						<article class="example">
 							<p>Uma mudança ao interagir:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Botão com Efeito Hover"
+								data-dynamic-explanation="A mudança de estilo ou cor do botão ao passar o mouse sobre ele é um signo dinâmico que indica interatividade."
+							>
 								<button class="primary" id="hover-button">
 									Passe o mouse aqui
 								</button>
@@ -335,7 +369,11 @@
 
 						<article class="example">
 							<p>Uma mudança ao tocar:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Toggle Switch"
+								data-dynamic-explanation="O toggle switch altera seu estado (ativado/desativado) visualmente ao ser clicado, indicando uma mudança na funcionalidade."
+							>
 								<div
 									style="
 										display: flex;
@@ -364,7 +402,11 @@
 
 						<article class="example">
 							<p>Uma mudança ao escolher uma opção:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Seletor de Opções"
+								data-dynamic-explanation="A atualização do texto 'Opção selecionada:' de acordo com a opção escolhida no campo de seleção é um signo dinâmico."
+							>
 								<div class="input">
 									<label for="input-field">Título</label>
 									<select
@@ -387,7 +429,12 @@
 
 						<article class="example">
 							<p>A possibilidade de mover um item:</p>
-							<div class="example-card" id="movable-area">
+							<div
+								class="example-card"
+								id="movable-area"
+								data-sign-name="Objeto Arrastável"
+								data-dynamic-explanation="A capacidade de arrastar o objeto e a sua movimentação na tela são signos dinâmicos, respondendo à interação do usuário."
+							>
 								<div id="movable-object">
 									<span class="material-symbols-outlined icon"
 										>drag_indicator</span
@@ -398,7 +445,11 @@
 
 						<article class="example" id="example-section">
 							<p>A possibilidade de navegar na página:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Botão Voltar ao Topo"
+								data-dynamic-explanation="O botão 'Voltar ao topo' é um signo dinâmico que, ao ser clicado, altera a posição de rolagem da página."
+							>
 								<button
 									class="primary has-icon"
 									id="back-to-top"
@@ -445,10 +496,16 @@
 					<div class="wrapper">
 						<article class="example">
 							<p>Um tooltip:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Botão com Tooltip"
+								data-dynamic-explanation="A aparição e desaparecimento do tooltip ao passar o mouse sobre o botão é um comportamento dinâmico."
+								data-metalinguistic-explanation="O texto do tooltip 'Este é um botão!' é um signo metalinguístico pois explica a natureza e função do botão ao qual se refere."
+							>
 								<button
 									class="primary has-tooltip"
 									id="tooltip-button"
+									title="Passe o mouse aqui"
 								>
 									Passe o mouse aqui
 								</button>
@@ -460,13 +517,20 @@
 
 						<article class="example">
 							<p>Um diálogo explicativo:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Diálogo Explicativo"
+								data-dynamic-explanation="O diálogo 'Exemplo de Diálogo' é um signo dinâmico porque aparece e desaparece com a interação do usuário."
+								data-metalinguistic-explanation="O conteúdo do diálogo é um signo metalinguístico, pois explica como a interface funciona ou fornece informações adicionais sobre o sistema."
+							>
 								<button class="primary" id="dialog-button">
 									Clique para abrir
 								</button>
 								<div
 									class="dialog-overlay"
 									id="dialog-button-dialog"
+									data-sign-name="Diálogo"
+									data-metalinguistic-explanation="O diálogo 'Exemplo de Diálogo' explica informações adicionais ou opções."
 								>
 									<div class="dialog-content">
 										<div class="dialog-header">
@@ -476,6 +540,9 @@
 											<button
 												class="close-dialog"
 												id="close-dialog-button"
+												data-sign-name="Fechar Diálogo"
+												data-dynamic-explanation="O botão 'Fechar Diálogo' altera o estado do diálogo ao ser clicado."
+												data-metalinguistic-explanation="O botão 'Fechar Diálogo' instrui o usuário sobre como sair do diálogo."
 											>
 												<span
 													class="material-symbols-outlined"
@@ -499,7 +566,11 @@
 
 						<article class="example">
 							<p>Explicações sobre o sistema:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Explicação do Sistema"
+								data-metalinguistic-explanation="Este texto instrui o usuário sobre como usar o 'Raio-X', agindo como uma explicação sobre a interface."
+							>
 								<h4 style="margin-top: 0">Usando o Raio-X</h4>
 								<p style="width: 100%">
 									Clique no ícone de interrogação para saber
@@ -510,7 +581,13 @@
 
 						<article class="example">
 							<p>Especificações ou instruções:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Campo de Senha com Especificação"
+								data-static-explanation="O rótulo 'Senha' e o placeholder são signos estáticos."
+								data-dynamic-explanation="O feedback visual sobre a senha (e.g., mudar de cor se for inválida) seria um signo dinâmico."
+								data-metalinguistic-explanation="A mensagem 'Deve conter entre 3 e 20 caracteres.' é um signo metalinguístico que instrui o usuário sobre o formato esperado da senha."
+							>
 								<div class="input">
 									<label for="input-field">Senha</label>
 									<input
@@ -531,7 +608,12 @@
 
 						<article class="example">
 							<p>Um alerta de feedback:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Botão Copiar Link"
+								data-dynamic-explanation="A mudança de estado do botão (e.g., texto 'Copiado!' brevemente após o clique) seria um signo dinâmico."
+								data-metalinguistic-explanation="Uma notificação que aparece após clicar em 'Copiar link do site' informando que o link foi copiado com sucesso é um signo metalinguístico."
+							>
 								<button class="primary" id="copy-button">
 									<span class="material-symbols-outlined icon"
 										>content_copy</span
@@ -543,9 +625,15 @@
 
 						<article class="example">
 							<p>Uma solicitação direta ao usuário:</p>
-							<div class="example-card">
+							<div
+								class="example-card"
+								data-sign-name="Pesquisa de Satisfação"
+								data-dynamic-explanation="O registro do voto (curtir/descurtir) e uma possível mudança visual dos botões após o clique são dinâmicos."
+								data-metalinguistic-explanation="A pergunta 'O que está achando do MIS-Xplica?' é uma solicitação direta do designer ao usuário, sendo um signo metalinguístico que busca feedback sobre a própria comunicação."
+							>
 								<h5 style="text-align: center">
-									O que está achando<br / > do MIS-Xplica?
+									O que está achando<br />
+									do MIS-Xplica?
 								</h5>
 								<div style="display: flex; gap: 0.5rem">
 									<button
@@ -595,6 +683,8 @@
 						src="media/images/placeholder.jpg"
 						alt="Diagrama do processo do Método de Inspeção Semiótica"
 						class="mis-diagram"
+						data-sign-name="Diagrama do Processo MIS"
+						data-static-explanation="O diagrama é um signo estático que apresenta a sequência de etapas do MIS de forma visual e fixa."
 					/>
 					<p>
 						O
@@ -605,7 +695,10 @@
 						conduzido em quatro etapas distintas:
 					</p>
 					<h3>Preparação</h3>
-					<p>
+					<p
+						data-sign-name="Etapa de Preparação"
+						data-static-explanation="A descrição da etapa de Preparação é um signo estático, fornecendo informações fixas sobre o processo."
+					>
 						O avaliador delimita o escopo da pesquisa, identificando
 						os perfis de usuários, objetivos do sistema e as partes
 						do sistema a serem avaliado e a preparação dos cenários
@@ -615,10 +708,15 @@
 						src="media/images/placeholder.jpg"
 						alt="Diagrama do processo do Método de Inspeção Semiótica"
 						class="mis-diagram"
+						data-sign-name="Ilustração da Etapa de Preparação"
+						data-static-explanation="Esta imagem ilustra visualmente a etapa de Preparação, sendo um signo estático."
 					/>
 
 					<h3>Coleta de dados</h3>
-					<p>
+					<p
+						data-sign-name="Etapa de Coleta de Dados"
+						data-static-explanation="A descrição da etapa de Coleta de Dados é um signo estático, fornecendo informações fixas sobre o processo."
+					>
 						O avaliador inspeciona a interface, preenchendo o modelo
 						de metacomunicação para cada tipo de signo.
 					</p>
@@ -626,10 +724,15 @@
 						src="media/images/placeholder.jpg"
 						alt="Diagrama do processo do Método de Inspeção Semiótica"
 						class="mis-diagram"
+						data-sign-name="Ilustração da Etapa de Coleta de Dados"
+						data-static-explanation="Esta imagem ilustra visualmente a etapa de Coleta de Dados, sendo um signo estático."
 					/>
 
 					<h3>Consolidação e interpretação dos resultados</h3>
-					<p>
+					<p
+						data-sign-name="Etapa de Consolidação e Interpretação"
+						data-static-explanation="A descrição desta etapa é um signo estático, apresentando informações fixas sobre o processo."
+					>
 						O avaliador contrasta e compara as metamensagens
 						reconstruídas, julgando os problemas de metacomunicação
 						encontrados.
@@ -638,10 +741,15 @@
 						src="media/images/placeholder.jpg"
 						alt="Diagrama do processo do Método de Inspeção Semiótica"
 						class="mis-diagram"
+						data-sign-name="Ilustração da Etapa de Consolidação e Interpretação"
+						data-static-explanation="Esta imagem ilustra visualmente a etapa de Consolidação e Interpretação, sendo um signo estático."
 					/>
 
 					<h3>Relato dos resultados</h3>
-					<p>
+					<p
+						data-sign-name="Etapa de Relato dos Resultados"
+						data-static-explanation="A descrição da etapa de Relato dos Resultados é um signo estático, fornecendo informações fixas sobre o processo."
+					>
 						O avaliador relata a avaliação de comunicabilidade do
 						sistema sob o ponto de vista do emissor da metamensagem.
 					</p>
@@ -649,6 +757,8 @@
 						src="media/images/placeholder.jpg"
 						alt="Diagrama do processo do Método de Inspeção Semiótica"
 						class="mis-diagram"
+						data-sign-name="Ilustração da Etapa de Relato dos Resultados"
+						data-static-explanation="Esta imagem ilustra visualmente a etapa de Relato dos Resultados, sendo um signo estático."
 					/>
 				</section>
 
@@ -663,7 +773,10 @@
 
 					<h3 id="livros-essenciais">Livros essenciais</h3>
 					<ul>
-						<li>
+						<li
+							data-sign-name="Livro: The Semiotic Engineering of HCI"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência bibliográfica fixa."
+						>
 							DE SOUZA, C. S.
 							<strong
 								><a
@@ -674,7 +787,10 @@
 								></strong
 							>. The MIT Press, Londres, 2005.
 						</li>
-						<li>
+						<li
+							data-sign-name="Livro: Semiotic Engineering Methods for Scientific Research in HCI"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência bibliográfica fixa."
+						>
 							DE SOUZA, C. S.; LEITÃO, C. F.
 							<strong
 								><a
@@ -689,7 +805,10 @@
 
 					<h3 id="artigos-pioneiros">Artigos pioneiros</h3>
 					<ul>
-						<li>
+						<li
+							data-sign-name="Artigo: The Semiotic Engineering of User Interface Languages"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência bibliográfica fixa."
+						>
 							DE SOUZA, C. S.
 							<strong
 								><a
@@ -701,7 +820,10 @@
 							>. International Journal of Man-Machine Studies,
 							London, v. 39, n. 5, p. 753-773, 1993.
 						</li>
-						<li>
+						<li
+							data-sign-name="Artigo: The Semiotic Inspection Method"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência bibliográfica fixa."
+						>
 							DE SOUZA, C. S.; LEITÃO, C. F.; PRATES, R. O.;
 							SILVA, E. J.
 							<strong
@@ -714,7 +836,10 @@
 							Human Factors in Computing Systems (IHC 2006).
 							Curitiba, PR, Brasil: ACM, 2006. p. 41-50.
 						</li>
-						<li>
+						<li
+							data-sign-name="Artigo: Semiotic engineering: bringing designers and users together at interaction time"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência bibliográfica fixa."
+						>
 							DE SOUZA, C. S.
 							<strong
 								><a
@@ -732,7 +857,10 @@
 						Aprofundamento e variações do MIS
 					</h3>
 					<ul>
-						<li>
+						<li
+							data-sign-name="Artigo: Método de Inspeção Semiótica Intermediado (MISI)"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência bibliográfica fixa."
+						>
 							OLIVEIRA, E. R.; PRATES, R. O.; BARBOSA, S. D. J.
 							<strong
 								>Método de Inspeção Semiótica Intermediado
@@ -741,7 +869,10 @@
 							em Sistemas Computacionais (IHC 2008). Porto Alegre,
 							RS, Brasil: SBC, 2008. p. 50-59.
 						</li>
-						<li>
+						<li
+							data-sign-name="Artigo: Applicability of the semiotic inspection method: a systematic literature review"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência bibliográfica fixa."
+						>
 							REIS, S. S.; PRATES, R. O.
 							<strong
 								>Applicability of the semiotic inspection
@@ -754,7 +885,10 @@
 								Sistemas Computacionais (IHC 2011)</a
 							>. Porto Alegre, RS, Brasil: SBC, 2011. p. 177-186.
 						</li>
-						<li>
+						<li
+							data-sign-name="Artigo: Assessing the Semiotic Inspection Method – The Evaluators' Perspective"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência bibliográfica fixa."
+						>
 							REIS, S. S.; PRATES, R. O.
 							<strong
 								><a
@@ -766,7 +900,10 @@
 							>. Revista de Informática Teórica e Aplicada, v. 20,
 							n. 3, p. 155–182, 2013.
 						</li>
-						<li>
+						<li
+							data-sign-name="Monografia: MISTOOL, UMA FERRAMENTA PARA APLICAÇÃO COLABORATIVA DO MIS"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência bibliográfica fixa."
+						>
 							REIS, M. M.
 							<strong
 								>MISTOOL, UMA FERRAMENTA PARA APLICAÇÃO
@@ -780,7 +917,10 @@
 
 					<h3 id="aplicacoes-mis">Aplicações do MIS</h3>
 					<ul>
-						<li>
+						<li
+							data-sign-name="Monografia: MISTOOL, UMA FERRAMENTA PARA APLICAÇÃO COLABORATIVA DO MIS"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência bibliográfica fixa."
+						>
 							REIS, M. M.
 							<strong
 								>MISTOOL, UMA FERRAMENTA PARA APLICAÇÃO
@@ -790,7 +930,10 @@
 							Computação, Universidade Federal de Ouro Preto, Ouro
 							Preto, MG, Brasil, 2010.
 						</li>
-						<li>
+						<li
+							data-sign-name="Dissertação: APPLICSIM - UM SISTEMA DE APOIO À APLICAÇÃO DO MÉTODO DE INSPEÇÃO SEMIÓTICA"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência bibliográfica fixa."
+						>
 							DIAS, J. S.
 							<strong
 								>APPLICSIM - UM SISTEMA DE APOIO À APLICAÇÃO DO
@@ -799,7 +942,10 @@
 							Universidade Federal de Minas Gerais, Belo
 							Horizonte, MG, Brasil, 2012.
 						</li>
-						<li>
+						<li
+							data-sign-name="Artigo: Método de Inspeção Semiótica Intermediado (MISI)"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência bibliográfica fixa."
+						>
 							OLIVEIRA, E. R.; PRATES, R. O.; BARBOSA, S. D. J.
 							<strong
 								>Método de Inspeção Semiótica Intermediado
@@ -812,7 +958,10 @@
 
 					<h3>Revisões de aplicabilidade</h3>
 					<ul>
-						<li>
+						<li
+							data-sign-name="Artigo: Applicability of the semiotic inspection method: a systematic literature review"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência bibliográfica fixa."
+						>
 							REIS, S. S.; PRATES, R. O.
 							<strong
 								>Applicability of the semiotic inspection
@@ -835,17 +984,24 @@
 						evolução contínua da teoria.
 					</p>
 					<ul>
-						<li>
+						<li
+							data-sign-name="SERG - PUC-Rio"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência fixa a um grupo de pesquisa."
+						>
 							<strong
 								><a
 									href="https://www.serg.inf.puc-rio.br/pt-BR/"
+									target="_blank"
 									>Semiotic Engineering Research Group
 									(SERG)</a
 								></strong
 							>. Pontifícia Universidade Católica do Rio de
 							Janeiro (PUC-Rio).
 						</li>
-						<li>
+						<li
+							data-sign-name="PENSI - UFMG"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência fixa a um grupo de pesquisa."
+						>
 							<strong
 								><a
 									href="https://dcc.ufmg.br/pensi/"
@@ -855,7 +1011,10 @@
 								></strong
 							>. Universidade Federal de Minas Gerais (UFMG).
 						</li>
-						<li>
+						<li
+							data-sign-name="SERG.UFF"
+							data-static-explanation="Este item da lista é um signo estático, pois exibe uma referência fixa a um grupo de pesquisa."
+						>
 							<strong
 								><a
 									href="https://sites.google.com/view/serguff"
@@ -864,42 +1023,7 @@
 								></strong
 							>. Universidade Federal Fluminense (UFF).
 						</li>
-						<!-- <li>
-							<strong
-								><a
-									href="https://seda.quixada.ufc.br/"
-									target="_blank"
-									>SEDA – Engenharia Semiótica e Arte
-									Digital</a
-								></strong
-							>
-							. Universidade Federal do Ceará (UFC Quixadá)
-						</li> -->
 					</ul>
-				</section>
-
-				<section id="bibliografia">
-					<span class="section-name">Bibliografia</span>
-					<h2>Referências bibliográficas</h2>
-					<ol>
-						<li id="bibliografia-1">
-							BARBOSA, S. D. J.; SILVA, B. S. da; SILVEIRA, M. S.;
-							GASPARINI, I.; DARIN, T.; BARBOSA, G. D. J.
-							<strong
-								>Interação Humano-Computador e Experiência do
-								Usuário</strong
-							>. Rio de Janeiro, RJ: Autopublicação, 2021. ISBN
-							978-65-00-19677-1.
-						</li>
-						<li id="bibliografia-2">
-							SOUZA, C. S.
-							<strong
-								>The Semiotic Engineering of Human-Computer
-								Interaction</strong
-							>. Londres: The MIT Press, 2005. ISBN
-							978-0-262-27136-3.
-						</li>
-					</ol>
 				</section>
 			</div>
 
@@ -910,9 +1034,8 @@
 					<label for="theme-switch">Tema</label>
 					<fieldset
 						id="theme-switch"
-						data-sign-type="dinamico"
 						data-sign-name="Fieldset"
-						data-sign-explanation="Selecionar um tema entre padrão, claro e escuro altera o tema da página."
+						data-dynamic-explanation="Selecionar um tema entre padrão, claro e escuro altera o tema da página."
 					>
 						<radio-group>
 							<div class="theme-option">
@@ -953,9 +1076,8 @@
 			<div
 				class="dialog-content large"
 				id="about-dialog-content"
-				data-sign-type="metalinguistico"
 				data-sign-name="Diálogo"
-				data-sign-explanation="O diálogo 'Sobre' fornece informações sobre o MIS-Xplica e como utilizá-lo."
+				data-metalinguistic-explanation="O diálogo 'Sobre' fornece informações sobre o MIS-Xplica e como utilizá-lo."
 			>
 				<div class="dialog-header">
 					<h4 class="dialog-title" id="about-dialog-title">
@@ -964,9 +1086,8 @@
 					<button
 						class="close-dialog"
 						id="close-about-button"
-						data-sign-type="dinamico"
 						data-sign-name="Fechar Diálogo"
-						data-sign-explanation="O botão 'Fechar Diálogo' fecha o diálogo atual."
+						data-dynamic-explanation="O botão 'Fechar Diálogo' fecha o diálogo atual."
 					>
 						<span class="material-symbols-outlined"> close </span>
 					</button>
@@ -1020,6 +1141,8 @@
 					<button
 						class="close-dialog"
 						id="close-feedback-dialog-button"
+						data-sign-name="Fechar Diálogo"
+						data-dynamic-explanation="O botão 'Fechar Diálogo' fecha o diálogo atual."
 					>
 						<span class="material-symbols-outlined"> close </span>
 					</button>
