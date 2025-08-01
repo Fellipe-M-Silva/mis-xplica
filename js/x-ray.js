@@ -1,177 +1,436 @@
 document.addEventListener("DOMContentLoaded", () => {
-	const body = document.body;
-	const rayXToggleButtons = document.querySelectorAll(".ray-x-toggle");
-	const rayXOverlay = document.getElementById("ray-x-overlay");
-	const rayXDialog = document.getElementById("ray-x-dialog");
-	const dialogTitle = document.getElementById("dialog-title");
-	const dialogDescription = document.getElementById("dialog-description");
-	const closeDialogButton = rayXDialog.querySelector(".close-dialog");
-	const allSignos = document.querySelectorAll(".signo");
+	console.log("DOM totalmente carregado. Iniciando script.js");
 
-	let currentRayXMode = null; // 'metalinguistico', 'estatico', 'dinamico'
-
-
-	// Funcionalidade do "Raio-X"
-	rayXToggleButtons.forEach((button) => {
+	// --- X-Ray Toggle Logic ---
+	document.querySelectorAll(".x-ray-toggle").forEach((button) => {
+		console.log("Botão de Raio-X encontrado:", button.id);
 		button.addEventListener("click", () => {
-			const type = button.dataset.signType;
+			const selectedSignType = button.dataset.signType;
+			console.log(
+				`Botão '${button.id}' clicado. Tipo de signo selecionado: ${selectedSignType}`
+			);
 
-			// Desativa o modo atual se o mesmo botão for clicado novamente
-			if (currentRayXMode === type) {
-				body.classList.remove("ray-x-mode");
-				allSignos.forEach((signo) => {
-					signo.classList.remove(
-						"metalinguistico",
-						"estatico",
-						"dinamico"
-					);
-				});
-				button.classList.remove("active"); // Desativa o botão clicado
-				currentRayXMode = null;
-			} else {
-				// Desativa todos os botões Raio-X primeiro
-				rayXToggleButtons.forEach((btn) =>
-					btn.classList.remove("active")
+			// NOVO: Referência ao botão que foi clicado
+			const clickedButton = button;
+
+			// Verifica o estado ATUAL da lente correspondente ao botão clicado
+			const isCurrentlyActive = document.body.classList.contains(
+				`x-ray-active-${selectedSignType}`
+			);
+
+			// PASSO 1: Sempre LIMPE o estado anterior COMPLETO.
+			// Remove QUALQUER classe de Raio-X do body.
+			document.body.classList.remove(
+				"x-ray-active-estatico",
+				"x-ray-active-dinamico",
+				"x-ray-active-metalinguistico"
+			);
+			console.log("Classes 'x-ray-active' removidas do body.");
+
+			// NOVO: Remove a classe 'active' de *TODOS* os botões do Raio-X.
+			// Isso garante que apenas o botão correto estará ativo no final.
+			document.querySelectorAll(".x-ray-toggle").forEach((btn) => {
+				btn.classList.remove("active");
+			});
+			console.log(
+				"Classe 'active' removida de todos os botões de Raio-X."
+			);
+
+			// Remove TODOS os indicadores e data-xray-active dos elementos
+			hideAllXrayIndicators();
+			console.log(
+				"Indicadores e data-xray-active removidos de todos os elementos."
+			);
+
+			// Fecha o modal de explicação, se estiver aberto
+			closeSignExplanationModal();
+			console.log("Modal de explicação fechado.");
+
+			// PASSO 2: DECIDE o que fazer AGORA com base no clique
+			// Se a lente clicada ESTAVA ativa (isCurrentlyActive é true), significa que o clique era para DESATIVÁ-LA.
+			// Como já limpamos tudo, não precisamos fazer mais nada.
+			if (isCurrentlyActive) {
+				console.log(
+					`Lente '${selectedSignType}' estava ativa e foi desativada.`
 				);
+			} else {
+				// Se a lente clicada NÃO ESTAVA ativa (isCurrentlyActive é false), significa que o clique era para ATIVÁ-LA.
+				document.body.classList.add(`x-ray-active-${selectedSignType}`);
+				console.log(
+					`Lente de Raio-X ativada: Adicionado 'x-ray-active-${selectedSignType}' ao body.`
+				);
+				showXrayIndicators(selectedSignType);
 
-				// Ativa o novo botão
-				button.classList.add("active");
-
-				// Ativa o novo modo Raio-X
-				body.classList.add("ray-x-mode");
-				currentRayXMode = type;
-
-				// Remove classes de todos os signos antes de aplicar as novas
-				allSignos.forEach((signo) => {
-					signo.classList.remove(
-						"metalinguistico",
-						"estatico",
-						"dinamico"
-					);
-				});
-
-				// Adiciona a classe do tipo de signo relevante
-				allSignos.forEach((signo) => {
-					if (signo.dataset.signoTipo === type) {
-						signo.classList.add(type);
-					}
-				});
+				// NOVO: Adiciona a classe 'active' APENAS ao botão que foi clicado,
+				// pois sua lente correspondente foi ativada.
+				clickedButton.classList.add("active");
+				console.log(
+					`Classe 'active' adicionada ao botão '${clickedButton.id}'.`
+				);
 			}
 		});
 	});
 
-	// Abrir o dialog ao clicar em um signo no modo Raio-X
-	allSignos.forEach((signo) => {
-		signo.addEventListener("click", () => {
-			if (body.classList.contains("ray-x-mode")) {
-				const type = signo.dataset.signoTipo;
-				const description = signo.dataset.signoDescricao;
+	// --- Functions for X-Ray Indicators ---
+	function showXrayIndicators(signType) {
+		console.log(`showXrayIndicators chamado para o tipo: ${signType}`);
+		const elementsToHighlight = document.querySelectorAll(
+			`[data-sign-type="${signType}"]`
+		);
 
-				dialogTitle.textContent = `Signo ${
-					type.charAt(0).toUpperCase() + type.slice(1)
-				}`;
-				dialogDescription.textContent = description;
+		if (elementsToHighlight.length === 0) {
+			console.log(
+				`Nenhum elemento encontrado com data-sign-type="${signType}"`
+			);
+		}
 
-				// Aplica a cor da borda do dialog de acordo com o tipo de signo
-				rayXDialog.style.borderColor = `var(--${type}-color)`;
+		elementsToHighlight.forEach((element, index) => {
+			console.log(`Processando elemento ${index + 1}:`, element);
 
-				rayXOverlay.classList.add("active");
+			// Mark element as currently highlighted for CSS
+			element.dataset.xrayActive = "true";
+			console.log(`data-xray-active='true' adicionado ao elemento.`);
+
+			// Ensure parent has relative positioning if static, so absolute children are positioned correctly
+			const computedPosition = getComputedStyle(element).position;
+			if (computedPosition === "static") {
+				element.style.position = "relative";
+				console.log(
+					`Posição do elemento alterada de '${computedPosition}' para 'relative'.`
+				);
+			} else {
+				console.log(
+					`Posição do elemento já é '${computedPosition}', não alterada.`
+				);
+			}
+
+			const indicator = document.createElement("button");
+			indicator.classList.add("x-ray-indicator");
+			indicator.innerHTML = `<span class="material-symbols-outlined">${getIconForSignType(
+				signType
+			)}</span>`;
+			console.log("Indicador criado:", indicator);
+
+			// Store data attributes on the indicator itself for easy access
+			indicator.dataset.signName = element.dataset.signName;
+			indicator.dataset.signCategory = signType;
+			indicator.dataset.signExplanation = element.dataset.signExplanation;
+			console.log(
+				"Dados do signo adicionados ao indicador:",
+				indicator.dataset.signName,
+				indicator.dataset.signCategory,
+				indicator.dataset.signExplanation
+			);
+
+			// Append indicator to the element
+			element.appendChild(indicator);
+			console.log("Indicador anexado ao elemento.");
+
+			// Determine preferred side based on element's horizontal position
+			const rect = element.getBoundingClientRect();
+			console.log("getBoundingClientRect do elemento:", rect);
+			console.log("Largura da janela:", window.innerWidth);
+
+			// If element is in the right half of the screen (or close to the right edge)
+			if (
+				rect.left > window.innerWidth / 2 ||
+				rect.right > window.innerWidth - 100
+			) {
+				indicator.classList.add("position-left");
+				console.log("Adicionado classe 'position-left' ao indicador.");
+			} else {
+				indicator.classList.add("position-right");
+				console.log("Adicionado classe 'position-right' ao indicador.");
+			}
+
+			// Add click listener to the indicator
+			indicator.addEventListener("click", (event) => {
+				event.stopPropagation(); // Prevent parent clicks from interfering
+				console.log("Indicador clicado. Abrindo modal de explicação.");
+				openSignExplanationModal(
+					indicator.dataset.signName,
+					indicator.dataset.signCategory,
+					indicator.dataset.signExplanation,
+					indicator
+				);
+			});
+		});
+	}
+
+	function hideAllXrayIndicators() {
+		console.log(
+			"hideAllXrayIndicators: Chamado para limpar todos os destaques."
+		);
+
+		// Etapa 1: Remover todos os botões indicadores visíveis
+		document
+			.querySelectorAll(".x-ray-indicator")
+			.forEach((indicator, idx) => {
+				console.log(
+					`hideAllXrayIndicators: Removendo indicador #${
+						idx + 1
+					} do elemento:`,
+					indicator.parentElement
+				);
+				indicator.remove(); // Remove o botão do DOM
+			});
+		console.log(
+			"hideAllXrayIndicators: Todos os indicadores foram removidos."
+		);
+
+		// Etapa 2: Remover o atributo data-xray-active e resetar estilos de posição dos elementos
+		// Seleciona QUALQUER elemento que tenha o atributo data-xray-active="true"
+		const activeElements = document.querySelectorAll(
+			'[data-xray-active="true"]'
+		);
+		if (activeElements.length === 0) {
+			console.log(
+				"hideAllXrayIndicators: Nenhum elemento com data-xray-active='true' encontrado para limpar."
+			);
+		}
+
+		activeElements.forEach((element, idx) => {
+			console.log(
+				`hideAllXrayIndicators: Limpando elemento #${idx + 1}:`,
+				element
+			);
+
+			// Remove o atributo data-xray-active do elemento.
+			// Isso deve desativar o estilo de destaque do CSS.
+			delete element.dataset.xrayActive;
+			console.log(
+				`hideAllXrayIndicators: data-xray-active removido de:`,
+				element
+			);
+
+			// Se a posição foi definida como 'relative' pelo script, resete-a.
+			// Verificar se element.style.position existe e foi definido por nós.
+			// É mais seguro usar uma flag ou uma classe para saber se fomos nós que mudamos a posição.
+			// Por enquanto, vamos manter a lógica atual, mas é um ponto a se observar.
+			if (element.style.position === "relative") {
+				element.style.position = ""; // Limpa o estilo inline
+				console.log(
+					`hideAllXrayIndicators: Posição de '${element.tagName}' resetada para padrão.`
+				);
 			}
 		});
-	});
+		console.log(
+			"hideAllXrayIndicators: Atributos data-xray-active e posições resetadas."
+		);
+	}
 
-	// Fechar o dialog
-	closeDialogButton.addEventListener("click", () => {
-		rayXOverlay.classList.remove("active");
-	});
+	function getIconForSignType(type) {
+		switch (type) {
+			case "estatico":
+				return "widgets";
+			case "dinamico":
+				return "magic_button";
+			case "metalinguistico":
+				return "info";
+			default:
+				return "help";
+		}
+	}
 
-	// Fechar o dialog ao clicar fora dele
-	rayXOverlay.addEventListener("click", (event) => {
-		if (event.target === rayXOverlay) {
-			rayXOverlay.classList.remove("active");
+	// --- Dedicated Modal for Sign Explanations ---
+	// Create the modal HTML structure dynamically (or you can add it directly to your HTML)
+	const signExplanationModalOverlay = document.createElement("div");
+	signExplanationModalOverlay.id = "sign-explanation-modal-overlay";
+	signExplanationModalOverlay.classList.add("sign-explanation-modal-overlay"); // New class for this specific overlay
+	signExplanationModalOverlay.style.display = "none"; // Hidden by default
+	document.body.appendChild(signExplanationModalOverlay); // Append early for reference
+
+	signExplanationModalOverlay.innerHTML = `
+    <div class="dialog-content" id="sign-explanation-modal-content">
+      <div class="dialog-header">
+        <h4 class="dialog-title" id="sign-explanation-modal-title"></h4>
+        <button class="close-dialog" id="close-sign-explanation-modal-button">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="dialog-body">
+        <p class="dialog-text" id="sign-explanation-modal-category"></p>
+        <p class="dialog-text" id="sign-explanation-modal-text"></p>
+      </div>
+    </div>
+  `;
+
+	// Get references to modal elements *after* they are added to the DOM
+	const signExplanationModalContent = document.getElementById(
+		"sign-explanation-modal-content"
+	);
+	const signExplanationModalTitle = document.getElementById(
+		"sign-explanation-modal-title"
+	);
+	const signExplanationModalCategory = document.getElementById(
+		"sign-explanation-modal-category"
+	);
+	const signExplanationModalText = document.getElementById(
+		"sign-explanation-modal-text"
+	);
+
+	// --- NOVO: Fechar modal ao rolar a página ---
+	// Adiciona um listener de rolagem à janela (window)
+	window.addEventListener("scroll", () => {
+		// Verifica se o modal está visível antes de tentar fechá-lo
+		if (signExplanationModalOverlay.style.display === "flex") {
+			console.log("Página rolou. Fechando modal de explicação.");
+			closeSignExplanationModal();
 		}
 	});
 
-	const metacommunicationQuote = document.getElementById(
-		"metacommunication-quote"
-	);
+	// Add event listener to close button inside the new modal (must be attached AFTER elements are in DOM)
+	document
+		.getElementById("close-sign-explanation-modal-button")
+		.addEventListener("click", closeSignExplanationModal);
 
-	// Somente se o blockquote existir, processar suas palavras
-	if (metacommunicationQuote) {
-		const processQuote = () => {
-			const text = metacommunicationQuote.innerText; // Pega o texto bruto
-			// Divide o texto em palavras, mas mantém espaços e pontuações para não perder o layout
-			const words = text.split(/(\s+)/); // Divide por espaços, mas mantém os espaços no array
+	// Close modal when clicking outside of the dialog content
+	signExplanationModalOverlay.addEventListener("click", (event) => {
+		if (event.target === signExplanationModalOverlay) {
+			console.log("Cliquem no overlay do modal de explicação. Fechando.");
+			closeSignExplanationModal();
+		}
+	});
 
-			// Limpa o conteúdo atual do blockquote
-			metacommunicationQuote.innerHTML = "";
+	function getSignTypeDetails(type) {
+		switch (type) {
+			case "estatico":
+				return { text: "Estático", class: "sign-type-estatico" };
+			case "dinamico":
+				return { text: "Dinâmico", class: "sign-type-dinamico" };
+			case "metalinguistico":
+				return {
+					text: "Metalinguístico",
+					class: "sign-type-metalinguistico",
+				};
+			default:
+				return { text: "Desconhecido", class: "sign-type-unknown" };
+		}
+	}
 
-			words.forEach((word, index) => {
-				// Cria um span para cada palavra (e para os espaços)
-				const span = document.createElement("span");
-				span.textContent = word;
-				span.dataset.index = index; // Para referência, se precisar
-				metacommunicationQuote.appendChild(span);
-			});
-		};
+	// openSignExplanationModal - AGORA COM ORDEM CORRETA PARA VISIBILIDADE
+	function openSignExplanationModal(
+		title,
+		category,
+		explanation,
+		indicatorElement
+	) {
+		console.log("openSignExplanationModal chamado.");
 
-		// Processa o blockquote assim que o DOM estiver carregado
-		processQuote();
-
-		// Agora, os listeners para o efeito de peso da fonte
-		metacommunicationQuote.addEventListener("mousemove", (event) => {
-			const mouseX = event.clientX;
-			const mouseY = event.clientY;
-
-			// Obtém todos os spans de palavras dentro do blockquote
-			const wordSpans = metacommunicationQuote.querySelectorAll("span");
-
-			wordSpans.forEach((span) => {
-				const rect = span.getBoundingClientRect();
-
-				// Calcula a distância do mouse para o centro da palavra
-				const wordCenterX = rect.left + rect.width / 2;
-				const wordCenterY = rect.top + rect.height / 2;
-
-				// Distância euclidiana (aproximada, ou pode usar apenas em X para efeito linear)
-				const distanceX = Math.abs(mouseX - wordCenterX);
-				const distanceY = Math.abs(mouseY - wordCenterY);
-				const distance = Math.sqrt(
-					distanceX * distanceX + distanceY * distanceY
-				);
-
-				// Define a área de influência (em pixels)
-				const maxDistance = 100; // Palavras até 100px de distância serão afetadas
-
-				// Calcula o peso da fonte baseado na distância
-				let fontWeight;
-				if (distance < maxDistance) {
-					// Mapeia a distância (0 a maxDistance) para o peso da fonte (900 a 300)
-					// Quanto menor a distância, maior o peso
-					const normalizedDistance = distance / maxDistance; // 0 a 1
-					fontWeight = 900 - normalizedDistance * (900 - 300); // 900 - (0 a 600)
-					fontWeight = Math.max(
-						300,
-						Math.min(900, Math.round(fontWeight / 100) * 100)
-					); // Arredonda para múltiplos de 100
-				} else {
-					fontWeight = 300; // Peso padrão se estiver fora da área
-				}
-
-				span.style.fontWeight = fontWeight;
-			});
-		});
-
-		metacommunicationQuote.addEventListener("mouseleave", () => {
-			// Ao sair do blockquote, resetar todas as palavras para o peso base
-			const wordSpans = metacommunicationQuote.querySelectorAll("span");
-			wordSpans.forEach((span) => {
-				span.style.fontWeight = 300;
-			});
-		});
-	} else {
-		console.warn(
-			"Elemento #metacommunication-quote não encontrado. O efeito de peso da fonte não será aplicado."
+		// Obtenção de referências (já deve estar ok, apenas para contexto)
+		const signExplanationModalOverlay = document.getElementById(
+			"sign-explanation-modal-overlay"
 		);
+		const signExplanationModalContent = document.getElementById(
+			"sign-explanation-modal-content"
+		);
+		const signExplanationModalTitle = document.getElementById(
+			"sign-explanation-modal-title"
+		);
+		const signExplanationModalCategory = document.getElementById(
+			"sign-explanation-modal-category"
+		);
+		const signExplanationModalText = document.getElementById(
+			"sign-explanation-modal-text"
+		);
+
+		signExplanationModalTitle.textContent = title;
+		const categoryDetails = getSignTypeDetails(category);
+		const categoryChip = document.createElement("span");
+		categoryChip.classList.add("sign-category-chip", categoryDetails.class);
+		categoryChip.textContent = categoryDetails.text;
+		signExplanationModalCategory.innerHTML = "";
+		signExplanationModalCategory.appendChild(categoryChip);
+		signExplanationModalText.textContent = explanation;
+
+		console.log(
+			`Modal preenchido: Título="${title}", Categoria="${categoryDetails.text}", Explicação="${explanation}"`
+		);
+
+		const indicatorRect = indicatorElement.getBoundingClientRect();
+		let modalContentWidth = signExplanationModalContent.offsetWidth;
+		let modalContentHeight = signExplanationModalContent.offsetHeight;
+
+		if (modalContentWidth === 0) modalContentWidth = 300;
+		if (modalContentHeight === 0) modalContentHeight = 150;
+
+		let modalTop = indicatorRect.bottom + window.scrollY + 10;
+		let modalLeft = indicatorRect.left + window.scrollX;
+		console.log(
+			`Posição inicial calculada: Top=${modalTop}, Left=${modalLeft}`
+		);
+
+		if (modalLeft + modalContentWidth > window.innerWidth - 20) {
+			modalLeft = window.innerWidth - modalContentWidth - 20;
+		}
+		if (modalLeft < 20) {
+			modalLeft = 20;
+		}
+
+		if (
+			modalTop + modalContentHeight >
+			window.innerHeight + window.scrollY - 20
+		) {
+			modalTop =
+				indicatorRect.top + window.scrollY - modalContentHeight - 10;
+			if (modalTop < window.scrollY + 20) {
+				modalTop = window.scrollY + 20;
+			}
+		}
+
+		// Aplica os estilos de posicionamento
+		signExplanationModalOverlay.style.position = "absolute";
+		signExplanationModalOverlay.style.top = `${modalTop}px`;
+		signExplanationModalOverlay.style.left = `${modalLeft}px`;
+		signExplanationModalOverlay.style.width = "auto";
+		signExplanationModalOverlay.style.height = "auto";
+		signExplanationModalOverlay.style.backgroundColor = "transparent";
+		signExplanationModalOverlay.style.zIndex = "1001";
+
+		signExplanationModalContent.style.position = "static";
+
+		// --- MUDANÇA CRÍTICA AQUI ---
+		// 1. Define 'display: flex' primeiro para o navegador ver o elemento.
+		signExplanationModalOverlay.style.display = "flex";
+		console.log("Modal display: flex definido.");
+
+		// 2. Aguarda um "tick" do navegador (muito breve, essencial para transições)
+		//    antes de adicionar a classe 'is-visible' que inicia a transição de opacidade/visibilidade.
+		//    Isso garante que o navegador registre a mudança de display antes de iniciar a transição.
+		requestAnimationFrame(() => {
+			signExplanationModalOverlay.classList.add("is-visible");
+			console.log(
+				"Modal de explicação exibido e posicionado via classe 'is-visible' após requestAnimationFrame."
+			);
+		});
+	}
+
+	// closeSignExplanationModal - Também ajustada para remover a classe 'is-visible'
+	function closeSignExplanationModal() {
+		console.log("Fechando modal de explicação.");
+		// NOVO: Remove a classe 'is-visible' para iniciar a transição de saída
+		signExplanationModalOverlay.classList.remove("is-visible");
+
+		// Oculta o display APÓS a transição para garantir que ela ocorra.
+		// Usamos um setTimeout para esperar a transição de opacidade/visibilidade.
+		// A duração deve ser igual ou maior que a duração da transição no CSS.
+		setTimeout(() => {
+			signExplanationModalOverlay.style.display = "none";
+			// Mantenha o console.log aqui para indicar que o display foi alterado
+			console.log("Modal display:none definido após transição.");
+		}, 300); // 300ms, igual à sua transição no CSS
+
+		// Remove a classe 'active' de TODOS os botões do Raio-X
+		document.querySelectorAll(".x-ray-toggle").forEach((btn) => {
+			btn.classList.remove("active");
+		});
+		console.log(
+			"Classe 'active' removida de todos os botões de Raio-X via closeSignExplanationModal."
+		);
+	}
+
+	function closeSignExplanationModal() {
+		console.log("Fechando modal de explicação.");
+		signExplanationModalOverlay.style.display = "none";
 	}
 });

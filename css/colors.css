@@ -14,143 +14,116 @@
 	--wild-sand-900: #3b3b3e;
 	--wild-sand-950: #0c0c0d;
 
-	/* Paleta Primária: 'blue' */
-	--blue-50: #edf2ff;
-	--blue-100: #dee8ff;
-	--blue-200: #c3d2ff;
-	--blue-300: #9eb5ff;
-	--blue-400: #788dff;
-	--blue-500: #5865fc;
-	--blue-600: #2828f0;
-	--blue-700: #2f2dd5;
-	--blue-800: #2727ac;
-	--blue-900: #282a87;
-	--blue-950: #18174f;
+	--azure-radiance-50: #edf8ff;
+	--azure-radiance-100: #d7eeff;
+	--azure-radiance-200: #b9e2ff;
+	--azure-radiance-300: #88d2ff;
+	--azure-radiance-400: #50b8ff;
+	--azure-radiance-500: #2897ff;
+	--azure-radiance-600: #0a74ff;
+	--azure-radiance-700: #0a60eb;
+	--azure-radiance-800: #0f4dbe;
+	--azure-radiance-900: #134595;
+	--azure-radiance-950: #112b5a;
 
-	/* Novas Paletas de Cores */
-	--buttercup-50: #fefce8;
-	--buttercup-100: #fef8c3;
-	--buttercup-200: #ffed89;
-	--buttercup-300: #fedd46;
-	--buttercup-400: #fbc814;
-	--buttercup-500: #edb007;
-	--buttercup-600: #cb8603;
-	--buttercup-700: #a25f06;
-	--buttercup-800: #864a0d;
-	--buttercup-900: #713d12;
-	--buttercup-950: #421f06;
+	/* Nova Paleta: 'timber-green' */
+	--timber-green-50: #f3faf7;
+	--timber-green-100: #d8efe6;
+	--timber-green-200: #b0dfcf;
+	--timber-green-300: #81c7b1;
+	--timber-green-400: #56ab93;
+	--timber-green-500: #3d8f79;
+	--timber-green-600: #2f7262;
+	--timber-green-700: #295c50;
+	--timber-green-800: #244b42;
+	--timber-green-900: #223f38;
+	--timber-green-950: #132f2a;
 
-	--electric-violet-50: #fdf2ff;
-	--electric-violet-100: #f9e4ff;
-	--electric-violet-200: #f4c8ff;
-	--electric-violet-300: #f09dff;
-	--electric-violet-400: #e962ff;
-	--electric-violet-500: #d928ff;
-	--electric-violet-600: #bc07ed;
-	--electric-violet-700: #a302c9;
-	--electric-violet-800: #8704a4;
-	--electric-violet-900: #710a85;
-	--electric-violet-950: #4d005b;
+	/* Nova Paleta: 'toledo' */
+	--toledo-50: #faf5f8;
+	--toledo-100: #f7ecf3;
+	--toledo-200: #f0dae8;
+	--toledo-300: #e5bcd5;
+	--toledo-400: #d393b8;
+	--toledo-500: #c371a0;
+	--toledo-600: #ae5482;
+	--toledo-700: #94426a;
+	--toledo-800: #7b3959;
+	--toledo-900: #68334c;
+	--toledo-950: #331523;
 
-	--bright-turquoise-50: #eefffb;
-	--bright-turquoise-100: #c4fff6;
-	--bright-turquoise-200: #8affee;
-	--bright-turquoise-300: #47ffe6;
-	--bright-turquoise-400: #19f0d7;
-	--bright-turquoise-500: #00d3bd;
-	--bright-turquoise-600: #00aa9c;
-	--bright-turquoise-700: #00877d;
-	--bright-turquoise-800: #046b65;
-	--bright-turquoise-900: #095853;
-	--bright-turquoise-950: #003636;
+	/* Nova Paleta: 'black-marlin' */
+	--black-marlin-50: #faf8ec;
+	--black-marlin-100: #f2efcf;
+	--black-marlin-200: #e6dfa2;
+	--black-marlin-300: #d8c86c;
+	--black-marlin-400: #cbb144;
+	--black-marlin-500: #bc9c36;
+	--black-marlin-600: #a27d2c;
+	--black-marlin-700: #825d26;
+	--black-marlin-800: #6d4d26;
+	--black-marlin-900: #5e4025;
+	--black-marlin-950: #412916;
 }
 
 :root:not([data-theme="dark"]):not([data-theme="default"]),
 body[data-theme="light"] {
-	/* Cores de Texto e Fundo (Usando a paleta neutra) */
-	--header-bg-color: var(--off-white);
-	--background-color: var(--off-white);
-	--background-color-alt: var(--wild-sand-50);
-	--header-text-color: var(--wild-sand-950);
-	--header-border-color: var(--wild-sand-300);
-	--text-color: var(--wild-sand-950);
-	--section-name-color: var(--wild-sand-800);
+	--color-background: var(--wild-sand-50);
+	--color-background-alt: var(--wild-sand-100);
+	--color-background-inverse: var(--wild-sand-900);
 
-	/* Cores de Destaque e Interação (Usando a paleta primária) */
-	--primary-color: var(--blue-600);
-	--primary-color-inactive: var(--blue-200);
-	--secondary-color: var(--wild-sand-600);
-	--highlight-bg-color: var(--blue-100);
-	--highlight-text-color: var(--blue-700);
-	--link-color: var(--blue-800);
-	--input-border-color: var(--wild-sand-500);
+	--color-background-static: var(--timber-green-50);
+	--color-background-dynamic: var(--black-marlin-100);
+	--color-background-metalinguistic: var(--toledo-100);
 
-	--button-bg-color: var(--blue-600);
-	--button-text-color: var(--wild-sand-50);
-	--button-hover-bg-color: var(--blue-700);
+	--color-text-heading: var(--wild-sand-950);
+	--color-text: var(--wild-sand-900);
+	--color-text-var: var(--wild-sand-800);
+	--color-text-accent: var(--azure-radiance-700);
+	--color-text-accent-hover: var(--wild-sand-700);
+	--color-text-inverse: var(--wild-sand-50);
 
-	--button-secondary-bg-color: var(--wild-sand-50);
-	--button-hover-secondary-bg-color: var(--wild-sand-100);
-	--button-secondary-text-color: var(--wild-sand-900);
-	--button-hover-secondary-text-color: var(--wild-sand-950);
-	--button-secondary-border-color: var(--wild-sand-300);
+	--color-primary-bg: var(--azure-radiance-600);
+	--color-primary-hover: var(--azure-radiance-700);
+	--color-primary-active: var(--azure-radiance-500);
+	--color-primary-inactive: var(--azure-radiance-200);
+	--color-primary-text: var(--wild-sand-50);
 
-	/* Cores de Bordas e Separadores (Usando a paleta neutra) */
-	--border-color: var(--wild-sand-200);
-	--blockquote-border-color: var(--blue-600);
-	--blockquote-text-color: var(--wild-sand-900);
+	--color-secondary-bg: var(--wild-sand-50);
+	--color-secondary-hover: var(--wild-sand-100);
+	--color-secondary-active: var(--wild-sand-200);
+	--color-secondary-inactive: var(--wild-sand-300);
+	--color-secondary-text: var(--wild-sand-900);
+	--color-secondary-border: var(--wild-sand-400);
 
-	/* Cores para o overlay do Raio-X */
-	--overlay-bg: rgba(var(--wild-sand-950-rgb, 39, 39, 42), 0.7);
-	--dialog-bg: var(--wild-sand-50);
-	--dialog-border: var(--blue-500);
-	--dialog-text: var(--text-color);
-	--close-button-color: var(--wild-sand-600);
+	--color-static-bg: var(--timber-green-600);
+	--color-static-hover: var(--timber-green-700);
+	--color-static-active: var(--timber-green-600);
+	--color-static-shadow: var(--timber-green-200);
+	--color-static-text: var(--wild-sand-50);
+	--color-static-icon: var(--timber-green-700);
+	--color-static-border: var(--timber-green-600);
 
-	/* botão raio x estático */
-	--static-button-bg-color: var(--background-color);
-	--static-hover-button-bg-color: var(--bright-turquoise-600);
-	--static-button-text-color: var(--wild-sand-50);
+	--color-dynamic-bg: var(--black-marlin-600);
+	--color-dynamic-hover: var(--black-marlin-700);
+	--color-dynamic-active: var(--black-marlin-600);
+	--color-dynamic-shadow: var(--black-marlin-200);
+	--color-dynamic-text: var(--wild-sand-50);
+	--color-dynamic-icon: var(--black-marlin-700);
+	--color-dynamic-border: var(--black-marlin-600);
 
-	/* botão raio x dinâmico */
-	--dynamic-button-bg-color: var(--background-color);
-	--dynamic-hover-button-bg-color: var(--buttercup-600);
-	--dynamic-button-text-color: var(--wild-sand-50);
+	--color-metalinguistic-bg: var(--toledo-600);
+	--color-metalinguistic-hover: var(--toledo-700);
+	--color-metalinguistic-active: var(--toledo-600);
+	--color-metalinguistic-shadow: var(--toledo-200);
+	--color-metalinguistic-text: var(--wild-sand-50);
+	--color-metalinguistic-icon: var(--toledo-700);
+	--color-metalinguistic-border: var(--toledo-600);
 
-	/* botão raio x metalinguístico */
-	--metalinguistic-button-bg-color: var(--background-color);
-	--metalinguistic-hover-button-bg-color: var(--electric-violet-600);
-	--metalinguistic-button-text-color: var(--wild-sand-50);
-
-	/* cards de signo */
-	--static-card-bg-color: var(--bright-turquoise-50);
-	--static-card-border-color: var(--bright-turquoise-300);
-	--static-card-text-color: var(--bright-turquoise-900);
-	--static-card-text-color-alt: var(--bright-turquoise-800);
-	--static-card-button-bg-color: var(--bright-turquoise-600);
-	--static-card-button-hover-bg-color: var(--bright-turquoise-700);
-	--static-card-button-text-color: var(--wild-sand-50);
-
-	--dynamic-card-bg-color: var(--buttercup-50);
-	--dynamic-card-border-color: var(--buttercup-300);
-	--dynamic-card-text-color: var(--buttercup-950);
-	--dynamic-card-text-color-alt: var(--buttercup-900);
-	--dynamic-card-button-bg-color: var(--buttercup-600);
-	--dynamic-card-button-hover-bg-color: var(--buttercup-700);
-	--dynamic-card-button-text-color: var(--wild-sand-50);
-
-	--metalinguistic-card-bg-color: var(--electric-violet-50);
-	--metalinguistic-card-border-color: var(--electric-violet-300);
-	--metalinguistic-card-text-color: var(--electric-violet-950);
-	--metalinguistic-card-text-color-alt: var(--electric-violet-900);
-	--metalinguistic-card-button-bg-color: var(--electric-violet-600);
-	--metalinguistic-card-button-hover-bg-color: var(--electric-violet-700);
-	--metalinguistic-card-button-text-color: var(--wild-sand-50);
-
-	/* Cores para os tipos de signo (Raio-X) - Ajeitar depois */
-	--metalinguistico-color: #28a745; /* Verde */
-	--estatico-color: #ffc107; /* Amarelo */
-	--dinamico-color: #dc3545; /* Vermelho */
+	--color-border: var(--wild-sand-200);
+	--color-border-var: var(--wild-sand-300);
+	--color-border-focus: var(--azure-radiance-400);
+	--color-border-blockquote: var(--azure-radiance-600);
 }
 
 /* ----------- */
@@ -158,166 +131,120 @@ body[data-theme="light"] {
 /* ----------- */
 @media (prefers-color-scheme: dark) {
 	:root:not([data-theme="light"]) {
-		/* Cores de Texto e Fundo (MODO ESCURO) */
-		--header-bg-color: var(--wild-sand-950);
-		--header-text-color: var(--wild-sand-50);
-		--header-border-color: var(--wild-sand-700);
-		--text-color: var(--wild-sand-50);
-		--section-name-color: var(--wild-sand-300);
-		--background-color: var(--wild-sand-950);
-		--background-color-alt: var(--wild-sand-900);
+		--color-background: var(--wild-sand-950);
+		--color-background-alt: var(--wild-sand-900);
+		--color-background-inverse: var(--wild-sand-50);
 
-		/* Cores de Destaque e Interação (MODO ESCURO) */
-		--primary-color: var(--blue-300);
-		--primary-color-inactive: var(--blue-950);
-		--secondary-color: var(--wild-sand-400);
-		--highlight-bg-color: var(--blue-900);
-		--highlight-text-color: var(--blue-100);
-		--link-color: var(--blue-300);
-		--input-border-color: var(--wild-sand-400);
+		--color-background-static: var(--timber-green-950);
+		--color-background-dynamic: var(--black-marlin-950);
+		--color-background-metalinguistic: var(--toledo-950);
 
-		--button-bg-color: var(--blue-300);
-		--button-text-color: var(--wild-sand-950);
-		--button-hover-bg-color: var(--blue-200);
+		--color-text-heading: var(--wild-sand-50);
+		--color-text: var(--wild-sand-100);
+		--color-text-var: var(--wild-sand-300);
+		--color-text-accent: var(--wild-sand-300);
+		--color-text-accent-hover: var(--wild-sand-400);
+		--color-text-inverse: var(--wild-sand-950);
 
-		--button-secondary-bg-color: var(--wild-sand-950);
-		--button-hover-secondary-bg-color: var(--wild-sand-900);
-		--button-secondary-text-color: var(--wild-sand-100);
-		--button-hover-secondary-text-color: var(--wild-sand-50);
-		--button-secondary-border-color: var(--wild-sand-700);
+		--color-primary-bg: var(--azure-radiance-300);
+		--color-primary-hover: var(--azure-radiance-400);
+		--color-primary-active: var(--azure-radiance-300);
+		--color-primary-inactive: var(--azure-radiance-950);
+		--color-primary-text: var(--wild-sand-950);
 
-		/* Cores de Bordas e Separadores (MODO ESCURO) */
-		--border-color: var(--wild-sand-800);
-		--blockquote-border-color: var(--blue-500);
-		--blockquote-text-color: var(--wild-sand-200);
+		--color-secondary-bg: var(--wild-sand-950);
+		--color-secondary-hover: var(--wild-sand-900);
+		--color-secondary-active: var(--wild-sand-950);
+		--color-secondary-inactive: var(--wild-sand-950);
+		--color-secondary-text: var(--wild-sand-50);
+		--color-secondary-border: var(--wild-sand-600);
 
-		/* Cores para o overlay do Raio-X (MODO ESCURO) */
-		--overlay-bg: rgba(var(--wild-sand-950-rgb), 0.9);
-		--dialog-bg: var(--wild-sand-900);
-		--dialog-border: var(--blue-600);
-		--dialog-text: var(--wild-sand-50);
-		--close-button-color: var(--wild-sand-300);
+		--color-static-bg: var(--timber-green-200);
+		--color-static-hover: var(--timber-green-200);
+		--color-static-active: var(--timber-green-300);
+		--color-static-shadow: var(--timber-green-950);
+		--color-static-text: var(--wild-sand-950);
+		--color-static-icon: var(--timber-green-200);
+		--color-static-border: var(--timber-green-600);
 
-		/* botão raio x estático */
-		--static-button-bg-color: var(--background-color);
-		--static-hover-button-bg-color: var(--bright-turquoise-200);
-		--static-button-text-color: var(--bright-turquoise-950);
+		--color-dynamic-bg: var(--black-marlin-300);
+		--color-dynamic-hover: var(--black-marlin-200);
+		--color-dynamic-active: var(--black-marlin-300);
+		--color-dynamic-shadow: var(--black-marlin-950);
+		--color-dynamic-text: var(--wild-sand-950);
+		--color-dynamic-icon: var(--black-marlin-200);
+		--color-dynamic-border: var(--black-marlin-600);
 
-		/* botão raio x dinâmico */
-		--dynamic-button-bg-color: var(--background-color);
-		--dynamic-hover-button-bg-color: var(--buttercup-300);
-		--dynamic-button-text-color: var(--buttercup-950);
+		--color-metalinguistic-bg: var(--toledo-300);
+		--color-metalinguistic-hover: var(--toledo-200);
+		--color-metalinguistic-active: var(--toledo-300);
+		--color-metalinguistic-shadow: var(--toledo-950);
+		--color-metalinguistic-text: var(--wild-sand-950);
+		--color-metalinguistic-icon: var(--toledo-200);
+		--color-metalinguistic-border: var(--toledo-600);
 
-		/* botão raio x metalinguístico */
-		--metalinguistic-button-bg-color: var(--background-color);
-		--metalinguistic-hover-button-bg-color: var(--electric-violet-300);
-		--metalinguistic-button-text-color: var(--electric-violet-950);
-
-		/* cards de signo */
-		--static-card-bg-color: var(--bright-turquoise-950);
-		--static-card-border-color: var(--bright-turquoise-300);
-		--static-card-text-color: var(--bright-turquoise-900);
-		--static-card-text-color-alt: var(--bright-turquoise-800);
-		--static-card-button-bg-color: var(--bright-turquoise-200);
-		--static-card-button-hover-bg-color: var(--bright-turquoise-100);
-		--static-card-button-text-color: var(--wild-sand-950);
-
-		--dynamic-card-bg-color: var(--buttercup-950);
-		--dynamic-card-border-color: var(--buttercup-300);
-		--dynamic-card-text-color: var(--buttercup-950);
-		--dynamic-card-text-color-alt: var(--buttercup-900);
-		--dynamic-card-button-bg-color: var(--buttercup-300);
-		--dynamic-card-button-hover-bg-color: var(--buttercup-200);
-		--dynamic-card-button-text-color: var(--wild-sand-950);
-
-		--metalinguistic-card-bg-color: var(--electric-violet-950);
-		--metalinguistic-card-border-color: var(--electric-violet-300);
-		--metalinguistic-card-text-color: var(--electric-violet-950);
-		--metalinguistic-card-text-color-alt: var(--electric-violet-900);
-		--metalinguistic-card-button-bg-color: var(--electric-violet-300);
-		--metalinguistic-card-button-hover-bg-color: var(--electric-violet-200);
-		--metalinguistic-card-button-text-color: var(--wild-sand-950);
+		--color-border: var(--wild-sand-400);
+		--color-border-var: var(--wild-sand-600);
+		--color-border-focus: var(--azure-radiance-300);
+		--color-border-blockquote: var(--azure-radiance-300);
 	}
 }
 
 body[data-theme="dark"] {
-	/* Cores de Texto e Fundo (MODO ESCURO) */
-	--header-bg-color: var(--wild-sand-950);
-	--header-text-color: var(--wild-sand-50);
-	--header-border-color: var(--wild-sand-700);
-	--text-color: var(--wild-sand-50);
-	--section-name-color: var(--wild-sand-300);
-	--background-color: var(--wild-sand-950);
-	--background-color-alt: var(--wild-sand-900);
+	--color-background: var(--wild-sand-950);
+	--color-background-alt: var(--wild-sand-900);
+	--color-background-inverse: var(--wild-sand-50);
 
-	/* Cores de Destaque e Interação (MODO ESCURO) */
-	--primary-color: var(--blue-300);
-	--primary-color-inactive: var(--blue-950);
-	--secondary-color: var(--wild-sand-400);
-	--highlight-bg-color: var(--blue-900);
-	--highlight-text-color: var(--blue-100);
-	--link-color: var(--blue-300);
-	--input-border-color: var(--wild-sand-400);
+	--color-background-static: var(--timber-green-950);
+	--color-background-dynamic: var(--black-marlin-950);
+	--color-background-metalinguistic: var(--toledo-950);
 
-	--button-bg-color: var(--blue-300);
-	--button-text-color: var(--wild-sand-950);
-	--button-hover-bg-color: var(--blue-200);
+	--color-text-heading: var(--wild-sand-50);
+	--color-text: var(--wild-sand-100);
+	--color-text-var: var(--wild-sand-300);
+	--color-text-accent: var(--wild-sand-300);
+	--color-text-accent-hover: var(--wild-sand-400);
+	--color-text-inverse: var(--wild-sand-950);
 
-	--button-secondary-bg-color: var(--wild-sand-950);
-	--button-hover-secondary-bg-color: var(--wild-sand-900);
-	--button-secondary-text-color: var(--wild-sand-100);
-	--button-hover-secondary-text-color: var(--wild-sand-50);
-	--button-secondary-border-color: var(--wild-sand-700);
+	--color-primary-bg: var(--azure-radiance-300);
+	--color-primary-hover: var(--azure-radiance-400);
+	--color-primary-active: var(--azure-radiance-300);
+	--color-primary-inactive: var(--azure-radiance-950);
+	--color-primary-text: var(--wild-sand-950);
 
-	/* Cores de Bordas e Separadores (MODO ESCURO) */
-	--border-color: var(--wild-sand-800);
-	--blockquote-border-color: var(--blue-500);
-	--blockquote-text-color: var(--wild-sand-200);
+	--color-secondary-bg: var(--wild-sand-950);
+	--color-secondary-hover: var(--wild-sand-900);
+	--color-secondary-active: var(--wild-sand-950);
+	--color-secondary-inactive: var(--wild-sand-950);
+	--color-secondary-text: var(--wild-sand-50);
+	--color-secondary-border: var(--wild-sand-600);
 
-	/* Cores para o overlay do Raio-X (MODO ESCURO) */
-	--overlay-bg: rgba(var(--wild-sand-950-rgb), 0.9);
-	--dialog-bg: var(--wild-sand-900);
-	--dialog-border: var(--blue-600);
-	--dialog-text: var(--wild-sand-50);
-	--close-button-color: var(--wild-sand-300);
+	--color-static-bg: var(--timber-green-200);
+	--color-static-hover: var(--timber-green-200);
+	--color-static-active: var(--timber-green-300);
+	--color-static-shadow: var(--timber-green-950);
+	--color-static-text: var(--wild-sand-950);
+	--color-static-icon: var(--timber-green-200);
+	--color-static-border: var(--timber-green-600);
 
-	/* botão raio x estático */
-	--static-button-bg-color: var(--background-color);
-	--static-hover-button-bg-color: var(--bright-turquoise-200);
-	--static-button-text-color: var(--bright-turquoise-950);
+	--color-dynamic-bg: var(--black-marlin-300);
+	--color-dynamic-hover: var(--black-marlin-200);
+	--color-dynamic-active: var(--black-marlin-300);
+	--color-dynamic-shadow: var(--black-marlin-950);
+	--color-dynamic-text: var(--wild-sand-950);
+	--color-dynamic-icon: var(--black-marlin-200);
+	--color-dynamic-border: var(--black-marlin-600);
 
-	/* botão raio x dinâmico */
-	--dynamic-button-bg-color: var(--background-color);
-	--dynamic-hover-button-bg-color: var(--buttercup-300);
-	--dynamic-button-text-color: var(--buttercup-950);
+	--color-metalinguistic-bg: var(--toledo-300);
+	--color-metalinguistic-hover: var(--toledo-200);
+	--color-metalinguistic-active: var(--toledo-300);
+	--color-metalinguistic-shadow: var(--toledo-950);
+	--color-metalinguistic-text: var(--wild-sand-950);
+	--color-metalinguistic-icon: var(--toledo-200);
+	--color-metalinguistic-border: var(--toledo-600);
 
-	/* botão raio x metalinguístico */
-	--metalinguistic-button-bg-color: var(--background-color);
-	--metalinguistic-hover-button-bg-color: var(--electric-violet-300);
-	--metalinguistic-button-text-color: var(--electric-violet-950);
-
-	/* cards de signo */
-	--static-card-bg-color: var(--bright-turquoise-950);
-	--static-card-border-color: var(--bright-turquoise-300);
-	--static-card-text-color: var(--bright-turquoise-900);
-	--static-card-text-color-alt: var(--bright-turquoise-800);
-	--static-card-button-bg-color: var(--bright-turquoise-200);
-	--static-card-button-hover-bg-color: var(--bright-turquoise-100);
-	--static-card-button-text-color: var(--wild-sand-950);
-
-	--dynamic-card-bg-color: var(--buttercup-950);
-	--dynamic-card-border-color: var(--buttercup-300);
-	--dynamic-card-text-color: var(--buttercup-950);
-	--dynamic-card-text-color-alt: var(--buttercup-900);
-	--dynamic-card-button-bg-color: var(--buttercup-300);
-	--dynamic-card-button-hover-bg-color: var(--buttercup-200);
-	--dynamic-card-button-text-color: var(--wild-sand-950);
-
-	--metalinguistic-card-bg-color: var(--electric-violet-950);
-	--metalinguistic-card-border-color: var(--electric-violet-300);
-	--metalinguistic-card-text-color: var(--electric-violet-950);
-	--metalinguistic-card-text-color-alt: var(--electric-violet-900);
-	--metalinguistic-card-button-bg-color: var(--electric-violet-300);
-	--metalinguistic-card-button-hover-bg-color: var(--electric-violet-200);
-	--metalinguistic-card-button-text-color: var(--wild-sand-950);
+	--color-border: var(--wild-sand-400);
+	--color-border-var: var(--wild-sand-600);
+	--color-border-focus: var(--azure-radiance-300);
+	--color-border-blockquote: var(--azure-radiance-300);
 }

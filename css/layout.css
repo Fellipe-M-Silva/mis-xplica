@@ -11,18 +11,17 @@
 .summary ul {
 	list-style: none;
 	padding: 0;
-	/* margin-left: 1rem; */
 }
 .summary ul li a {
 	font-weight: normal;
-	color: var(--text-color);
+	color: var(--color-text);
 	text-decoration: none;
 	transition: all 0.3s ease;
 }
 .summary ul li a.active-section {
 	font-weight: 600;
-	color: var(--primary-color);
-	border-left: 2px solid var(--primary-color);
+	color: var(--color-primary-bg);
+	border-left: 2px solid var(--color-primary-bg);
 	padding-left: 0.5rem;
 }
 
@@ -38,7 +37,7 @@
 
 section {
 	flex: 1 0 0;
-	border-bottom: 1px solid var(--border-color);
+	border-bottom: 1px solid var(--color-border);
 	margin-bottom: 4rem;
 }
 
@@ -57,8 +56,8 @@ section:last-of-type {
 /* Cards */
 .sign-card {
 	flex: 1 0 100px;
-	background-color: var(--background-color-alt);
-	border: 1px solid var(--border-color);
+	background-color: var(--color-background-alt);
+	border: 1px solid var(--color-border);
 	border-radius: 0.5rem;
 	padding: 1rem;
 }
@@ -67,32 +66,63 @@ section:last-of-type {
 	margin-bottom: 0.5rem;
 }
 
+.sign-card .material-symbols-outlined {
+	font-variation-settings: "FILL" 1;
+}
+
 /* Cards de signos */
 #static-sign {
-	background-color: var(--static-card-bg-color);
+	background-color: var(--color-background-static);
+	border-color: var(--color-static-border);
+}
+
+#static-sign span {
+	color: var(--color-static-icon);
 }
 
 #static-sign button {
-	background-color: var(--static-card-button-bg-color);
-	color: var(--static-card-button-text-color);
+	background-color: var(--color-static-bg);
+	color: var(--color-static-text);
+}
+
+#static-sign button:hover {
+	background-color: var(--color-static-hover);
 }
 
 #dynamic-sign {
-	background-color: var(--dynamic-card-bg-color);
+	background-color: var(--color-background-dynamic);
+	border-color: var(--color-dynamic-border);
+}
+
+#dynamic-sign span {
+	color: var(--color-dynamic-icon);
 }
 
 #dynamic-sign button {
-	background-color: var(--dynamic-card-button-bg-color);
-	color: var(--dynamic-card-button-text-color);
+	background-color: var(--color-dynamic-bg);
+	color: var(--color-dynamic-text);
+}
+
+#dynamic-sign button:hover {
+	background-color: var(--color-dynamic-hover);
 }
 
 #metalinguistic-sign {
-	background-color: var(--metalinguistic-card-bg-color);
+	background-color: var(--color-background-metalinguistic);
+	border-color: var(--color-metalinguistic-border);
+}
+
+#metalinguistic-sign span {
+	color: var(--color-metalinguistic-icon);
 }
 
 #metalinguistic-sign button {
-	background-color: var(--metalinguistic-card-button-bg-color);
-	color: var(--metalinguistic-card-button-text-color);
+	background-color: var(--color-metalinguistic-bg);
+	color: var(--color-metalinguistic-text);
+}
+
+#metalinguistic-sign button:hover {
+	background-color: var(--color-metalinguistic-hover);
 }
 
 /* Cards de exemplos */
@@ -106,8 +136,8 @@ section:last-of-type {
 
 .example-card {
 	min-height: 200px;
-	background-color: var(--background-color-alt);
-	border: 1px solid var(--border-color);
+	background-color: var(--color-background-alt);
+	border: 1px solid var(--color-border);
 	border-radius: 0.5rem;
 	padding: 1rem;
 	margin-bottom: 1rem;
@@ -178,7 +208,7 @@ img {
 	.controls {
 		position: sticky;
 		top: calc(5rem + 1px);
-		background-color: var(--background-color);
+		background-color: var(--color-background);
 		display: flex;
 		flex-direction: column;
 		max-width: 240px;
@@ -190,7 +220,7 @@ img {
 	}
 
 	.content {
-		padding: 1.5rem 0;
+		padding: 1.5rem;
 	}
 
 	.wrapper {

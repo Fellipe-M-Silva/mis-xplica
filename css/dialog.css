@@ -2,9 +2,10 @@
 	visibility: hidden;
 	opacity: 0;
 	transition: visibility 0.3s ease, opacity 0.3s ease;
-	z-index: 1000;
+	z-index: 1110;
 
 	position: fixed;
+	overflow: hidden;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -13,7 +14,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	z-index: 1010;
+	z-index: 998;
 	padding: 1rem;
 }
 
@@ -24,7 +25,7 @@
 }
 
 .dialog-content {
-	background-color: var(--background-color);
+	background-color: var(--color-background);
 	display: flex;
 	flex-direction: column;
 	border-radius: 0.5rem;
@@ -53,12 +54,12 @@
 	margin-right: auto;
 	margin-bottom: 0;
 	font-size: 1.25rem;
-	color: var(--text-color);
+	color: var(--color-text-header);
 }
 
 .dialog-header .close-dialog {
-	background-color: var(--background-color);
-	color: var(--text-color);
+	background-color: var(--color-background);
+	color: var(--color-text);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -89,7 +90,7 @@
 .feedback-form label {
 	font-weight: bold;
 	margin-bottom: 0.25rem;
-	display: block; /* Garante que o label ocupe sua própria linha */
+	display: block;
 }
 
 .rating-stars {
@@ -108,24 +109,24 @@
 }
 
 .rating-stars .star.filled {
-	color: var(--primary-color); /* Cor da estrela preenchida */
+	color: var(--color-primary-bg); /* Cor da estrela preenchida */
 	font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
 }
 
 .feedback-form textarea {
 	width: 100%;
 	padding: 0.75rem;
-	border: 1px solid var(--border-color);
+	border: 1px solid var(--color-border);
 	border-radius: var(--border-radius);
-	background-color: var(--background-color);
-	color: var(--on-background-color);
-	font-family: inherit; /* Garante que a fonte seja consistente */
-	resize: vertical; /* Permite redimensionar apenas verticalmente */
+	background-color: var(--color-background);
+	color: var(--color-text);
+	font-family: inherit;
+	resize: vertical;
 	min-height: 80px;
 }
 
 .feedback-form button.primary {
-	align-self: flex-end; /* Alinha o botão à direita */
+	align-self: flex-end;
 	margin-top: 1rem;
 }
 
@@ -156,6 +157,6 @@
 .dialog-content.large .signature {
 	margin-top: 2rem;
 	font-style: italic;
-	color: var(--secondary-text-color);
+	color: var(--color-text-var);
 	text-align: center;
 }

@@ -47,6 +47,14 @@ h5 {
 	font-weight: 600;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+	color: var(--color-text-heading);
+}
+
 section h2,
 section h3,
 section h4 {
@@ -65,11 +73,12 @@ p {
 }
 
 a {
-	color: var(--link-color);
+	color: var(--color-text-accent);
 	text-decoration: none;
 }
 
 a:hover {
+	color: var(--color-text-accent-hover);
 	text-decoration: underline;
 }
 
@@ -85,7 +94,7 @@ em {
 
 .summary-sidebar h2 {
 	font-size: 1.5rem;
-	margin-bottom: 15px;
+	margin-bottom: 1rem;
 	text-align: center;
 }
 
@@ -102,7 +111,7 @@ em {
 	margin-top: 0.5rem;
 	margin-bottom: 0;
 	font-size: 0.875rem;
-	color: var(--text-color);
+	color: var(--color-text);
 }
 
 .footnote {

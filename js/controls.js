@@ -7,23 +7,48 @@ document.addEventListener("DOMContentLoaded", () => {
 		'input[name="theme-mobile"]'
 	);
 
+	// Function to get the system's preferred theme
+	const getSystemTheme = () => {
+		return window.matchMedia("(prefers-color-scheme: dark)").matches
+			? "dark"
+			: "light";
+	};
+
 	// Function to apply the theme
 	const applyTheme = (theme) => {
+		let actualThemeToApply = theme; // This will be the theme stored in localStorage
+
 		if (theme === "default") {
-			// Now "Padrão" option is "system"
+			// If "default" is chosen, determine the actual theme from system preference
 			body.removeAttribute("data-theme"); // Remove attribute to revert to system preference
+			// No need to explicitly set data-theme="light" or "dark" here,
+			// as removing the attribute will make CSS use prefers-color-scheme.
+			// We'll update the radio buttons based on the *system's* current state.
 		} else {
-			body.setAttribute("data-theme", theme); // Set manual theme (light or dark)
+			// For 'light' or 'dark' explicit selections
+			body.setAttribute("data-theme", theme);
 		}
-		// Store user preference
-		localStorage.setItem("user-theme", theme);
+
+		// Store the user's explicit preference ('default', 'light', or 'dark')
+		localStorage.setItem("user-theme", actualThemeToApply);
 
 		// Update the checked state for ALL theme radio buttons (desktop and mobile)
 		document
 			.querySelectorAll('input[name="theme"], input[name="theme-mobile"]')
 			.forEach((radio) => {
-				if (radio.value === theme) {
+				if (radio.value === actualThemeToApply) {
 					radio.checked = true;
+				} else if (actualThemeToApply === "default") {
+					// Special handling for "default" option:
+					// Check the "default" radio button if it's the saved preference.
+					// This ensures the UI reflects that "default" is active.
+					if (radio.value === "default") {
+						radio.checked = true;
+					} else {
+						radio.checked = false; // Uncheck others
+					}
+				} else {
+					radio.checked = false; // Uncheck others
 				}
 			});
 	};
@@ -54,12 +79,16 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Load theme when the page loads
 	loadThemePreference();
 
-	// Optional: Listen for system preference changes (if theme is 'default')
+	// Listen for system preference changes (if theme is 'default' in localStorage)
+	// This listener ensures that if the user's system theme changes while 'default'
+	// is selected, your site's theme will also update.
 	window
 		.matchMedia("(prefers-color-scheme: dark)")
-		.addEventListener("change", (event) => {
+		.addEventListener("change", () => {
 			if (localStorage.getItem("user-theme") === "default") {
-				applyTheme("default"); // Re-apply system theme
+				// If the user's saved preference is "default", re-apply it
+				// to ensure the UI updates according to the new system preference.
+				applyTheme("default");
 			}
 		});
 });

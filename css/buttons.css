@@ -1,7 +1,7 @@
 /* Botões */
 button {
 	background-color: transparent;
-	color: var(--text-color);
+	color: var(--color-text);
 	border: none;
 
 	display: flex;
@@ -18,25 +18,23 @@ button {
 }
 
 button.primary {
-	background-color: var(--button-bg-color);
-	color: var(--button-text-color);
+	background-color: var(--color-primary-bg);
+	color: var(--color-primary-text);
 	border: none;
 }
 
 button.primary:hover {
-	background-color: var(--button-hover-bg-color);
+	background-color: var(--color-primary-hover);
 }
 
 button.secondary {
-	background-color: var(--button-secondary-bg-color);
-	color: var(--button-secondary-text-color);
-	border: 1px solid var(--button-secondary-border-color);
+	background-color: var(--color-secondary-bg);
+	color: var(--color-secondary-text);
+	border: 1px solid var(--color-secondary-border);
 }
 
 button.secondary:hover {
-	background-color: var(--button-hover-secondary-bg-color);
-	color: var(--button-hover-secondary-text-color);
-	border-color: var(--button-secondary-border-color);
+	background-color: var(--color-secondary-hover);
 }
 
 button.icon {
@@ -78,19 +76,19 @@ button.icon {
 
 
 .like-button .material-symbols-outlined {
-	font-variation-settings: "FILL" 0; /* Default non-filled */
+	font-variation-settings: "FILL" 0; 
 }
 
 .like-button.liked .material-symbols-outlined {
-	font-variation-settings: "FILL" 1; /* Filled when liked */
-	color: var(--primary-color); /* Highlight color when liked */
+	font-variation-settings: "FILL" 1; 
+	color: var(--color-primary);
 }
 
 .dislike-button .material-symbols-outlined {
-	font-variation-settings: "FILL" 0; /* Default non-filled */
+	font-variation-settings: "FILL" 0; 
 }
 
 .dislike-button.disliked .material-symbols-outlined {
-	font-variation-settings: "FILL" 1; /* Filled when disliked */
+	font-variation-settings: "FILL" 1;
 	color: red; /* You might define a danger-color in colors.css or choose another */
 }

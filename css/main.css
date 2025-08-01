@@ -17,18 +17,17 @@
 body {
 	font-family: var(--font-primary);
 	line-height: 1.5;
-	color: var(--text-color);
-	background-color: var(--background-color);
+	color: var(--color-text);
+	background-color: var(--color-background);
 	min-height: 100vh;
 	overflow-y: auto;
 }
 
 header {
-	background-color: var(--header-bg-color);
-	color: var(--header-text-color);
-	border-bottom: 1px solid var(--header-border-color);
+	background-color: var(--color-background);
+	border-bottom: 1px solid var(--color-border);
 
-	z-index: 1000;
+	z-index: 990;
 	position: sticky;
 
 	display: flex;
@@ -63,12 +62,12 @@ li {
 }
 
 blockquote {
-	border-left: 4px solid var(--blockquote-border-color);
+	border-left: 4px solid var(--color-border-blockquote);
 	font-size: 2rem;
 	line-height: 1.2;
 	padding-left: 2rem;
 	margin: 2rem 0;
-	color: var(--blockquote-text-color);
+	color: var(--color-text-var);
 	font-style: italic;
 }
 
@@ -89,9 +88,8 @@ blockquote span {
 .section-name {
 	font-weight: 600;
 	font-size: 0.87rem;
-	color: var(--section-name-color);
 	text-transform: uppercase;
-	background-color: var(--background-color-alt);
+	background-color: var(--color-background-alt);
 	padding: 0.5rem 0.75rem;
 	border-radius: 0.25rem;
 }
@@ -109,9 +107,9 @@ input[type="email"],
 input[type="password"],
 input[type="number"],
 .input-field {
-	background-color: var(--background-color);
-	border: 1px solid var(--input-border-color);
-	color: var(--text-color);
+	background-color: var(--color-background);
+	border: 1px solid var(--color-border);
+	color: var(--color-text);
 	border-radius: 0.25rem;
 	padding: 0.5rem 0.75rem;
 	width: 100%;
@@ -121,8 +119,7 @@ input[type="number"],
 
 .input-field:focus {
 	outline: none;
-	border-color: var(--input-focus-border-color);
-	box-shadow: 0 0 0 0.2rem var(--input-focus-box-shadow-color);
+	border-color: var(--color-border-focus);
 }
 
 input[type="checkbox"],
@@ -136,7 +133,7 @@ input[type="radio"] {
 input[type="checkbox"]:focus,
 input[type="radio"]:focus {
 	outline: none;
-	accent-color: var(--primary-color);
+	accent-color: var(--color-primary-bg);
 }
 
 .toggle-indicator {
@@ -145,25 +142,25 @@ input[type="radio"]:focus {
 	width: 3.5rem;
 	height: 2rem;
 	padding: 0.4rem;
-	background-color: var(--primary-color-inactive);
+	background-color: var(--color-primary-inactive);
 	border-radius: 1rem;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
 }
 
 .toggle-indicator.active {
-	background-color: var(--button-bg-color);
+	background-color: var(--color-primary-bg);
 }
 
 .toggle-indicator.active .toggle-indicator-inner {
-	background-color: var(--button-text-color);
+	background-color: var(--color-primary-text);
 	transform: translateX(1.6rem);
 }
 
 .toggle-indicator-inner {
 	width: 1.25rem;
 	height: 1.25rem;
-	background-color: var(--button-secondary-text-color);
+	background-color: var(--color-text-var);
 	border-radius: 50%;
 	top: 0.15rem;
 	left: 0.15rem;
@@ -171,9 +168,9 @@ input[type="radio"]:focus {
 }
 
 select {
-	background-color: var(--background-color);
-	border: 1px solid var(--input-border-color);
-	color: var(--text-color);
+	background-color: var(--color-background);
+	border: 1px solid var(--color-border);
+	color: var(--color-text);
 	border-radius: 0.25rem;
 	padding: 0.5rem 0.75rem;
 	width: 100%;
@@ -182,8 +179,8 @@ select {
 }
 
 option {
-	background-color: var(--background-color);
-	color: var(--text-color);
+	background-color: var(--color-background);
+	color: var(--color-text);
 }
 
 label {
@@ -203,8 +200,8 @@ radio-group {
 }
 
 .loading-spinner {
-	border: 6px solid var(--background-color);
-	border-top: 6px solid var(--button-bg-color);
+	border: 6px solid var(--color-primary-bg);
+	border-top: 6px solid var(--color-primary-text);
 	border-radius: 50%;
 	width: 2.5rem;
 	height: 2.5rem;
@@ -229,9 +226,9 @@ radio-group {
 #movable-object {
 	position: absolute;
 	width: 224px;
-	background-color: var(--background-color);
-	border: 2px dashed var(--secondary-color);
-	color: var(--text-color);
+	background-color: var(--color-background);
+	border: 2px dashed var(--color-border);
+	color: var(--color-text);
 	border-radius: 0.5rem;
 	display: flex;
 	padding: 0.5rem;
@@ -245,9 +242,9 @@ radio-group {
 
 #movable-object:active {
 	cursor: grabbing;
-	border-color: var(--button-text-color);
-	background-color: var(--primary-color);
-	color: var(--button-text-color);
+	border-color: var(--color-primary-bg);
+	background-color: var(--color-primary-bg);
+	color: var(--color-primary-text);
 }
 
 .has-tooltip {
@@ -265,8 +262,8 @@ radio-group {
 
 	margin-bottom: 8px;
 
-	background-color: var(--text-color);
-	color: var(--background-color);
+	background-color: var(--color-background-inverse);
+	color: var(--color-text-inverse);
 
 	padding: 0.5rem 0.75rem;
 	border-radius: 0.25rem;
@@ -294,7 +291,7 @@ fieldset {
 
 .summary-info {
 	padding: 1rem;
-	background-color: var(--background-color-alt);
+	background-color: var(--color-background-alt);
 	border-radius: 0.5rem;
 }
 

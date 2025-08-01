@@ -4,24 +4,25 @@
 	bottom: 1rem;
 	left: 50%;
 	transform: translateX(-50%);
-	background-color: var(--background-color);
+	background-color: var(--color-background);
 	border-radius: 0.75rem;
 	padding: 0.5rem;
 	padding-left: 1rem;
 	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-	border: 1px solid var(--border-color);
+	border: 1px solid var(--color-border);
 	z-index: 1000;
 	display: flex;
 	white-space: nowrap;
 	gap: 0.5rem;
 	justify-content: center;
 	align-items: center;
+	z-index: 1100;
 }
 
 .floating-menu .menu-button {
-	background-color: var(--button-secondary-bg-color);
-	border: 1px solid var(--button-secondary-border-color);
-	color: var(--button-secondary-text-color);
+	background-color: var(--color-secondary-bg);
+	border: 1px solid var(--color-secondary-border);
+	color: var(--color-secondary-text);
 	border-radius: 0.5rem;
 	line-height: 1;
 
@@ -50,4 +51,45 @@
 .floating-menu .menu-button:not(.active):hover {
 	background-color: var(--button-hover-secondary-bg-color);
 	color: var(--button-hover-secondary-text-color);
+}
+
+.menu-button#x-ray-static.active {
+	background-color: var(--color-static-active);
+	border-color: transparent;
+	color: var(--color-static-text);
+}
+
+.floating-menu .menu-button#x-ray-static:hover {
+	background-color: var(--color-static-hover);
+	border-color: transparent;
+	color: var(--color-static-text);
+}
+
+.menu-button#x-ray-dynamic.active {
+	background-color: var(--color-dynamic-active);
+	border-color: transparent;
+	color: var(--color-dynamic-text);
+}
+
+.floating-menu .menu-button#x-ray-dynamic:hover {
+	background-color: var(--color-dynamic-hover);
+	border-color: transparent;
+	color: var(--color-dynamic-text);
+}
+
+.menu-button#x-ray-metalinguistic.active {
+	background-color: var(--color-metalinguistic-active);
+	border-color: transparent;
+	color: var(--color-metalinguistic-text);
+}
+
+.floating-menu .menu-button#x-ray-metalinguistic:hover {
+	background-color: var(--color-metalinguistic-hover);
+	border-color: transparent;
+	color: var(--color-static-text);
+}
+
+.menu-button:hover,
+.menu-button.active .material-symbols-outlined {
+	font-variation-settings: "FILL" 1;
 }
