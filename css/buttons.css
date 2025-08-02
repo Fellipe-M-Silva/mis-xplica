@@ -64,8 +64,8 @@ button.icon {
 	opacity: 0;
 	left: 50%;
 	transform: translateX(-50%) translateY(0);
-	transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-	z-index: 1000;
+	transition: all ease;
+	z-index: 996;
 }
 
 #back-to-example.active {
@@ -74,18 +74,17 @@ button.icon {
 	transform: translateX(-50%) translateY(-1rem);
 }
 
-
 .like-button .material-symbols-outlined {
-	font-variation-settings: "FILL" 0; 
+	font-variation-settings: "FILL" 0;
 }
 
 .like-button.liked .material-symbols-outlined {
-	font-variation-settings: "FILL" 1; 
+	font-variation-settings: "FILL" 1;
 	color: var(--color-primary);
 }
 
 .dislike-button .material-symbols-outlined {
-	font-variation-settings: "FILL" 0; 
+	font-variation-settings: "FILL" 0;
 }
 
 .dislike-button.disliked .material-symbols-outlined {

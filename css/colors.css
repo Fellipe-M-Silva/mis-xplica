@@ -71,6 +71,8 @@ body[data-theme="light"] {
 	--color-background: var(--wild-sand-50);
 	--color-background-alt: var(--wild-sand-100);
 	--color-background-inverse: var(--wild-sand-900);
+	--color-background-primary: var(--azure-radiance-100);
+	--color-background-primary-border: var(--azure-radiance-500);
 
 	--color-background-static: var(--timber-green-50);
 	--color-background-dynamic: var(--black-marlin-100);
@@ -80,7 +82,7 @@ body[data-theme="light"] {
 	--color-text: var(--wild-sand-900);
 	--color-text-var: var(--wild-sand-800);
 	--color-text-accent: var(--azure-radiance-700);
-	--color-text-accent-hover: var(--wild-sand-700);
+	--color-text-accent-hover: var(--azure-radiance-800);
 	--color-text-inverse: var(--wild-sand-50);
 
 	--color-primary-bg: var(--azure-radiance-600);
@@ -88,6 +90,7 @@ body[data-theme="light"] {
 	--color-primary-active: var(--azure-radiance-500);
 	--color-primary-inactive: var(--azure-radiance-200);
 	--color-primary-text: var(--wild-sand-50);
+	--color-primary-border: var(--azure-radiance-400);
 
 	--color-secondary-bg: var(--wild-sand-50);
 	--color-secondary-hover: var(--wild-sand-100);
@@ -99,26 +102,29 @@ body[data-theme="light"] {
 	--color-static-bg: var(--timber-green-600);
 	--color-static-hover: var(--timber-green-700);
 	--color-static-active: var(--timber-green-600);
-	--color-static-shadow: var(--timber-green-200);
 	--color-static-text: var(--wild-sand-50);
 	--color-static-icon: var(--timber-green-700);
 	--color-static-border: var(--timber-green-600);
+	--color-static-shadow: var(--timber-green-100);
+	--color-static-shadow-hover: var(--timber-green-200);
 
 	--color-dynamic-bg: var(--black-marlin-600);
 	--color-dynamic-hover: var(--black-marlin-700);
 	--color-dynamic-active: var(--black-marlin-600);
-	--color-dynamic-shadow: var(--black-marlin-200);
 	--color-dynamic-text: var(--wild-sand-50);
 	--color-dynamic-icon: var(--black-marlin-700);
 	--color-dynamic-border: var(--black-marlin-600);
+	--color-dynamic-shadow: var(--black-marlin-100);
+	--color-dynamic-shadow-hover: var(--black-marlin-200);
 
 	--color-metalinguistic-bg: var(--toledo-600);
 	--color-metalinguistic-hover: var(--toledo-700);
 	--color-metalinguistic-active: var(--toledo-600);
-	--color-metalinguistic-shadow: var(--toledo-200);
 	--color-metalinguistic-text: var(--wild-sand-50);
 	--color-metalinguistic-icon: var(--toledo-700);
 	--color-metalinguistic-border: var(--toledo-600);
+	--color-metalinguistic-shadow: var(--toledo-100);
+	--color-metalinguistic-shadow-hover: var(--toledo-200);
 
 	--color-border: var(--wild-sand-200);
 	--color-border-var: var(--wild-sand-300);

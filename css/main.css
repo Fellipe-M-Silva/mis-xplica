@@ -50,8 +50,8 @@ header h3 {
 	margin: 0;
 }
 
-ul,
-ol {
+section ul,
+section ol {
 	list-style-position: inside;
 	margin-bottom: 1rem;
 	padding-left: 1.5rem;
@@ -280,7 +280,6 @@ radio-group {
 
 fieldset {
 	border: none;
-	margin-top: 1rem;
 }
 
 .theme-option {
@@ -307,4 +306,27 @@ fieldset {
 }
 .summary-info p:last-child {
 	margin-bottom: 0;
+}
+
+.info-message {
+	width: 100%;
+	background-color: var(--color-background-alt);
+	/* border: 1px solid var(--color-background-primary-border); */
+	color: var(--color-text);
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.5rem;
+	font-size: 0.875rem;
+	margin-bottom: 1rem;
+
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+/* .info-message span {
+	color: var(--color-text-accent);
+} */
+
+.info-message p {
+	margin: 0;
 }

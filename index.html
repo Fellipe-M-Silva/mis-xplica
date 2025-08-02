@@ -21,9 +21,22 @@
 		<header>
 			<div>
 				<h3>MIS-Xplica</h3>
-				<button class="icon secondary" id="open-about-button">
+				<div class="actions">
+					<div
+					class="sign-wrapper"
+					data-sign-type="estatico dinamico metalinguistico"
+					data-estatico-name="Botão"
+					data-estatico-explanation="Botões são signos estáticos que podem ser clicados para realizar ações. Eles também podem ter comportamentos dinâmicos, como abrir diálogos ou executar funções."
+					data-dinamico-name="Abrir diálogo"
+					data-dinamico-explanation="Clicar no botão abre um diálogo com informações sobre o MIS-Xplica."
+					data-metalinguistico-name="Sobre o MIS-Xplica"
+					data-metalinguistico-explanation="O diálogo fornece informações adicionais sobre o MIS-Xplica, explicando seu propósito e como ele pode ser usado."
+					>
+						<button class="icon secondary" id="open-about-button">
 					<span class="material-symbols-outlined">help</span>
 				</button>
+					</div>
+				</div>
 			</div>
 			<div id="mobile-navigation-header">
 				<button class="icon ghost" id="open-summary-button">
@@ -69,18 +82,14 @@
 				id="summary-sidebar"
 				aria-label="Sumário"
 			>
-				<h4
-					data-sign-type="estatico"
-					data-sign-name="Título do Sumário"
-					data-sign-explanation="Este título é fixo e fornece uma visão geral do conteúdo do sumário, sem depender de interação para ser compreendido."
-				>
-					Sumário
-				</h4>
-				<ul
-					data-sign-type="dinamico"
-					data-sign-name="Lista de Sumário"
-					data-sign-explanation="Clicar nos índices leva a seções específicas do documento."
-				>
+				<h4>Sumário</h4>
+				<div
+						class="sign-wrapper"
+						data-sign-type="dinamico"
+						data-dinamico-name="Lista do sumário"
+						data-dinamico-explanation="Clicar nos índices leva a seções específicas do documento."
+					>
+				<ul>
 					<li><a href="#introducao">Introdução</a></li>
 					<li>
 						<a href="#linguagem-interfaces"
@@ -97,41 +106,51 @@
 
 			<div class="content">
 				<section id="hero">
-					<h1
+					<div
+						class="sign-wrapper"
 						data-sign-type="estatico"
-						data-sign-name="Título"
-						data-sign-explanation="Títulos fornecem informações fixas e pode ser interpretados sem interação."
+						data-estatico-name="Título"
+						data-estatico-explanation="Títulos fornecem informações fixas e podem ser interpretados sem interação."
 					>
-						MIS: o Método de Inspeção Semiótica
-					</h1>
+						<h1>MIS: o Método de Inspeção Semiótica</h1>
+					</div>
+					<div
+						class="sign-wrapper"
+						data-sign-type="metalinguistico"
+						data-metalinguistico-name="Subtítulo"
+						data-metalinguistico-explanation="O subtítulo explica o propósito do MIS-Xplica."
+					>
 					<p
 						data-sign-type="metalinguistico"
 						data-sign-name="Subtítulo"
 						data-sign-explanation="O subtítulo explica o propósito do MIS-Xplica, que é fornecer um guia sobre o Método de Inspeção Semiótica."
 					>
+					</p>
 						Um guia sobre o método e como aplicá-lo.
 					</p>
 				</section>
 
 				<section id="introducao">
 					<span class="section-name">Introdução</span>
-					<h2
+					<div class="sign-wrapper"
 						data-sign-type="estatico"
-						data-sign-name="Título de seção"
-						data-sign-explanation="Títulos de seção fornecem informações fixas e pode ser interpretado sem interação. Todos os títulos desta página são signos estáticos"
-					>
-						A Conversa por trás da interface
-					</h2>
-					<p
-						data-sign-type="estatico"
-						data-sign-name="parágrafo"
-						data-sign-explanation="Parágrafos fornecem informações fixas e pode ser interpretado sem interação. De forma geral, os parágrafos desta página são signos estáticos"
-					>
+						data-estatico-name="Título de seção"
+						data-estatico-explanation="Títulos de seção fornecem informações fixas e pode ser interpretado sem interação. Todos os títulos desta página são signos estáticos">
+						<h2>
+							A conversa por trás da interface
+						</h2>
+					</div>
+					<p>
 						Já parou para pensar que cada clique, cada ícone e cada
 						mensagem em uma interface digital é parte de uma
 						conversa?
 					</p>
-					<p>
+					<div class="sign-wrapper"
+						data-sign-type="estatico"
+						data-estatico-name="Parágrafo"
+						data-estatico-explanation="Parágrafos fornecem informações fixas e pode ser interpretado sem interação. De forma geral, os parágrafos desta página são signos estáticos"
+					>
+						<p>
 						A <strong>Engenharia Semiótica</strong>, proposta por
 						Clarisse Sieckenius de Souza, parte da ideia de que a
 						<strong>Interação Humano-Computador (IHC)</strong> é, na
@@ -141,6 +160,7 @@
 						designers, transmitindo a visão deles sobre quem são os
 						usuários, o que eles precisam fazer e como interagir.
 					</p>
+					</div>
 					<p>
 						Essa comunicação sobre a comunicação é o que chamamos de
 						metacomunicação, que pode ser descrita de acordo com o
@@ -148,7 +168,7 @@
 					</p>
 					<blockquote
 						id="metacommunication-quote"
-						cite="Souza, 2005, p. 84"	
+						cite="Souza, 2005, p. 84"
 					>
 						"Esse é o meu entendimento de quem você é, o que eu
 						aprendi que você quer ou precisa fazer, de que formas
@@ -227,11 +247,11 @@
 						em um dado momento.
 					</p>
 					<h4>Onde identificar</h4>
-					<ul
+					<div class="sign-wrapper"
 						data-sign-type="estatico"
-						data-sign-name="Lista de itens"
-						data-sign-explanation="Listas contém itens que são signos estáticos, pois seus conteúdos e aparências não mudam com a interação do usuário. Cada item também é um exemplo de signo estático."
-					>
+						data-estatico-name="Lista de itens"
+						data-estatico-explanation="Listas contém itens que são signos estáticos, pois seus conteúdos e aparências não mudam com a interação do usuário. Cada item também é um exemplo de signo estático.">
+						<ul>
 						<li>Capturas de tela da interface.</li>
 						<li>Elementos visuais fixos e persistentes.</li>
 						<li>
@@ -256,13 +276,25 @@
 							consistentes.
 						</li>
 					</ul>
+					</div>
+					
 					<h4>Exemplos</h4>
+					<div class="sign-wrapper"
+						data-sign-type="metalinguistico"
+						data-metalinguistico-name="Mensagem de Informação"
+						data-metalinguistico-explanation="A mensagem de informação fornece instruções ou informações adicionais sobre o sistema."
+					>
+						<div class="info-message">
+							<span class="material-symbols-outlined">info</span>
+							<p>Os elementos abaixo são, de forma geral, exemplos de signos estáticos.</p>
+						</div>
+					</div>
 					<div class="wrapper">
 						<article class="example">
 							<p>Um texto:</p>
 							<div class="example-card">
-								<h4>Exemplo de Título</h4>
-								<p style="width: 100%">
+								<h4 style="margin-top: 0;">Exemplo de Título</h4>
+								<p style="width: 100%; margin-bottom: 0	;">
 									Este é um exemplo de parágrafo que
 									representa um signo estático.
 								</p>
@@ -338,6 +370,7 @@
 						temporais em resposta às ações do usuário. Eles
 						demonstram como o sistema reage.
 					</p>
+					
 					<h4>Onde identificar</h4>
 					<ul>
 						<li>Interagindo diretamente com o sistema.</li>
@@ -349,6 +382,16 @@
 						<li>Gravações em vídeo de interações contínuas.</li>
 					</ul>
 					<h4>Exemplos</h4>
+					<div class="sign-wrapper"
+						data-sign-type="metalinguistico"
+						data-metalinguistico-name="Mensagem de Informação"
+						data-metalinguistico-explanation="A mensagem de informação fornece instruções ou informações adicionais sobre o sistema."
+					>
+						<div class="info-message">
+							<span class="material-symbols-outlined">info</span>
+							<p>Interaja com alguns elementos abaixo para ver exemplos de signos dinâmicos.</p>
+						</div>
+					</div>
 					<div class="wrapper">
 						<article class="example">
 							<p>O carregamento de uma informação:</p>
@@ -446,15 +489,17 @@
 							</div>
 						</article>
 
-						<button
-							class="primary"
-							id="back-to-example"
+						<div class="sign-wrapper"
+						id="back-to-example"
 							data-sign-type="dinamico"
-							data-sign-name="Retomar a leitura"
-							data-sign-explanation="O clique no botão 'Retomar a leitura' ativa uma mudança na visualização da página (scroll), que é um comportamento dinâmico."
-						>
+							data-dinamico-name="Retomar a Leitura"
+							data-dinamico-explanation="Clicar no botão o leva de volta para onde você parou.">
+							<button
+							class="primary"
+							>
 							Retomar a leitura
 						</button>
+						</div>
 					</div>
 
 					<h3 id="signos-metalinguisticos">
@@ -482,6 +527,16 @@
 						</li>
 					</ul>
 					<h4>Exemplos</h4>
+					<div class="sign-wrapper"
+						data-sign-type="metalinguistico"
+						data-metalinguistico-name="Mensagem de Informação"
+						data-metalinguistico-explanation="A mensagem de informação fornece instruções ou informações adicionais sobre o sistema."
+					>
+						<div class="info-message">
+							<span class="material-symbols-outlined">info</span>
+							<p>Interaja com alguns elementos abaixo para ver exemplos de signos metalinguísticos.</p>
+						</div>
+					</div>
 					<div class="wrapper">
 						<article class="example">
 							<p>Um tooltip:</p>
@@ -637,17 +692,22 @@
 						comunicabilidade do sistema.
 					</p>
 					<p>
-						Você pode ver abaixo um exemplo de diagrama do processo
-						do Método de Inspeção Semiótica:
-					</p>
-					<img
+							Este é um exemplo de diagrama do processo do Método
+							de Inspeção Semiótica. Ele ilustra as etapas
+							principais do método, desde a preparação até o
+							relato dos resultados. Você pode baixar uma versão em PDF para impressão <strong><a href="media/pdf/diagrama_mis.pdf" target="_blank">aqui</a></strong>.
+						</p>
+					<div class="sign-wrapper"
+						data-sign-type="estatico"
+						data-estatico-name="Imagem"
+						data-estatico-explanation="Imagens estáticas não mudam com a interação do usuário. Elas são usadas para ilustrar conceitos ou processos de forma visual e permanente.">
+						<img
 						src="media/images/placeholder.jpg"
 						alt="Diagrama do processo do Método de Inspeção Semiótica"
-						class="mis-diagram"
-						data-sign-type="estatico"
-						data-sign-name="Imagem"
-						data-sign-explanation="Imagens estáticas não mudam com a interação do usuário."
-					/>
+						class="mis-diagram"/>
+					</div>
+
+					<h3>Aplicando o método</h3>
 					<p>
 						O
 						<span title="Método de Inspeção Semiótica">MIS</span> é
@@ -656,7 +716,37 @@
 						<span title="Método de Inspeção Semiótica">MIS</span> é
 						conduzido em quatro etapas distintas:
 					</p>
-					<h3>Preparação</h3>
+					<div class="wrapper">
+						<article class="mis-card">
+  <span class="material-symbols-outlined mis-icon">search</span>
+  <h4>Preparação</h4>
+  <p>Delimitação do escopo da pesquisa</p>
+  <button class="primary scroll-to-mis-section" data-target="#mis-preparacao">Mais informações</button>
+</article>
+
+<article class="mis-card">
+  <span class="material-symbols-outlined mis-icon">edit</span>
+  <h4>Coleta de dados</h4>
+  <p>Inspeção dos signos da interface</p>
+  <button class="primary scroll-to-mis-section" data-target="#mis-coleta">Mais informações</button>
+</article>
+
+<article class="mis-card">
+  <span class="material-symbols-outlined mis-icon">compare_arrows</span>
+  <h4>Consolidação</h4>
+  <p>Contraste e comparação das metamensagens</p>
+  <button class="primary scroll-to-mis-section" data-target="#mis-consolidacao">Mais informações</button>
+</article>
+
+<article class="mis-card">
+  <span class="material-symbols-outlined mis-icon">assignment</span>
+  <h4>Relato dos resultados</h4>
+  <p>Avaliação de comunicabilidade do sistema</p>
+  <button class="primary scroll-to-mis-section" data-target="#mis-relato">Mais informações</button>
+</article>
+					</div>
+
+					<h4 id="mis-preparacao">Preparação</h4>
 					<p>
 						O avaliador delimita o escopo da pesquisa, identificando
 						os perfis de usuários, objetivos do sistema e as partes
@@ -669,7 +759,7 @@
 						class="mis-diagram"
 					/>
 
-					<h3>Coleta de dados</h3>
+					<h4 id="mis-coleta">Coleta de dados</h4>
 					<p>
 						O avaliador inspeciona a interface, preenchendo o modelo
 						de metacomunicação para cada tipo de signo.
@@ -680,7 +770,7 @@
 						class="mis-diagram"
 					/>
 
-					<h3>Consolidação e interpretação dos resultados</h3>
+					<h4 id="mis-consolidacao">Consolidação e interpretação dos resultados</h4>
 					<p>
 						O avaliador contrasta e compara as metamensagens
 						reconstruídas, julgando os problemas de metacomunicação
@@ -692,7 +782,7 @@
 						class="mis-diagram"
 					/>
 
-					<h3>Relato dos resultados</h3>
+					<h4 id="mis-relato">Relato dos resultados</h4>
 					<p>
 						O avaliador relata a avaliação de comunicabilidade do
 						sistema sob o ponto de vista do emissor da metamensagem.
@@ -951,12 +1041,14 @@
 
 				<div class="theme-toggle">
 					<label for="theme-switch">Tema</label>
-					<fieldset
-						id="theme-switch"
-						data-sign-type="dinamico"
-						data-sign-name="Fieldset de Tema"
-						data-sign-explanation="Selecionar um tema entre padrão, claro e escuro altera o tema da página, demonstrando um comportamento responsivo do sistema à escolha do usuário."
+					<div
+					class="sign-wrapper"
+					data-sign-type="dinamico"
+					data-dinamico-name="Seleção de tema"
+					data-dinamico-explanation="Escolher um tema altera a aparência da interface."
 					>
+					<fieldset
+						id="theme-switch">
 						<radio-group>
 							<div class="theme-option">
 								<input
@@ -988,6 +1080,7 @@
 							</div>
 						</radio-group>
 					</fieldset>
+					</div>
 				</div>
 			</div>
 		</main>

@@ -152,6 +152,25 @@ section:last-of-type {
 	width: 100%;
 }
 
+.mis-card {
+	flex: 1 0 250px;
+	background-color: var(--color-background-alt);
+	border: 1px solid var(--color-border);
+	border-radius: 0.5rem;
+	padding: 1rem;
+	/* display: flex;
+	flex-direction: column; */
+}
+
+.mis-card .material-symbols-outlined {
+	font-variation-settings: "FILL" 1;
+}
+
+.mis-card h4 {
+	margin-bottom: 0.5rem;
+	width: 100%;
+}
+
 img {
 	max-width: 100%;
 	height: auto;

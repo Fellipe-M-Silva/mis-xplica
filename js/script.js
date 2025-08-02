@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				});
 
 				// Close mobile summary sidebar if open after clicking a link
-				closeAllMobileMenus();
+				// closeAllMobileMenus();
 			}
 		});
 	});
@@ -200,6 +200,36 @@ document.addEventListener("DOMContentLoaded", () => {
 				body.classList.remove("no-scroll"); // Allow scrolling when modal is closed
 			}
 		}
+	});
+
+	// Seleciona todos os botões que devem ter scroll suave para seções MIS
+	document.querySelectorAll(".scroll-to-mis-section").forEach((button) => {
+		button.addEventListener("click", (event) => {
+			event.preventDefault(); // Impede o comportamento padrão do link
+
+			const targetId = button.dataset.target; // Pega o ID do alvo do atributo data-target
+			const targetElement = document.querySelector(targetId); // Encontra o elemento alvo
+
+			if (targetElement) {
+				const headerHeight =
+					document.querySelector("header").offsetHeight; // Pega a altura do seu cabeçalho dinamicamente
+				const offset = 20; // Espaçamento extra em pixels
+
+				// Calcula a posição para rolar
+				const elementPosition =
+					targetElement.getBoundingClientRect().top + window.scrollY;
+				const offsetPosition = elementPosition - headerHeight - offset;
+
+				// Rola para a nova posição
+				window.scrollTo({
+					top: offsetPosition,
+					behavior: "smooth",
+				});
+
+				// Opcional: Atualizar a URL sem recarregar a página
+				history.pushState(null, "", targetId);
+			}
+		});
 	});
 
 	// fechamento do DOMContentLoaded. Não apagar
