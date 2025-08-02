@@ -350,11 +350,11 @@
 							<div class="example-card">
 								<img
 									src="media/images/placeholder.jpg"
-									alt="Placeholder de Imagem"
+									alt="Exemplo Imagem"
 									style="
 										width: 100%;
-										height: 100%;
-										object-fit: fill;
+										height: calc(200px - 2rem);
+										object-fit: cover;
 										border-radius: 0.5rem;
 										margin: 0;
 									"
@@ -563,16 +563,21 @@
 									class="dialog-overlay"
 									id="dialog-button-dialog"
 								>
-									<div
-										class="dialog-content"
+									<div class="sign-wrapper"
 										data-sign-type="metalinguistico"
-										data-sign-name="Diálogo Explicativo"
-										data-sign-explanation="O diálogo inteiro funciona como um signo metalinguístico, pois fornece informações adicionais e explica aspectos do sistema ou da interação."
-									>
+										data-metalinguistico-name="Diálogo Explicativo"
+										data-metalinguistico-explanation="O diálogo fornece informações adicionais sobre o sistema ou uma tarefa de usuário.">
+										<div
+										class="dialog-content">
 										<div class="dialog-header">
 											<h4 class="dialog-title">
 												Exemplo de Diálogo
 											</h4>
+
+											<div class="sign-wrapper"
+										data-sign-type="dinamico"
+										data-dinamico-name="Fechar diálogo"
+										data-dinamico-explanation="Clicar no botão fecha a caixa de diálogo.">
 											<button
 												class="close-dialog"
 												id="close-dialog-button"
@@ -586,6 +591,7 @@
 													close
 												</span>
 											</button>
+											</div>
 										</div>
 										<div class="dialog-body">
 											<p class="dialog-text">
@@ -595,6 +601,7 @@
 												opções.
 											</p>
 										</div>
+									</div>
 									</div>
 								</div>
 							</div>
@@ -1086,17 +1093,24 @@
 		</main>
 
 		<div class="dialog-overlay" id="about-dialog-overlay">
+			<div class="sign-wrapper"
+										data-sign-type="metalinguistico"
+										data-metalinguistico-name="Sobre o MIS-Xplica"
+										data-metalinguistico-explanation="Este diálogo fornece informações sobre o MIS-Xplica e como utilizá-lo, sendo uma comunicação direta do designer sobre o próprio sistema."
+										style="max-height: 70vh;">
 			<div
 				class="dialog-content large"
 				id="about-dialog-content"
-				data-sign-type="metalinguistico"
-				data-sign-name="Diálogo 'Sobre'"
-				data-sign-explanation="Este diálogo fornece informações sobre o MIS-Xplica e como utilizá-lo, sendo uma comunicação direta do designer sobre o próprio sistema."
 			>
 				<div class="dialog-header">
 					<h4 class="dialog-title" id="about-dialog-title">
 						Sobre o MIS-Xplica
 					</h4>
+
+					<div class="sign-wrapper"
+										data-sign-type="dinamico"
+										data-dinamico-name="Fechar diálogo"
+										data-dinamico-explanation="Clicar no botão fecha a caixa de diálogo.">
 					<button
 						class="close-dialog"
 						id="close-about-button"
@@ -1106,6 +1120,7 @@
 					>
 						<span class="material-symbols-outlined"> close </span>
 					</button>
+					</div>
 				</div>
 				<div class="dialog-body">
 					<p class="dialog-text" id="about-dialog-message">
@@ -1145,19 +1160,26 @@
 					</p>
 				</div>
 			</div>
+			</div>
 		</div>
 
 		<div class="dialog-overlay" id="feedback-dialog-overlay">
+			<div class="sign-wrapper"
+										data-sign-type="metalinguistico"
+										data-metalinguistico-name="Diálogo de feedback"
+										data-metalinguistico-explanation="Este diálogo permite ao usuário enviar feedback sobre o sistema, sendo uma comunicação direta do designer para o usuário, solicitando sua opinião e interação.">
 			<div
 				class="dialog-content"
-				data-sign-type="metalinguistico"
-				data-sign-name="Diálogo de Feedback"
-				data-sign-explanation="Este diálogo permite ao usuário enviar feedback sobre o sistema, sendo uma comunicação direta do designer para o usuário, solicitando sua opinião e interação."
 			>
 				<div class="dialog-header">
 					<h4 class="dialog-title" id="feedback-dialog-title">
 						Título
 					</h4>
+					
+					<div class="sign-wrapper"
+										data-sign-type="dinamico"
+										data-dinamico-name="Fechar diálogo"
+										data-dinamico-explanation="Clicar no botão fecha a caixa de diálogo.">
 					<button
 						class="close-dialog"
 						id="close-feedback-dialog-button"
@@ -1167,6 +1189,7 @@
 					>
 						<span class="material-symbols-outlined"> close </span>
 					</button>
+					</div>
 				</div>
 				<div class="dialog-body">
 					<p class="dialog-text" id="feedback-dialog-message">
@@ -1237,6 +1260,7 @@
 							Enviar Feedback
 						</button>
 					</form>
+				</div>
 				</div>
 			</div>
 		</div>
