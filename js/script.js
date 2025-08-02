@@ -232,5 +232,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
+	// mudar o src da imagem do mis entre temas
+	
+
 	// fechamento do DOMContentLoaded. Não apagar
 });

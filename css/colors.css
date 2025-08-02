@@ -190,7 +190,7 @@ body[data-theme="light"] {
 		--color-secondary-bg: var(--wild-sand-950);
 		--color-secondary-hover: var(--wild-sand-900);
 		--color-secondary-active: var(--wild-sand-950);
-		--color-secondary-inactive: var(--wild-sand-950);
+		--color-secondary-inactive: var(--wild-sand-600);
 		--color-secondary-text: var(--wild-sand-50);
 		--color-secondary-border: var(--wild-sand-600);
 
@@ -256,7 +256,7 @@ body[data-theme="dark"] {
 	--color-secondary-bg: var(--wild-sand-950);
 	--color-secondary-hover: var(--wild-sand-900);
 	--color-secondary-active: var(--wild-sand-950);
-	--color-secondary-inactive: var(--wild-sand-950);
+	--color-secondary-inactive: var(--wild-sand-600);
 	--color-secondary-text: var(--wild-sand-50);
 	--color-secondary-border: var(--wild-sand-600);
 

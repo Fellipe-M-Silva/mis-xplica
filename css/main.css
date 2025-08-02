@@ -142,7 +142,7 @@ input[type="radio"]:focus {
 	width: 3.5rem;
 	height: 2rem;
 	padding: 0.4rem;
-	background-color: var(--color-primary-inactive);
+	background-color: var(--color-secondary-inactive);
 	border-radius: 1rem;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
@@ -160,7 +160,7 @@ input[type="radio"]:focus {
 .toggle-indicator-inner {
 	width: 1.25rem;
 	height: 1.25rem;
-	background-color: var(--color-text-var);
+	background-color: var(--color-secondary-bg);
 	border-radius: 50%;
 	top: 0.15rem;
 	left: 0.15rem;
